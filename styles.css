@@ -439,3 +439,156 @@ header span a {
 .work__img .link:hover {
   box-shadow: 3px 3px 0 -1px var(--white), 3px 3px 0 1px var(--black);
 }
+.work__img .link i {
+  font-size: 36px;
+  color: var(--white);
+}
+.work__img .tag {
+  color: var(--black);
+  font-size: 14px;
+  opacity: 0.8;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateY(60%);
+}
+.item__btns {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1em;
+}
+.item__btns button:hover {
+  box-shadow: 2px 2px 0 -1px var(--white), 2px 2px 0 1px var(--black);
+}
+.item__btns button {
+  display: flex;
+  padding: 3px 10px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background-color: var(--white);
+  border: var(--borders);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--black);
+}
+.item__btns button i {
+  font-size: 16px;
+}
+#contact__me {
+  margin-top: 3rem;
+}
+.contact__contents {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+#contact__me h2 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.contact__social {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 48%;
+  width: 100%;
+}
+.contact__social .title {
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.contact__social .texts {
+  max-width: 290px;
+}
+.call__action {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  max-width: 330px;
+  color: var(--white);
+  background-color: var(--black);
+  margin-left: 10%;
+}
+.call__action:hover {
+  box-shadow: 4px 4px 0 -1px var(--white), 4px 4px 0 1px var(--black);
+}
+.msg__box {
+  width: 48%;
+  margin-right: 9vw;
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+}
+.box__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+.name_email {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+.box__item input,
+textarea {
+  width: 100%;
+  padding: 8px 10px;
+  outline: none;
+  border: var(--borders);
+  background-color: var(--white);
+  color: var(--black);
+  font-family: "Archivo Narrow", sans-serif;
+  font-size: 1rem;
+}
+.box__item input:focus,
+textarea:focus {
+  background-color: var(--black);
+  color: var(--white);
+  border-color: var(--white);
+  font-family: "Archivo Narrow", sans-serif;
+  /* box-shadow: 4px 4px 0 -1px var(--white), 4px 4px 0 1px var(--black); */
+}
+label {
+  position: relative;
+}
+.box__item label::after {
+  content: "*";
+  color: red;
+  /* border: 1px solid blue; */
+  height: fit-content;
+  width: fit-content;
+  margin-left: 3px;
+  font-size: 1.5rem;
+  position: absolute;
+  transform: translateY(-5px);
+}
+
+.box__item input:hover,
+textarea:hover {
+  box-shadow: 3px 3px 0 -1px var(--white), 3px 3px 0 1px var(--black);
+}
+.send__msg__btn {
+  padding: 8px 10px;
+  width: fit-content;
+  font-size: 18px;
+  background-color: var(--black) !important;
+  color: var(--white) !important;
+}
+#footer {
+  font-size: 12px;
+  width: 100%;
+  background-color: var(--black);
+  color: var(--white);
+  display: flex;
+  gap: 5px;
+  padding: 2rem 0;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
