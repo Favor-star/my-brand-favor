@@ -12,7 +12,8 @@
 :root {
   --black: #000;
   --white: #fff;
-  --borders: 1px solid var(--black);
+  --borders: 2px solid var(--black);
+  --radius: 2px;
 }
 .dark__mode {
   --black: #fff;
@@ -171,6 +172,10 @@ header span a {
   transition: all 0.2s ease-in;
   cursor: pointer;
   text-decoration: none;
+  border-radius: var(--radius);
+}
+.home__btn i{
+font-size: 24px;
 }
 .home__btn:hover {
   border-radius: 0;
@@ -356,7 +361,9 @@ header span a {
   font-size: 18px;
   text-decoration: none;
   cursor: pointer;
+  border-radius: var(--radius);
 }
+
 .bg-btn:hover {
   box-shadow: 3px 3px 0 -1px var(--white), 3px 3px 0 1px var(--black);
 }
@@ -471,6 +478,7 @@ header span a {
   font-size: 16px;
   font-weight: 400;
   color: var(--black);
+  border-radius: var(--radius);
 }
 .item__btns button i {
   font-size: 16px;
