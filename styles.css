@@ -104,9 +104,15 @@ nav .subheader:has(:hover, :focus)::before {
   font-weight: 400;
   text-decoration: none;
 }
+.subheader.selected::before{
+width: 100% !important;
+}
+.blog__link{
+  position: relative;
+  top: -5px;
+}
 header span a {
-  border: var(--borders) !important;
-  padding: 8px 10px;
+ 
   margin-right: 10px;
 }
 .home__img {
@@ -163,29 +169,29 @@ header span a {
   gap: 2rem;
   column-gap: 5rem;
 }
-.home__btn {
+.buttons.action{
+  background-color: var(--black);
+  color: var(--white)
+}
+.buttons {
   font-size: 1.125rem;
   padding: 10px;
-  color: var(--white);
-  background-color: var(--black);
+  color: var(--black);
+  background-color: inherit;
   border: var(--borders);
   transition: all 0.2s ease-in;
   cursor: pointer;
   text-decoration: none;
   border-radius: var(--radius);
+  width: fit-content;
 }
-.home__btn i{
+.buttons i{
 font-size: 24px;
 }
-.home__btn:hover {
+.buttons:hover {
   border-radius: 0;
   box-shadow: 3px 3px 0 -1px var(--white), 3px 3px 0 1px var(--black);
 }
-.home__btn:last-of-type {
-  background-color: inherit;
-  color: var(--black);
-}
-
 .social__links {
   display: flex;
   /* gap: 2rem; */
@@ -581,13 +587,7 @@ label {
 textarea:hover {
   box-shadow: 3px 3px 0 -1px var(--white), 3px 3px 0 1px var(--black);
 }
-.send__msg__btn {
-  padding: 8px 10px;
-  width: fit-content;
-  font-size: 18px;
-  background-color: var(--black) !important;
-  color: var(--white) !important;
-}
+
 #footer {
   font-size: 12px;
   width: 100%;
@@ -600,3 +600,4 @@ textarea:hover {
   align-items: center;
   margin-top: 3rem;
 }
+ /*BLOG CSS*/
