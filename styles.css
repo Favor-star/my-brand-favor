@@ -111,8 +111,7 @@ width: 100% !important;
   position: relative;
   top: -5px;
 }
-header span a {
- 
+.actions a{
   margin-right: 10px;
 }
 .home__img {
@@ -601,3 +600,65 @@ textarea:hover {
   margin-top: 3rem;
 }
  /*BLOG CSS*/
+.blog__container{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.blog__title{
+  border-bottom: 2px solid;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+align-items: center;
+}
+.blog__title h3{
+  font-size: 2rem; 
+}
+.blog__hero__contents{
+  display: flex;
+  gap: 20px;
+}
+.trending{
+  display: flex;
+  gap: 10px;
+  max-width: 70%;
+  padding: 15px;
+  border: var(--borders);
+}
+.trending__texts{
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.trending__texts h3{
+  font-size: 1.2rem;
+}
+.trending__img__section{
+  max-width: 300px;
+  width: 50%;
+  height: 100%;
+  border: 1px solid red;
+  position: relative;
+  
+}
+.trending__img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* aspect-ratio: 16/9; */
+}
+.trending__tag{
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  padding: 5px;
+  background-color: var(--black);
+  color: var(--white);
+}
+.read__more{
+  padding: 8px;
+  font-size: 16px;
+}
