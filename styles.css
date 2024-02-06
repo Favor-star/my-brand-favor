@@ -11,12 +11,12 @@
 }
 :root {
   --black: #000;
-  --white: #fff;
+  --white: #E6E6E6;
   --borders: 2px solid var(--black);
   --radius: 2px;
 }
 .dark__mode {
-  --black: #fff;
+  --black: #E6E6E6;
   --white: #000;
   --borders: 1px solid var(--black);
 }
@@ -120,7 +120,8 @@ width: 100% !important;
   height: auto;
   border: var(--borders);
   box-shadow: 5px 5px 0 -1px var(--white), 5px 5px 0 1px var(--black);
-  background-color: white;
+  background-color: var(--white);
+  
 }
 .home__img:hover {
   box-shadow: 5px 5px 0 -1px var(--black), 5px 5px 0 1px var(--black);
@@ -419,6 +420,7 @@ font-size: 24px;
   position: relative;
   width: fit-content;
   max-width: 308px;
+
 }
 .work__img img {
   object-fit: cover;
@@ -427,6 +429,7 @@ font-size: 24px;
   max-width: 308px;
   max-height: 151px;
   border: var(--borders);
+  border-radius: var(--radius);
   position: relative;
   top: 0;
   left: 0;
@@ -623,9 +626,10 @@ align-items: center;
 .trending{
   display: flex;
   gap: 10px;
-  max-width: 70%;
+  max-width: 65%;
   padding: 15px;
   border: var(--borders);
+  justify-content: space-between ;
 }
 .trending__texts{
   max-width: 50%;
@@ -634,7 +638,7 @@ align-items: center;
   gap: 3px;
 }
 .trending__texts h3{
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 .trending__img__section{
   max-width: 300px;
@@ -646,7 +650,8 @@ align-items: center;
 }
 .trending__img{
   width: 100%;
-  height: 100%;
+  max-height: 100%;
+  aspect-ratio: 16/12;
   object-fit: cover;
   border-radius: var(--radius);
   /* aspect-ratio: 16/9; */
@@ -665,7 +670,11 @@ align-items: center;
   font-size: 16px;
 }
 .top__stories{
- border-left: 2px solid var(--black)
+ border-left: var(--borders);
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ max-width: 35%;
 }
 .top__stories h4{
 background-color: var(--black);
@@ -675,6 +684,7 @@ font-weight: 500;
 }
 .one__top__stories{
   padding: 5px;
+  cursor: pointer;
 }
 .top__stories__icons{
   display: flex;
@@ -689,4 +699,25 @@ font-size: 16px;
   display: flex;
   gap: 5px;
   align-items: center;
+}
+.blog__stories{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.blog__stories__header{
+  display: flex;
+  gap: 20px;
+  border-top: var(--borders);
+}
+.one__stories__header{
+  text-transform: uppercase;
+  padding: 5px 10px;
+  font-weight: 600;
+  
+}
+.one__stories__header.selected{
+  color: var(--white);
+  background-color: var(--black);
+
 }
