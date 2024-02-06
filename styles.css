@@ -640,7 +640,7 @@ align-items: center;
   max-width: 300px;
   width: 50%;
   height: 100%;
-  border: 1px solid red;
+ 
   position: relative;
   
 }
@@ -648,6 +648,7 @@ align-items: center;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: var(--radius);
   /* aspect-ratio: 16/9; */
 }
 .trending__tag{
@@ -657,8 +658,35 @@ align-items: center;
   padding: 5px;
   background-color: var(--black);
   color: var(--white);
+  border-radius: var(--radius);
 }
 .read__more{
   padding: 8px;
   font-size: 16px;
+}
+.top__stories{
+ border-left: 2px solid var(--black)
+}
+.top__stories h4{
+background-color: var(--black);
+color: var(--white);
+padding: 8px;
+font-weight: 500;
+}
+.one__top__stories{
+  padding: 5px;
+}
+.top__stories__icons{
+  display: flex;
+  gap: 20px;
+align-items: center;
+}
+.single__icon i{
+font-size: 16px;
+}
+
+.single__icon{
+  display: flex;
+  gap: 5px;
+  align-items: center;
 }
