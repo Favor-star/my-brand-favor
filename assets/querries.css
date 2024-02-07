@@ -114,10 +114,23 @@
   ::-webkit-scrollbar {
     width: 6px;
   }
-  .sniper{
+  .sniper {
     display: none !important;
     color: red;
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  .blog__stories__contents {
+    justify-content: center;
+  }
+  .blog__hero__contents{
+    flex-wrap: wrap;
+  }
+  .trending{
+    max-width: 100%;
+  }
+  .top__stories{
+    max-width: 100%;
+    width: 100%;
   }
 }
 @media screen and (max-width: 430px) {
