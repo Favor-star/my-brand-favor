@@ -196,6 +196,9 @@
     min-height: calc(100vh - 5vw);
     height: calc(100vh - 5vw);
   }
+  .story__contents img{
+    margin-right: 0px;
+  }
 }
 /*FOR HANDLING THE SNIPER MODE*/
 .h__line__left {

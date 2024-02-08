@@ -765,6 +765,7 @@ textarea:hover {
 }
 .story__contents img {
   max-width: 500px;
+  width: 100%;
   aspect-ratio: 16/9;
   object-fit: cover;
   float: inline-start;
