@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale = 1.0" />
     <link
@@ -22,7 +22,7 @@
     />
     <link rel="manifest" href="images/favicon/site.webmanifest" />
     <link rel="stylesheet" href="../styles.css" />
-    <link rel="stylesheet" href="../stylesMedia.css" />
+    <link rel="stylesheet" href="querries.css" />
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
@@ -33,31 +33,192 @@
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <title>Favor Eliab &#183; Portfolio</title>
+    <title>Favor Eliab &#183; Blog</title>
   </head>
-<body>
+  <body>
     <main>
-          <div class="head__wrapper">
+      <div class="head__wrapper">
         <header>
           <h3>Favour Eliab</h3>
-          <!-- <i id="menu-bar" class="bx bx-menu" style="font-size: 36px"></i> -->
+          <i id="menu-bar" class="bx bx-menu" style="font-size: 36px"></i>
           <nav>
             <a class="subheader" href="#home">Home</a>
             <a class="subheader" href="#about__me">About Me</a>
             <a class="subheader" href="#works">Works</a>
             <a class="subheader" href="#contact__me">Contact Me</a>
+            <a class="subheader selected">Blog</a>
           </nav>
           <span class="actions">
-            <a class="subheader" href="#contact__me">Account <i class="ri-user-fill"></i></a>
+            <a class="subheader buttons" 
+              >Account <i class="ri-user-fill"></i
+            ></a>
             <i class="theme-switcher bx bxs-moon"></i>
-            <i title="Sniper Mode" class='sniper bx bx-target-lock'></i>
+            <i title="Sniper Mode" class="sniper bx bx-target-lock"></i>
           </span>
         </header>
-        
       </div>
-      <section class="blog__title">
-        
-      </section>
+      <div class="blog__container">
+        <section class="blog__title">
+          <h3>Welcome to the Favor Eliab's blog channel</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim animi
+            consectetur pariatur eligendi amet magnam iure temporibus quia
+            officiis quisquam, quidem exercitationem iusto magni in reiciendis
+            mollitia beatae vel officia?
+          </p>
+        </section>
+        <section class="blog__hero__contents">
+          <div class="trending">
+            <span class="trending__texts">
+              <h3>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
+                sit et voluptatum
+              </h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Deserunt praesentium fugit modi laudantium facilis odio eveniet
+                error officia nam porro
+              </p>
+              <a href="" class="buttons read__more">Read Full Story</a>
+            </span>
+            <span class="trending__img__section">
+              <img class="trending__img" src="work-1.jpg" alt="" />
+              <p class="trending__tag">Trending</p>
+            </span>
+          </div>
+          <div class="top__stories">
+            <h4>Top Stories for you</h4>
+            <div class="one__top__stories">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat,
+              debitis.
+              <div class="top__stories__icons">
+                <span class="single__icon"
+                  ><i class="ri-eye-fill"></i><span> 1k</span></span
+                >
+                <span class="single__icon"
+                  ><i class="ri-message-fill"></i><span> 1k</span></span
+                >
+                <span class="single__icon"
+                  ><i class="ri-heart-fill"></i><span> 1k</span></span
+                >
+              </div>
+            </div>
+            <div class="one__top__stories">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat,
+              debitis.
+              <div class="top__stories__icons">
+                <span class="single__icon"
+                  ><i class="ri-eye-fill"></i><span> 1k</span></span
+                >
+                <span class="single__icon"
+                  ><i class="ri-message-fill"></i><span> 1k</span></span
+                >
+                <span class="single__icon"
+                  ><i class="ri-heart-fill"></i><span> 1k</span></span
+                >
+              </div>
+            </div>
+            <div class="one__top__stories">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat,
+              debitis.
+              <div class="top__stories__icons">
+                <span class="single__icon"
+                  ><i class="ri-eye-fill"></i><span> 1k</span></span
+                >
+                <span class="single__icon"
+                  ><i class="ri-message-fill"></i><span> 1k</span></span
+                >
+                <span class="single__icon"
+                  ><i class="ri-heart-fill"></i><span> 1k</span></span
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="blog__stories">
+          <div class="blog__stories__header">
+            <div class="one__stories__header selected">All</div>
+            <div class="one__stories__header">Tech</div>
+            <div class="one__stories__header">Love</div>
+          </div>
+          <div class="blog__stories__contents">
+            <div class="one__story__card">
+              <div class="one__story__img">
+                <img src="" alt="" />
+                <div class="tag">- Tech</div>
+              </div>
+              <div class="one__story__texts">
+                <h4>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Laudantium, cumque?
+                </h4>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Quaerat maiores harum culpa perferendis aspernatur porro?
+                </p>
+                <a class="buttons">Read Full Story</a>
+              </div>
+            </div>
+            <div class="one__story__card">
+              <div class="one__story__img">
+                <img src="" alt="" />
+                <div class="tag">- Tech</div>
+              </div>
+              <div class="one__story__texts">
+                <h4>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Laudantium, cumque?
+                </h4>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Quaerat maiores harum culpa perferendis aspernatur porro?
+                </p>
+                <a class="buttons">Read Full Story</a>
+              </div>
+            </div>
+            <div class="one__story__card">
+              <div class="one__story__img">
+                <img src="" alt="" />
+                <div class="tag">- Tech</div>
+              </div>
+              <div class="one__story__texts">
+                <h4>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Laudantium, cumque?
+                </h4>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Quaerat maiores harum culpa perferendis aspernatur porro?
+                </p>
+                <a class="buttons">Read Full Story</a>
+              </div>
+            </div>
+            <div class="one__story__card">
+              <div class="one__story__img">
+                <img src="" alt="" />
+                <div class="tag">- Tech</div>
+              </div>
+              <div class="one__story__texts">
+                <h4>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Laudantium, cumque?
+                </h4>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Quaerat maiores harum culpa perferendis aspernatur porro?
+                </p>
+                <a class="buttons">Read Full Story</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <section id="footer">
+      <p>Copyright</p>
+      <i class="bx bx-copyright" style="font-size: 12px"></i>
+      <p>Favour Eliab</p>
+      <p>All rights reserved</p>
+    </section>
     </main>
-</body>
+  </body>
 </html>
