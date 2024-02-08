@@ -132,6 +132,22 @@
     max-width: 100%;
     width: 100%;
   }
+  .trending{
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+
+  }
+  .trending__img__section{
+    max-width: 100%;
+    width: 100%;
+  }
+  .trending__img{
+    aspect-ratio: 16/9;
+  }
+  .trending__texts{
+    max-width: 100%;
+  }
 }
 @media screen and (max-width: 430px) {
   .action__btns {
