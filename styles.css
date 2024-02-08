@@ -16,8 +16,8 @@
   --radius: 2px;
 }
 .dark__mode {
-  --black: #e6e6e6;
-  --white: #000;
+  --black: #e6e6e6 ;
+  --white: #000 ;
   --borders: 1px solid var(--black);
 }
 html {
