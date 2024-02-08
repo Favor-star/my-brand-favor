@@ -26,13 +26,13 @@
             <a class="subheader" href="../index.html#about__me">About Me</a>
             <a class="subheader" href="../index.html#works">Works</a>
             <a class="subheader" href="../index.html#contact__me">Contact Me</a>
-            <a href="assets/blog.html" class="subheader blog__link"
+            <a href="blog.html" class="subheader blog__link"
               >Blog <i class="ri-external-link-line"></i
             ></a>
           </nav>
           <span class="actions">
-            <a class="subheader buttons" href="#contact__me"
-              >Join <i class="ri-user-add-fill"></i
+            <a class="subheader buttons"
+              >Account <i class="ri-user-fill"></i
             ></a>
             <i class="theme-switcher bx bxs-moon"></i>
             <!-- <i title="Sniper Mode" class='sniper bx bx-target-lock'></i> -->
@@ -40,22 +40,102 @@
         </header>
       </div>
       <section class="register__mainPage">
-        <div class="register">
-          <span
-            ><h3>LOGIN</h3>
-            |
-            <h3>REGISTER</h3></span
+        <div class="login">
+          <p style="text-align: center">
+            PLEASE LOGIN TO BE ABLE TO SEE AMAZING NEWS, OPPORTUNITIES AND MANY
+            MORE
+          </p>
+          <span class="login__titles">
+            <h3 class="log__reg choosen">LOGIN</h3>
+            <div class="line"></div>
+            <h3 class="log__reg to__reg">REGISTER</h3></span
           >
-          <form action="POST">
+          <form class="login__contents">
             <span>
               <label for="email">Email</label>
-              <input type="email" placeholder="Enter your email" />
+              <input
+                class="inputs"
+                type="email"
+                placeholder="Enter your email"
+              />
             </span>
 
             <span>
               <label for="password">Password</label>
-              <input type="password" name="password" id="password" />
+              <input
+                class="inputs"
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Enter your password"
+              />
             </span>
+            <button type="submit" class="buttons login__btn">
+              Login <i class="ri-login-box-fill" style="font-size: 20px"></i>
+            </button>
+            <p>
+              Don't have an account yet?
+              <span class="register__here">Register Here</span>
+            </p>
+          </form>
+        </div>
+        <div class="register hidden">
+          <p style="text-align: center">
+            PLEASE SIGN UP TO BE ABLE TO SEE AMAZING NEWS, OPPORTUNITIES AND
+            MANY MORE
+          </p>
+          <span class="register__titles"
+            ><h3 class="log__reg to__login">LOGIN</h3>
+            <div class="line"></div>
+            <h3 class="log__reg choosen">REGISTER</h3></span
+          >
+          <form class="register__contents">
+            <span>
+              <label for="name">Names</label>
+              <input
+                id="name"
+                class="inputs"
+                type="text"
+                placeholder="Enter your names"
+              />
+            </span>
+            <span>
+              <label for="email">Email</label>
+              <input
+                id="email"
+                class="inputs"
+                type="email"
+                placeholder="Enter your email"
+              />
+            </span>
+
+            <span>
+              <label for="password">Password</label>
+              <input
+                class="inputs"
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Enter your password"
+              /> </span
+            ><span>
+              <label for="confirm__password">Confirm your password</label>
+              <input
+                id="confirm__password"
+                class="inputs"
+                type="password"
+                name="confirm__password"
+                id="confirm__password"
+                placeholder="Confirm your password"
+              />
+            </span>
+            <button type="submit" class="buttons login__btn">
+              Register <i class="ri-user-add-fill" style="font-size: 20px"></i>
+            </button>
+            <p>
+              Already have an account yet?
+              <span class="login__here">Login Here</span>
+            </p>
           </form>
         </div>
       </section>
@@ -66,5 +146,15 @@
         <p>All rights reserved</p>
       </section>
     </main>
+    <script>
+      document.querySelector(".to__reg").addEventListener("click", () => {
+        document.querySelector(".login").style.display = "none";
+        document.querySelector(".register").style.display = "block";
+      });
+      document.querySelector(".to__login").addEventListener("click", () => {
+        document.querySelector(".register").style.display = "none";
+        document.querySelector(".login").style.display = "block";
+      });
+    </script>
   </body>
 </html>

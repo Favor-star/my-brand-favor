@@ -194,7 +194,7 @@ nav .subheader:has(:hover, :focus)::before {
 .social__links {
   display: flex;
   gap: 1rem;
-  justify-content:center;
+  justify-content: center;
   width: 100%;
   /* border: 1px solid cornflowerblue; */
   max-width: 300px;
@@ -801,13 +801,13 @@ textarea:hover {
   padding: 8px 10px;
   width: fit-content;
 }
-.commenter{
+.commenter {
   text-transform: uppercase;
   font-weight: 700;
   font-size: 1.1rem;
   margin-bottom: 5px;
 }
-.time__commented{
+.time__commented {
   font-style: italic;
 }
 .commenter__title {
@@ -819,40 +819,110 @@ textarea:hover {
   display: flex;
   gap: 10px;
 }
-.comments__icons .icons{
-display: flex;
-align-items: center;
-margin-top: 10px;
+.comments__icons .icons {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
 }
-.add__comment{
+.add__comment {
   display: flex;
   flex-direction: column;
   gap: 10px;
   max-width: 500px;
   width: 100%;
   margin-top: 40px;
-
 }
-.add__comment textarea{
+.add__comment textarea {
   resize: none;
 }
 
-.add__comment a{
+.add__comment a {
   background-color: var(--black);
   color: var(--white);
 }
-.back{
+.back {
   margin: 20px auto;
-   background-color: var(--black);
+  background-color: var(--black);
   color: var(--white);
 }
 /*REGISTER MAIN PAGE DESIGN*/
-#register__page{
+#register__page {
   display: flex;
   flex-direction: column;
   min-height: 95vh;
 }
-.register__mainPage{
+
+.register__mainPage {
   flex: 1;
-  border: 1px solid red;
+  display: grid;
+  place-content: center;
+}
+.register,
+.login {
+  max-width: 400px;
+  width: 100%;
+  transition: all .2s ease-in-out;
+}
+.register p,
+.login p {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.register__here,
+.login__here {
+  font-weight: 600;
+  cursor: pointer;
+}
+.register__contents,.login__contents {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.register__titles,
+.login__titles {
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+  gap: 10px;
+  margin: 20px auto;
+}
+.register__titles .line,
+.login__titles .line {
+  width: 2px;
+  background-color: var(--black);
+}
+.log__reg {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+.log__reg::before {
+  content: "";
+  width: 0;
+  height: 2px;
+  background-color: var(--black);
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  transition: 0.2s ease-in-out;
+}
+.log__reg.choosen::before {
+  width: 100%;
+}
+
+.register__contents span,
+.login__contents span {
+  display: flex;
+  flex-direction: column;
+}
+.login__btn {
+  background-color: var(--black);
+  color: var(--white);
+}
+.login__btn i {
+  font-size: 20px;
+}
+.hidden{
+  display: none;
 }
