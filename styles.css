@@ -193,14 +193,14 @@ nav .subheader:has(:hover, :focus)::before {
 }
 .social__links {
   display: flex;
-  /* gap: 2rem; */
-  justify-content: space-between;
+  gap: 1rem;
+  justify-content:center;
   width: 100%;
   /* border: 1px solid cornflowerblue; */
   max-width: 300px;
 }
 .social__links i {
-  font-size: 36px;
+  font-size: 30px;
 }
 .scrollDown {
   display: flex;
@@ -549,18 +549,19 @@ nav .subheader:has(:hover, :focus)::before {
   gap: 1rem;
   width: 100%;
 }
-.box__item input,
+.inputs,
 textarea {
   width: 100%;
   padding: 8px 10px;
   outline: none;
-  border: var(--borders);
+  border: 1px solid var(--black);
+  border-radius: var(--radius);
   background-color: var(--white);
   color: var(--black);
   font-family: "Archivo Narrow", sans-serif;
   font-size: 1rem;
 }
-.box__item input:focus,
+.inputs:focus,
 textarea:focus {
   background-color: var(--black);
   color: var(--white);
@@ -583,9 +584,9 @@ label {
   transform: translateY(-5px);
 }
 
-.box__item input:hover,
+.inputs:hover,
 textarea:hover {
-  box-shadow: 3px 3px 0 -1px var(--white), 3px 3px 0 1px var(--black);
+  box-shadow: 3px 3px 0 0px var(--white), 3px 3px 0 1px var(--black);
 }
 
 #footer {
@@ -835,13 +836,7 @@ margin-top: 10px;
 .add__comment textarea{
   resize: none;
 }
-.add__comment input{
-  padding: 10px;
-  background-color: inherit;
-  border: var(--borders);
-  outline: none;
 
-}
 .add__comment a{
   background-color: var(--black);
   color: var(--white);
@@ -850,4 +845,14 @@ margin-top: 10px;
   margin: 20px auto;
    background-color: var(--black);
   color: var(--white);
+}
+/*REGISTER MAIN PAGE DESIGN*/
+#register__page{
+  display: flex;
+  flex-direction: column;
+  min-height: 95vh;
+}
+.register__mainPage{
+  flex: 1;
+  border: 1px solid red;
 }
