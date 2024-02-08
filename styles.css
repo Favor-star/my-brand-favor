@@ -750,3 +750,12 @@ textarea:hover {
   padding: 8px !important;
   font-weight: 700;
 }
+/*STORY PAGE DESIGN*/
+.story__contents img{
+  max-width: 400px;
+  object-fit: cover;
+  /* display: inline-block; */
+  float: inline-start;
+  margin-right: 20px;
+}
+
