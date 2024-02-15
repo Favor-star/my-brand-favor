@@ -1,5 +1,6 @@
-const Themeswitcher = document.querySelectorAll(".theme-switcher");
-const body = document.querySelector("body");
+const Themeswitcher = document.querySelectorAll(".theme-switcher"),
+  body = document.querySelector("body"),
+  moreButton = document.querySelectorAll(".more__btn");
 
 Themeswitcher.forEach((elem) => {
   elem.addEventListener("click", () => {
@@ -18,6 +19,18 @@ Themeswitcher.forEach((elem) => {
     }
   });
 });
+//DECRALING THE SELF INVOKED FUNCTION TO HANDLE THE CONDITION OF THE MODE SWITCHER BUTTON
+() => {};
+onload = () => {
+  mode(localStorage.getItem("colorMode"));
+  if (localStorage.getItem("colorMode") === "dark") {
+    Themeswitcher.forEach((elem) => {
+      elem.classList.remove("bxs-moon");
+      elem.classList.add("bxs-sun");
+    });
+  }
+};
+//FUNCTION TO HANDLE THE THEME SWITCHING
 const mode = (value) => {
   if (value == "dark") {
     body.classList.add("dark__mode");
@@ -25,7 +38,7 @@ const mode = (value) => {
     body.classList.remove("dark__mode");
   }
 };
-onload = mode(localStorage.getItem("colorMode"));
+
 //HANDLE THE NAVIGATION PANE
 const navigationPane = document.querySelector("#navigation__pane");
 document.getElementById("menu-bar").addEventListener("click", () => {
@@ -51,3 +64,12 @@ window.onresize = () => {
     console.log(window);
   }
 };
+
+//HANDLE THE MORE BUTTON WITHIN THE RECENT STORIES
+moreButton.forEach((elem) => {
+  elem.addEventListener("click", (e) => {
+    document
+      .querySelector(".more__content")
+      .classList.toggle("more__content__shown");
+  });
+});
