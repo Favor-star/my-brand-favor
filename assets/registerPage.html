@@ -38,7 +38,21 @@
             <!-- <i title="Sniper Mode" class='sniper bx bx-target-lock'></i> -->
           </span>
         </header>
+        <div id="navigation__pane">
+          <div class="pane">
+            <i id="close" class="bx bx-x"></i>
+            <a class="subheader nav__sub" href="#home">Home</a>
+            <a class="subheader nav__sub" href="#about__me">About Me</a>
+            <a class="subheader nav__sub" href="#works">Works</a>
+            <a class="subheader nav__sub" href="#contact__me">Contact Me</a>
+            <div class="action__btns">
+              <a class="subheader nav__sub" href="#contact__me">Hire Me</a>
+              <i class="theme-switcher bx bxs-moon"></i>
+            </div>
+          </div>
+        </div>
       </div>
+      
       <section class="register__mainPage">
         <div class="login">
           <p style="text-align: center">
@@ -152,6 +166,7 @@
         document.querySelector(".register").style.display = "block";
       });
       document.querySelector(".to__login").addEventListener("click", () => {
+
         document.querySelector(".register").style.display = "none";
         document.querySelector(".login").style.display = "block";
       });
