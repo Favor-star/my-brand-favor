@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Brand | Favor</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="querries.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.6.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <div class="head__wrapper">
+        <header>
+          <h3>Favour Eliab</h3>
+          <i id="menu-bar" class="bx bx-menu" style="font-size: 36px"></i>
+          <nav>
+            <a class="subheader" href="../index.html">Home</a>
+            <a class="subheader" href="../index.html#about__me">About Me</a>
+            <a class="subheader" href="../index.html#works">Works</a>
+            <a class="subheader" href="../index.html#contact__me">Contact Me</a>
+            <a href="blog.html" class="subheader blog__link"
+              >Blog <i class="ri-external-link-line"></i
+            ></a>
+          </nav>
+          <span class="actions">
+            <a class="subheader buttons" href="registerPage.html"
+              >Join <i class="ri-user-add-fill"></i
+            ></a>
+            <i class="theme-switcher bx bxs-moon"></i>
+            <!-- <i title="Sniper Mode" class='sniper bx bx-target-lock'></i> -->
+          </span>
+        </header>
+        <div id="navigation__pane">
+          <div class="pane">
+            <i id="close" class="bx bx-x"></i>
+            <a class="subheader nav__sub" href="#home">Home</a>
+            <a class="subheader nav__sub" href="#about__me">About Me</a>
+            <a class="subheader nav__sub" href="#works">Works</a>
+            <a class="subheader nav__sub" href="#contact__me">Contact Me</a>
+            <div class="action__btns">
+              <a class="subheader nav__sub" href="#contact__me">Hire Me</a>
+              <i class="theme-switcher bx bxs-moon"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="dashboard__main">
+        <form class="add__story">
+          <div class="box__item">
+            <label for="title">Enter the story title</label>
+            <input
+              class="inputs"
+              type="text"
+              placeholder="Enter the story title"
+            />
+          </div>
+          <div class="name_email">
+            <span class="box__item">
+              <label for="image__file">Upload an image</label>
+              <input type="file" name="image__file" id="image__file" />
+            </span>
+            <span class="box__item">
+              <label for="category">Select category</label>
+              <select name="category" id="category">
+                <option value="tech">Tech</option>
+                <option value="love">Love</option>
+                <option value="politics">Politics</option>
+              </select>
+            </span>
+          </div>
+          <div class="box__item">
+            <label for="main__write">Enter the story here</label>
+            <textarea
+              name="main__write"
+              id="main__write"
+              cols="30"
+              rows="10"
+              style="resize: none"
+            ></textarea>
+          </div>
+        </form>
+      </section>
+    </main>
+    <script src="../script.js"></script>
+  </body>
+</html>
