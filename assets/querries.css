@@ -211,6 +211,16 @@
   .story__contents img {
     margin-right: 0px;
   }
+  .grid__wrapper {
+    grid-template-columns: 1fr !important;
+  }
+  .comments__likes {
+    grid-template-columns: 1fr;
+  }
+  .grid__container {
+    grid-template-columns: 1fr !important;
+    width: 100%;
+  }
 }
 /*FOR HANDLING THE SNIPER MODE*/
 .h__line__left {

@@ -73,3 +73,5 @@ moreButton.forEach((elem) => {
       .classList.toggle("more__content__shown");
   });
 });
+
+//HNADLE THE POSITION OF FOOTER ONCE THE ELEMENTS OF DASHBOARD ARE COLLAPSED

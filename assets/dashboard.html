@@ -52,244 +52,925 @@
           </div>
         </div>
       </div>
-      <h3 style="text-align: center; margin-bottom: 6vh">ADMIN DASHBOARD</h3>
-      <section class="dashboard__main">
-        <form class="add__story">
-          <h4 style="font-size: 1.2rem">ADD A STORY HERE</h4>
-          <div class="box__item">
-            <label for="title">Enter the story title</label>
-            <input
-              class="inputs"
-              type="text"
-              placeholder="Enter the story title"
-            />
-          </div>
-          <div class="name_email story__add">
-            <span class="box__item">
-              <label for="image__file">Upload an image</label>
-              <input type="file" name="image__file" id="image__file" />
-            </span>
-            <span class="box__item">
-              <label for="category">Select category</label>
-              <select name="category" id="category">
-                <option value="tech">Tech</option>
-                <option value="love">Love</option>
-                <option value="politics">Politics</option>
-              </select>
-            </span>
-          </div>
-          <div class="box__item">
-            <label for="main__write">Enter the story here</label>
-            <textarea
-              name="main__write"
-              id="main__write"
-              cols="30"
-              rows="10"
-              style="resize: none"
-            ></textarea>
-          </div>
-          <button type="submit" class="buttons">
-            Upload <i class="ri-upload-cloud-fill"></i>
-          </button>
-        </form>
-        <div class="recent__interaction">
-          <div class="recent_title">RECENT INTERACTIONS</div>
-          <div class="recent__contents">
-            <span class="recent__one__content">
-              <img id="recent__img" src="" alt="" />
-              <span class="recent__comment"
-                ><p>
-                  <strong>John</strong> has commented on post,
-                  <strong>"Lorem ipsum dolor sit..."</strong>
-                </p>
-                <em>
-                  Lorem ipsum dolor sit, amet consectetur amet consectetur...
-                </em></span
-              >
-            </span>
-            <span class="recent__one__content">
-              <img id="recent__img" src="" alt="" />
-              <span class="recent__comment"
-                ><p>
-                  <strong>John</strong> has commented on post,
-                  <strong>"Lorem ipsum dolor sit..."</strong>
-                </p>
-                <em>
-                  Lorem ipsum dolor sit, amet consectetur amet consectetur...
-                </em></span
-              >
-            </span>
-          </div>
-        </div>
-      </section>
-      <section class="recently__added__list">
-        <h4>RECENTLY ADDED STORY</h4>
-        <div class="story__list">
-          <div class="one__story__list">
-            <span class="list__title">
-              <span class="title__number">1.</span>
-              <span class="title__number"
-                >Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Adipisci harum repellat voluptatum!</span
-              >
-            </span>
-            <span class="list__views"
-              ><i class="ri-eye-fill"></i> <span>100 VIEWS</span></span
-            >
-            <span>
-              <div class="list__views"
-                ><i class="ri-heart-fill"></i> <span>100 LIKES</span></div
-              >
-              <div class="list__views"
-                ><i class="ri-message-fill"></i> <span>100 LIKES</span></div
-              >
-            </span>
-            <!-- <span class="danger__zone">
-              <span class="danger__title">Danger Zone</span>
-              <span class="danger__zone__data">
-                <span><i class="ri-file-edit-line"></i> Edit</span>
-                <span><i class="ri-delete-bin-line"></i> Delete</span>
-              </span>
-            </span> -->
-            <div class="more__div"><i class="more__btn ri-more-2-fill"></i>
-            <div class="more__content" >
-              <span class="mores"><i class="ri-eye-off-fill"></i>Hide Story</span>
-              <span class="mores"><i class="ri-file-edit-line"></i>Edit Story</span>
-              <span class="mores"><i class="ri-delete-bin-line"></i>Delete Story</span>
-              
-            </div></div>
-          </div>
-          <div class="one__story__list">
-            <span class="list__title">
-              <span class="title__number">1.</span>
-              <span class="title__number"
-                >Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Adipisci harum repellat voluptatum!</span
-              >
-            </span>
-            <span class="list__views"
-              ><i class="ri-eye-fill"></i> <span>100 VIEWS</span></span
-            >
-            <span>
-              <div class="list__views"
-                ><i class="ri-heart-fill"></i> <span>100 LIKES</span></div
-              >
-              <div class="list__views"
-                ><i class="ri-message-fill"></i> <span>100 LIKES</span></div
-              >
-            </span>
-            <!-- <span class="danger__zone">
-              <span class="danger__title">Danger Zone</span>
-              <span class="danger__zone__data">
-                <span><i class="ri-file-edit-line"></i> Edit</span>
-                <span><i class="ri-delete-bin-line"></i> Delete</span>
-              </span>
-            </span> -->
-            <div class="more__div"><i class="more__btn ri-more-2-fill"></i>
-            <div class="more__content" >
-              <span class="mores"><i class="ri-eye-off-fill"></i>Hide Story</span>
-              <span class="mores"><i class="ri-file-edit-line"></i>Edit Story</span>
-              <span class="mores"><i class="ri-delete-bin-line"></i>Delete Story</span>
-              
-            </div></div>
-          </div>
-          <div class="one__story__list">
-            <span class="list__title">
-              <span class="title__number">1.</span>
-              <span class="title__number"
-                >Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Adipisci harum repellat voluptatum!</span
-              >
-            </span>
-            <span class="list__views"
-              ><i class="ri-eye-fill"></i> <span>100 VIEWS</span></span
-            >
-            <span>
-              <div class="list__views"
-                ><i class="ri-heart-fill"></i> <span>100 LIKES</span></div
-              >
-              <div class="list__views"
-                ><i class="ri-message-fill"></i> <span>100 LIKES</span></div
-              >
-            </span>
-            <!-- <span class="danger__zone">
-              <span class="danger__title">Danger Zone</span>
-              <span class="danger__zone__data">
-                <span><i class="ri-file-edit-line"></i> Edit</span>
-                <span><i class="ri-delete-bin-line"></i> Delete</span>
-              </span>
-            </span> -->
-            <div class="more__div"><i class="more__btn ri-more-2-fill"></i>
-            <div class="more__content" >
-              <span class="mores"><i class="ri-eye-off-fill"></i>Hide Story</span>
-              <span class="mores"><i class="ri-file-edit-line"></i>Edit Story</span>
-              <span class="mores"><i class="ri-delete-bin-line"></i>Delete Story</span>
-              
-            </div></div>
-          </div>
-          <div class="one__story__list">
-            <span class="list__title">
-              <span class="title__number">1.</span>
-              <span class="title__number"
-                >Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Adipisci harum repellat voluptatum!</span
-              >
-            </span>
-            <span class="list__views"
-              ><i class="ri-eye-fill"></i> <span>100 VIEWS</span></span
-            >
-            <span>
-              <div class="list__views"
-                ><i class="ri-heart-fill"></i> <span>100 LIKES</span></div
-              >
-              <div class="list__views"
-                ><i class="ri-message-fill"></i> <span>100 LIKES</span></div
-              >
-            </span>
-            <!-- <span class="danger__zone">
-              <span class="danger__title">Danger Zone</span>
-              <span class="danger__zone__data">
-                <span><i class="ri-file-edit-line"></i> Edit</span>
-                <span><i class="ri-delete-bin-line"></i> Delete</span>
-              </span>
-            </span> -->
-            <div class="more__div"><i class="more__btn ri-more-2-fill"></i>
-            <div class="more__content" >
-              <span class="mores"><i class="ri-eye-off-fill"></i>Hide Story</span>
-              <span class="mores"><i class="ri-file-edit-line"></i>Edit Story</span>
-              <span class="mores"><i class="ri-delete-bin-line"></i>Delete Story</span>
-              
-            </div></div>
-          </div>
-         
-          <div class="one__story__list">
-            <span class="list__title">
-              <span class="title__number">4.</span>
-              <span class="title__number"
-                >Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Adipisci harum repellat voluptatum!</span
-              >
-            </span>
-            <span class="list__views"
-              ><i class="ri-eye-fill"></i> <span>100 views</span></span
-            >
-            <span class="danger__zone">
-              <span class="danger__title">Danger Zone</span>
-              <span class="danger__zone__data">
-                <span><i class="ri-file-edit-line"></i> Edit</span>
-                <span><i class="ri-delete-bin-line"></i> Delete</span>
-              </span>
-            </span>
-            <i class="ri-more-2-fill"></i>
-          </div>
-        </div>
-      </section>
-      <section id="footer">
-        <p>Copyright</p>
-        <i class="bx bx-copyright" style="font-size: 12px"></i>
-        <p>Favour Eliab</p>
-        <p>All rights reserved</p>
-      </section>
+      <div class="wrapper">
+        <section style="width: 100%;">
+          <h3 style="text-align: center; margin-bottom: 6vh">
+            ADMIN DASHBOARD
+          </h3>
+          <details>
+            <summary>
+              Stories management <i class="ri-arrow-down-s-fill"></i>
+            </summary>
+            <div class="dashboard__main">
+              <form class="add__story">
+                <h4 style="font-size: 1.2rem">ADD A STORY HERE</h4>
+                <div class="box__item">
+                  <label for="title">Enter the story title</label>
+                  <input
+                    class="inputs"
+                    type="text"
+                    placeholder="Enter the story title"
+                  />
+                </div>
+                <div class="name_email story__add">
+                  <span class="box__item">
+                    <label for="image__file">Upload an image</label>
+                    <input type="file" name="image__file" id="image__file" />
+                  </span>
+                  <span class="box__item">
+                    <label for="category">Select category</label>
+                    <select name="category" id="category">
+                      <option value="tech">Tech</option>
+                      <option value="love">Love</option>
+                      <option value="politics">Politics</option>
+                    </select>
+                  </span>
+                </div>
+                <div class="box__item">
+                  <label for="main__write">Enter the story here</label>
+                  <textarea
+                    name="main__write"
+                    id="main__write"
+                    cols="30"
+                    rows="10"
+                    style="resize: none"
+                  ></textarea>
+                </div>
+                <button type="submit" class="buttons">
+                  Upload <i class="ri-upload-cloud-fill"></i>
+                </button>
+              </form>
+              <div class="recent__interaction">
+                <div class="recent_title">RECENT INTERACTIONS</div>
+                <div class="recent__contents">
+                  <span class="recent__one__content">
+                    <img id="recent__img" src="" alt="" />
+                    <span class="recent__comment"
+                      ><p>
+                        <strong>John</strong> has commented on post,
+                        <strong>"Lorem ipsum dolor sit..."</strong>
+                      </p>
+                      <em>
+                        Lorem ipsum dolor sit, amet consectetur amet
+                        consectetur...
+                      </em></span
+                    >
+                  </span>
+                  <span class="recent__one__content">
+                    <img id="recent__img" src="" alt="" />
+                    <span class="recent__comment"
+                      ><p>
+                        <strong>John</strong> has commented on post,
+                        <strong>"Lorem ipsum dolor sit..."</strong>
+                      </p>
+                      <em>
+                        Lorem ipsum dolor sit, amet consectetur amet
+                        consectetur...
+                      </em></span
+                    >
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="recently__added__list">
+              <h4>RECENTLY ADDED STORY</h4>
+              <div class="story__list">
+                <div class="one__story__list">
+                  <span class="list__title">
+                    <span class="title__number">1.</span>
+                    <span class="title__number"
+                      >Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Adipisci harum repellat voluptatum!</span
+                    >
+                  </span>
+                  <span class="list__views"
+                    ><i class="ri-eye-fill"></i> <span>100 VIEWS</span></span
+                  >
+                  <span>
+                    <div class="list__views">
+                      <i class="ri-heart-fill"></i> <span>100 LIKES</span>
+                    </div>
+                    <div class="list__views">
+                      <i class="ri-message-fill"></i> <span>100 LIKES</span>
+                    </div>
+                  </span>
+
+                  <div class="more__div">
+                    <i class="more__btn ri-more-2-fill"></i>
+                    <div class="more__content">
+                      <span class="mores"
+                        ><i class="ri-eye-off-fill"></i>Hide Story</span
+                      >
+                      <span class="mores"
+                        ><i class="ri-file-edit-line"></i>Edit Story</span
+                      >
+                      <span class="mores"
+                        ><i class="ri-delete-bin-line"></i>Delete Story</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="one__story__list">
+                  <span class="list__title">
+                    <span class="title__number">1.</span>
+                    <span class="title__number"
+                      >Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Adipisci harum repellat voluptatum!</span
+                    >
+                  </span>
+                  <span class="list__views"
+                    ><i class="ri-eye-fill"></i> <span>100 VIEWS</span></span
+                  >
+                  <span>
+                    <div class="list__views">
+                      <i class="ri-heart-fill"></i> <span>100 LIKES</span>
+                    </div>
+                    <div class="list__views">
+                      <i class="ri-message-fill"></i> <span>100 LIKES</span>
+                    </div>
+                  </span>
+
+                  <div class="more__div">
+                    <i class="more__btn ri-more-2-fill"></i>
+                    <div class="more__content">
+                      <span class="mores"
+                        ><i class="ri-eye-off-fill"></i>Hide Story</span
+                      >
+                      <span class="mores"
+                        ><i class="ri-file-edit-line"></i>Edit Story</span
+                      >
+                      <span class="mores"
+                        ><i class="ri-delete-bin-line"></i>Delete Story</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="one__story__list">
+                  <span class="list__title">
+                    <span class="title__number">1.</span>
+                    <span class="title__number"
+                      >Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Adipisci harum repellat voluptatum!</span
+                    >
+                  </span>
+                  <span class="list__views"
+                    ><i class="ri-eye-fill"></i> <span>100 VIEWS</span></span
+                  >
+                  <span>
+                    <div class="list__views">
+                      <i class="ri-heart-fill"></i> <span>100 LIKES</span>
+                    </div>
+                    <div class="list__views">
+                      <i class="ri-message-fill"></i> <span>100 LIKES</span>
+                    </div>
+                  </span>
+                  <div class="more__div">
+                    <i class="more__btn ri-more-2-fill"></i>
+                    <div class="more__content">
+                      <span class="mores"
+                        ><i class="ri-eye-off-fill"></i>Hide Story</span
+                      >
+                      <span class="mores"
+                        ><i class="ri-file-edit-line"></i>Edit Story</span
+                      >
+                      <span class="mores"
+                        ><i class="ri-delete-bin-line"></i>Delete Story</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="one__story__list">
+                  <span class="list__title">
+                    <span class="title__number">1.</span>
+                    <span class="title__number"
+                      >Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Adipisci harum repellat voluptatum!</span
+                    >
+                  </span>
+                  <span class="list__views"
+                    ><i class="ri-eye-fill"></i> <span>100 VIEWS</span></span
+                  >
+                  <span>
+                    <div class="list__views">
+                      <i class="ri-heart-fill"></i> <span>100 LIKES</span>
+                    </div>
+                    <div class="list__views">
+                      <i class="ri-message-fill"></i> <span>100 LIKES</span>
+                    </div>
+                  </span>
+                  <div class="more__div">
+                    <i class="more__btn ri-more-2-fill"></i>
+                    <div class="more__content">
+                      <span class="mores"
+                        ><i class="ri-eye-off-fill"></i>Hide Story</span
+                      >
+                      <span class="mores"
+                        ><i class="ri-file-edit-line"></i>Edit Story</span
+                      >
+                      <span class="mores"
+                        ><i class="ri-delete-bin-line"></i>Delete Story</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="one__story__list">
+                  <span class="list__title">
+                    <span class="title__number">4.</span>
+                    <span class="title__number"
+                      >Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Adipisci harum repellat voluptatum!</span
+                    >
+                  </span>
+                  <span class="list__views"
+                    ><i class="ri-eye-fill"></i> <span>100 views</span></span
+                  >
+                  <span class="danger__zone">
+                    <span class="danger__title">Danger Zone</span>
+                    <span class="danger__zone__data">
+                      <span><i class="ri-file-edit-line"></i> Edit</span>
+                      <span><i class="ri-delete-bin-line"></i> Delete</span>
+                    </span>
+                  </span>
+                  <i class="ri-more-2-fill"></i>
+                </div>
+              </div>
+            </div>
+          </details>
+          <details>
+            <summary>
+              General Settings <i class="ri-arrow-down-s-fill"></i>
+            </summary>
+            <div>
+              <h3>Welcome back, Favour Eliab</h3>
+              <div class="profile__wrapper">
+                <div class="img__section">
+                  <img src="" alt="" />
+                  <span>
+                    <p><i class="ri-pencil-fill"></i> Upload your Image</p>
+                    <button class="buttons">Save Changes</button>
+                  </span>
+                </div>
+                <p>Account created on: <strong>23/09/2003 8:00PM</strong></p>
+              </div>
+              <div class="update__delete">
+                <div>
+                  <h4>Edit your personal info</h4>
+                  <div class="grid__wrapper">
+                    <div class="box__item">
+                      <label for="names__edit">Names</label>
+                      <input
+                        name="names__edit"
+                        id="names__edit"
+                        type="text"
+                        class="inputs"
+                        placeholder="Favour Eliab"
+                        value="Favour Eliab"
+                      />
+                    </div>
+                    <div class="box__item">
+                      <label for="username">Username</label>
+                      <input
+                        name="username"
+                        id="username"
+                        type="text"
+                        class="inputs"
+                        placeholder="Favour Eliab"
+                        value="favoureliab"
+                      />
+                    </div>
+                    <div class="box__item">
+                      <label for="username">Email</label>
+                      <input
+                        name="email__edit"
+                        id="email__edit"
+                        type="email"
+                        class="inputs"
+                        placeholder="favoureliab@gmail.com"
+                        value="favoureliab@gmail.com"
+                        style="background-color: var(--gray)"
+                        disabled
+                      />
+                    </div>
+                    <div class="box__item">
+                      <label for="phone__nmbr__edit">Phone number</label>
+                      <input
+                        name="phone__nmbr__edit"
+                        id="phone__nmbr__edit"
+                        type="tel"
+                        class="inputs"
+                        placeholder="Enter your number"
+                        value="+250 787 922 900"
+                      />
+                    </div>
+                    <div class="box__item">
+                      <label for="passwrod__edit">Change your password</label>
+                      <input
+                        name="passwrod__edit"
+                        id="passwrod__edit"
+                        type="password"
+                        class="inputs"
+                        placeholder="Enter your Password"
+                        value=""
+                      />
+                    </div>
+                    <div class="box__item">
+                      <label for="passwrod__confirm__edit"
+                        >Confirm your password</label
+                      >
+                      <input
+                        name="passwrod__confirm__edit"
+                        id="passwrod__confirm__edit"
+                        type="password"
+                        class="inputs"
+                        placeholder="Enter your Password"
+                        value=""
+                      />
+                    </div>
+                    <button class="buttons">Update Info</button>
+                  </div>
+                </div>
+                <div class="delete">
+                  <p>Danger Zone</p>
+                  <span>
+                    <a href="">Delete account</a>
+                    <a href="">Deactivate account</a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </details>
+          <details>
+            <summary>
+              Interactions Management <i class="ri-arrow-down-s-fill"></i>
+            </summary>
+            <div>
+              <div class="statistics">
+                <div class="quick__statistics">
+                  <p>Quick statistics within last:</p>
+                  <span>
+                    <a href="">24 hours</a>
+                    <a class="selected" href="">7 day</a>
+                    <a href="">1 month</a>
+                    <a href="">12 months</a>
+                  </span>
+                </div>
+                <div class="actual__stats">
+                  <div class="one__stat">
+                    <i class="ri-heart-fill"></i>
+                    <span><span>20k</span> Total Likes</span>
+                  </div>
+                  <div class="one__stat">
+                    <i class="ri-chat-4-fill"></i>
+                    <span><span>20k</span> Total Comments</span>
+                  </div>
+                  <div class="one__stat">
+                    <i class="ri-cursor-fill"></i>
+                    <span><span>20k</span> Total Clicks</span>
+                  </div>
+                  <div class="one__stat">
+                    <i class="ri-share-forward-2-fill"></i>
+                    <span><span>20k</span> Total Views</span>
+                  </div>
+                </div>
+              </div>
+              <div class="manage__comments">
+                <p>Selecet a story title to view interactions</p>
+                <div>
+                  <details class="single__story">
+                    <summary class="story__summary">
+                      1. Lorem, ipsum dolor sit amet consectetur adipisicing
+                      elit. Mollitia asperiores sequi modi quae fuga ullam minus
+                      maiores, enim quidem aperiam.
+                    </summary>
+                    <div class="comments__likes">
+                      <div class="comments">
+                        <div class="one__comment">
+                          <span class="name__date">
+                            <span>John Doe</span>
+                            <span>2 hours ago</span>
+                          </span>
+                          <div class="actual__comment">
+                            <span
+                              >Lorem ipsum dolor sit amet consectetur
+                              adipisicing elit. Exercitationem debitis molestias
+                              porro enim voluptatum mollitia possimus cumque a
+                              fugit ratione!</span
+                            >
+                            <i class="ri-more-2-line"></i>
+                          </div>
+                        </div>
+                        <div class="one__comment">
+                          <span class="name__date">
+                            <span>John Doe</span>
+                            <span>2 hours ago</span>
+                          </span>
+                          <div class="actual__comment">
+                            <span
+                              >Lorem ipsum dolor sit amet consectetur
+                              adipisicing elit. Exercitationem debitis molestias
+                              porro enim voluptatum mollitia possimus cumque a
+                              fugit ratione!</span
+                            >
+                            <i class="ri-more-2-line"></i>
+                          </div>
+                        </div>
+                        <div class="one__comment">
+                          <span class="name__date">
+                            <span>John Doe</span>
+                            <span>2 hours ago</span>
+                          </span>
+                          <div class="actual__comment">
+                            <span
+                              >Lorem ipsum dolor sit amet consectetur
+                              adipisicing elit. Exercitationem debitis molestias
+                              porro enim voluptatum mollitia possimus cumque a
+                              fugit ratione!</span
+                            >
+                            <i class="ri-more-2-line"></i>
+                          </div>
+                        </div>
+                        <div class="one__comment">
+                          <span class="name__date">
+                            <span>John Doe</span>
+                            <span>2 hours ago</span>
+                          </span>
+                          <div class="actual__comment">
+                            <span
+                              >Lorem ipsum dolor sit amet consectetur
+                              adipisicing elit. Exercitationem debitis molestias
+                              porro enim voluptatum mollitia possimus cumque a
+                              fugit ratione!</span
+                            >
+                            <i class="ri-more-2-line"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="likes">
+                        <h3>Liked by:</h3>
+                        <div class="actual__likes">
+                          <div class="one__like">
+                            <span class="liker__info">
+                              <span>John Doe</span>
+                              <span>a minute ago</span>
+                            </span>
+                            <i class="ri-arrow-right-up-fill"></i>
+                          </div>
+                          <div class="one__like">
+                            <span class="liker__info">
+                              <span>John Doe</span>
+                              <span>a minute ago</span>
+                            </span>
+                            <i class="ri-arrow-right-up-fill"></i>
+                          </div>
+                          <div class="one__like">
+                            <span class="liker__info">
+                              <span>John Doe</span>
+                              <span>a minute ago</span>
+                            </span>
+                            <i class="ri-arrow-right-up-fill"></i>
+                          </div>
+                          <div class="one__like">
+                            <span class="liker__info">
+                              <span>John Doe</span>
+                              <span>a minute ago</span>
+                            </span>
+                            <i class="ri-arrow-right-up-fill"></i>
+                          </div>
+                          <div class="one__like">
+                            <span class="liker__info">
+                              <span>John Doe</span>
+                              <span>a minute ago</span>
+                            </span>
+                            <i class="ri-arrow-right-up-fill"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div></div>
+                  </details>
+                  <details class="single__story">
+                    <summary class="story__summary">
+                      1. Lorem, ipsum dolor sit amet consectetur adipisicing
+                      elit. Mollitia asperiores sequi modi quae fuga ullam minus
+                      maiores, enim quidem aperiam.
+                    </summary>
+                    <div class="comments__likes">
+                      <div class="comments">
+                        <div class="one__comment">
+                          <span class="name__date">
+                            <span>John Doe</span>
+                            <span>2 hours ago</span>
+                          </span>
+                          <div class="actual__comment">
+                            <span
+                              >Lorem ipsum dolor sit amet consectetur
+                              adipisicing elit. Exercitationem debitis molestias
+                              porro enim voluptatum mollitia possimus cumque a
+                              fugit ratione!</span
+                            >
+                            <i class="ri-more-2-line"></i>
+                          </div>
+                        </div>
+                        <div class="one__comment">
+                          <span class="name__date">
+                            <span>John Doe</span>
+                            <span>2 hours ago</span>
+                          </span>
+                          <div class="actual__comment">
+                            <span
+                              >Lorem ipsum dolor sit amet consectetur
+                              adipisicing elit. Exercitationem debitis molestias
+                              porro enim voluptatum mollitia possimus cumque a
+                              fugit ratione!</span
+                            >
+                            <i class="ri-more-2-line"></i>
+                          </div>
+                        </div>
+                        <div class="one__comment">
+                          <span class="name__date">
+                            <span>John Doe</span>
+                            <span>2 hours ago</span>
+                          </span>
+                          <div class="actual__comment">
+                            <span
+                              >Lorem ipsum dolor sit amet consectetur
+                              adipisicing elit. Exercitationem debitis molestias
+                              porro enim voluptatum mollitia possimus cumque a
+                              fugit ratione!</span
+                            >
+                            <i class="ri-more-2-line"></i>
+                          </div>
+                        </div>
+                        <div class="one__comment">
+                          <span class="name__date">
+                            <span>John Doe</span>
+                            <span>2 hours ago</span>
+                          </span>
+                          <div class="actual__comment">
+                            <span
+                              >Lorem ipsum dolor sit amet consectetur
+                              adipisicing elit. Exercitationem debitis molestias
+                              porro enim voluptatum mollitia possimus cumque a
+                              fugit ratione!</span
+                            >
+                            <i class="ri-more-2-line"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="likes">
+                        <h3>Liked by:</h3>
+                        <div class="actual__likes">
+                          <div class="one__like">
+                            <span class="liker__info">
+                              <span>John Doe</span>
+                              <span>a minute ago</span>
+                            </span>
+                            <i class="ri-arrow-right-up-fill"></i>
+                          </div>
+                          <div class="one__like">
+                            <span class="liker__info">
+                              <span>John Doe</span>
+                              <span>a minute ago</span>
+                            </span>
+                            <i class="ri-arrow-right-up-fill"></i>
+                          </div>
+                          <div class="one__like">
+                            <span class="liker__info">
+                              <span>John Doe</span>
+                              <span>a minute ago</span>
+                            </span>
+                            <i class="ri-arrow-right-up-fill"></i>
+                          </div>
+                          <div class="one__like">
+                            <span class="liker__info">
+                              <span>John Doe</span>
+                              <span>a minute ago</span>
+                            </span>
+                            <i class="ri-arrow-right-up-fill"></i>
+                          </div>
+                          <div class="one__like">
+                            <span class="liker__info">
+                              <span>John Doe</span>
+                              <span>a minute ago</span>
+                            </span>
+                            <i class="ri-arrow-right-up-fill"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div></div>
+                  </details>
+                  <details class="single__story">
+                    <summary class="story__summary">
+                      1. Lorem, ipsum dolor sit amet consectetur adipisicing
+                      elit. Mollitia asperiores sequi modi quae fuga ullam minus
+                      maiores, enim quidem aperiam.
+                    </summary>
+                    <div class="comments__likes">
+                      <div class="comments">
+                        <div class="one__comment">
+                          <span class="name__date">
+                            <span>John Doe</span>
+                            <span>2 hours ago</span>
+                          </span>
+                          <div class="actual__comment">
+                            <span
+                              >Lorem ipsum dolor sit amet consectetur
+                              adipisicing elit. Exercitationem debitis molestias
+                              porro enim voluptatum mollitia possimus cumque a
+                              fugit ratione!</span
+                            >
+                            <i class="ri-more-2-line"></i>
+                          </div>
+                        </div>
+                        <div class="one__comment">
+                          <span class="name__date">
+                            <span>John Doe</span>
+                            <span>2 hours ago</span>
+                          </span>
+                          <div class="actual__comment">
+                            <span
+                              >Lorem ipsum dolor sit amet consectetur
+                              adipisicing elit. Exercitationem debitis molestias
+                              porro enim voluptatum mollitia possimus cumque a
+                              fugit ratione!</span
+                            >
+                            <i class="ri-more-2-line"></i>
+                          </div>
+                        </div>
+                        <div class="one__comment">
+                          <span class="name__date">
+                            <span>John Doe</span>
+                            <span>2 hours ago</span>
+                          </span>
+                          <div class="actual__comment">
+                            <span
+                              >Lorem ipsum dolor sit amet consectetur
+                              adipisicing elit. Exercitationem debitis molestias
+                              porro enim voluptatum mollitia possimus cumque a
+                              fugit ratione!</span
+                            >
+                            <i class="ri-more-2-line"></i>
+                          </div>
+                        </div>
+                        <div class="one__comment">
+                          <span class="name__date">
+                            <span>John Doe</span>
+                            <span>2 hours ago</span>
+                          </span>
+                          <div class="actual__comment">
+                            <span
+                              >Lorem ipsum dolor sit amet consectetur
+                              adipisicing elit. Exercitationem debitis molestias
+                              porro enim voluptatum mollitia possimus cumque a
+                              fugit ratione!</span
+                            >
+                            <i class="ri-more-2-line"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="likes">
+                        <h3>Liked by:</h3>
+                        <div class="actual__likes">
+                          <div class="one__like">
+                            <span class="liker__info">
+                              <span>John Doe</span>
+                              <span>a minute ago</span>
+                            </span>
+                            <i class="ri-arrow-right-up-fill"></i>
+                          </div>
+                          <div class="one__like">
+                            <span class="liker__info">
+                              <span>John Doe</span>
+                              <span>a minute ago</span>
+                            </span>
+                            <i class="ri-arrow-right-up-fill"></i>
+                          </div>
+                          <div class="one__like">
+                            <span class="liker__info">
+                              <span>John Doe</span>
+                              <span>a minute ago</span>
+                            </span>
+                            <i class="ri-arrow-right-up-fill"></i>
+                          </div>
+                          <div class="one__like">
+                            <span class="liker__info">
+                              <span>John Doe</span>
+                              <span>a minute ago</span>
+                            </span>
+                            <i class="ri-arrow-right-up-fill"></i>
+                          </div>
+                          <div class="one__like">
+                            <span class="liker__info">
+                              <span>John Doe</span>
+                              <span>a minute ago</span>
+                            </span>
+                            <i class="ri-arrow-right-up-fill"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div></div>
+                  </details>
+                  <details class="single__story">
+                    <summary class="story__summary">
+                      1. Lorem, ipsum dolor sit amet consectetur adipisicing
+                      elit. Mollitia asperiores sequi modi quae fuga ullam minus
+                      maiores, enim quidem aperiam.
+                    </summary>
+                    <div class="comments__likes">
+                      <div class="comments">
+                        <div class="one__comment">
+                          <span class="name__date">
+                            <span>John Doe</span>
+                            <span>2 hours ago</span>
+                          </span>
+                          <div class="actual__comment">
+                            <span
+                              >Lorem ipsum dolor sit amet consectetur
+                              adipisicing elit. Exercitationem debitis molestias
+                              porro enim voluptatum mollitia possimus cumque a
+                              fugit ratione!</span
+                            >
+                            <i class="ri-more-2-line"></i>
+                          </div>
+                        </div>
+                        <div class="one__comment">
+                          <span class="name__date">
+                            <span>John Doe</span>
+                            <span>2 hours ago</span>
+                          </span>
+                          <div class="actual__comment">
+                            <span
+                              >Lorem ipsum dolor sit amet consectetur
+                              adipisicing elit. Exercitationem debitis molestias
+                              porro enim voluptatum mollitia possimus cumque a
+                              fugit ratione!</span
+                            >
+                            <i class="ri-more-2-line"></i>
+                          </div>
+                        </div>
+                        <div class="one__comment">
+                          <span class="name__date">
+                            <span>John Doe</span>
+                            <span>2 hours ago</span>
+                          </span>
+                          <div class="actual__comment">
+                            <span
+                              >Lorem ipsum dolor sit amet consectetur
+                              adipisicing elit. Exercitationem debitis molestias
+                              porro enim voluptatum mollitia possimus cumque a
+                              fugit ratione!</span
+                            >
+                            <i class="ri-more-2-line"></i>
+                          </div>
+                        </div>
+                        <div class="one__comment">
+                          <span class="name__date">
+                            <span>John Doe</span>
+                            <span>2 hours ago</span>
+                          </span>
+                          <div class="actual__comment">
+                            <span
+                              >Lorem ipsum dolor sit amet consectetur
+                              adipisicing elit. Exercitationem debitis molestias
+                              porro enim voluptatum mollitia possimus cumque a
+                              fugit ratione!</span
+                            >
+                            <i class="ri-more-2-line"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="likes">
+                        <h3>Liked by:</h3>
+                        <div class="actual__likes">
+                          <div class="one__like">
+                            <span class="liker__info">
+                              <span>John Doe</span>
+                              <span>a minute ago</span>
+                            </span>
+                            <i class="ri-arrow-right-up-fill"></i>
+                          </div>
+                          <div class="one__like">
+                            <span class="liker__info">
+                              <span>John Doe</span>
+                              <span>a minute ago</span>
+                            </span>
+                            <i class="ri-arrow-right-up-fill"></i>
+                          </div>
+                          <div class="one__like">
+                            <span class="liker__info">
+                              <span>John Doe</span>
+                              <span>a minute ago</span>
+                            </span>
+                            <i class="ri-arrow-right-up-fill"></i>
+                          </div>
+                          <div class="one__like">
+                            <span class="liker__info">
+                              <span>John Doe</span>
+                              <span>a minute ago</span>
+                            </span>
+                            <i class="ri-arrow-right-up-fill"></i>
+                          </div>
+                          <div class="one__like">
+                            <span class="liker__info">
+                              <span>John Doe</span>
+                              <span>a minute ago</span>
+                            </span>
+                            <i class="ri-arrow-right-up-fill"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div></div>
+                  </details>
+                </div>
+              </div>
+            </div>
+          </details>
+          <details >
+            <summary>
+              Accounts Management <i class="ri-arrow-down-s-fill"></i>
+            </summary>
+            <div>
+              <div class="management">
+                <span class="one__stat">
+                  <i class="ri-account-box-fill"></i>
+                  <p>
+                    200<span> Total Accounts <br />created</span>
+                  </p>
+                </span>
+                <p class="title">Full List of Accounts</p>
+                <div class="grid__container">
+                  <div class="one__account">
+                    <img src="" alt="" />
+                    <div class="one__account__texts">
+                      <p>John Doe</p>
+                      <p>Created on: <strong>22/12/2012 9:00PM</strong></p>
+                    </div>
+                    <i class="ri-more-2-fill"></i>
+                  </div>
+                  <div class="one__account">
+                    <img src="" alt="" />
+                    <div class="one__account__texts">
+                      <p>John Doe</p>
+                      <p>Created on: <strong>22/12/2012 9:00PM</strong></p>
+                    </div>
+                    <i class="ri-more-2-fill"></i>
+                  </div>
+                  <div class="one__account">
+                    <img src="" alt="" />
+                    <div class="one__account__texts">
+                      <p>John Doe</p>
+                      <p>Created on: <strong>22/12/2012 9:00PM</strong></p>
+                    </div>
+                    <i class="ri-more-2-fill"></i>
+                  </div>
+                  <div class="one__account">
+                    <img src="" alt="" />
+                    <div class="one__account__texts">
+                      <p>John Doe</p>
+                      <p>Created on: <strong>22/12/2012 9:00PM</strong></p>
+                    </div>
+                    <i class="ri-more-2-fill"></i>
+                  </div>
+                  <div class="one__account">
+                    <img src="" alt="" />
+                    <div class="one__account__texts">
+                      <p>John Doe</p>
+                      <p>Created on: <strong>22/12/2012 9:00PM</strong></p>
+                    </div>
+                    <i class="ri-more-2-fill"></i>
+                  </div>
+                  <div class="one__account">
+                    <img src="" alt="" />
+                    <div class="one__account__texts">
+                      <p>John Doe</p>
+                      <p>Created on: <strong>22/12/2012 9:00PM</strong></p>
+                    </div>
+                    <i class="ri-more-2-fill"></i>
+                  </div>
+                  <div class="one__account">
+                    <img src="" alt="" />
+                    <div class="one__account__texts">
+                      <p>John Doe</p>
+                      <p>Created on: <strong>22/12/2012 9:00PM</strong></p>
+                    </div>
+                    <i class="ri-more-2-fill"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+        </section>
+        <section id="footer">
+          <p>Copyright</p>
+          <i class="bx bx-copyright" style="font-size: 12px"></i>
+          <p>Favour Eliab</p>
+          <p>All rights reserved</p>
+        </section>
+      </div>
     </main>
     <script src="../script.js"></script>
   </body>
