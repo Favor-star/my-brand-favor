@@ -161,12 +161,14 @@
     height: fit-content;
   }
 }
+
 @media screen and (max-width: 430px) {
   .action__btns {
     display: block;
   }
   .actions {
     display: none;
+
   }
   .name_email {
     flex-direction: column;

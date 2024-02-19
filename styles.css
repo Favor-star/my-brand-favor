@@ -1422,9 +1422,9 @@ main {
   gap: 10px;
   & img {
     max-width: 70px;
-   
+
     width: 70px;
-  
+
     aspect-ratio: 1 /1;
     object-fit: cover;
     border: 1px solid var(--black);
@@ -1451,9 +1451,51 @@ main {
   gap: 1.2rem;
 }
 
-.validation__message{
+.validation__message {
   color: red;
   font-size: 16px;
   margin-left: 10px;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.actions {
+  position: relative;
+}
+.logout__div {
+  position: absolute;
+  top: 50px;
+  padding: 10px;
+  background-color: var(--black);
+  color: var(--white);
+  border-radius: var(--radius);
+  transition: all 0.2s ease-in-out;
+  transform: translateX(0%);
+  opacity: 1;
+}
+.logout__div.hide {
+  transform: translateY(-200%);
+  opacity: 0;
+}
+#logout {
+  cursor: pointer;
+  user-select: none;
+}
+.account__more__div {
+  position: relative;
+}
+.account__more {
+  position: absolute;
+  top: 30px;
+  display: flex;
+  gap: 6px;
+  color: var(--white);
+  background-color: var(--black);
+  padding: 10px;
+  border-radius: var(--radius);
+  transition: all 0.2s ease-in-out;
+  transform: translateX(0%);
+  opacity: 1;
+}
+.account__more.hide{
+  transform: translateY(-200%);
+  opacity: 0;
 }

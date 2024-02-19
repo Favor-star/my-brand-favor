@@ -31,11 +31,18 @@
             ></a>
           </nav>
           <span class="actions">
-            <a class="subheader buttons" href="registerPage.html"
-              ><span id="dashboard__userName">User1</span> <i class="ri-user-fill"></i
+            <a class="subheader buttons username__div"
+              ><span id="dashboard__userName">User1</span>
+              <i class="ri-user-fill"></i
             ></a>
             <i class="theme-switcher bx bxs-moon"></i>
             <!-- <i title="Sniper Mode" class='sniper bx bx-target-lock'></i> -->
+            <div class="logout__div hide">
+              <span id="logout">
+                <i class="ri-logout-box-r-fill"></i>
+                <a>logout</a>
+              </span>
+            </div>
           </span>
         </header>
         <div id="navigation__pane">
@@ -896,62 +903,19 @@
               </p>
             </span>
             <p class="title">Full List of Accounts</p>
-            <div class="grid__container">
+            <div class="grid__container" id="list__of__accounts">
               <div class="one__account">
                 <img src="" alt="" />
                 <div class="one__account__texts">
                   <p>John Doe</p>
                   <p>Created on: <strong>22/12/2012 9:00PM</strong></p>
                 </div>
-                <i class="ri-more-2-fill"></i>
-              </div>
-              <div class="one__account">
-                <img src="" alt="" />
-                <div class="one__account__texts">
-                  <p>John Doe</p>
-                  <p>Created on: <strong>22/12/2012 9:00PM</strong></p>
-                </div>
-                <i class="ri-more-2-fill"></i>
-              </div>
-              <div class="one__account">
-                <img src="" alt="" />
-                <div class="one__account__texts">
-                  <p>John Doe</p>
-                  <p>Created on: <strong>22/12/2012 9:00PM</strong></p>
-                </div>
-                <i class="ri-more-2-fill"></i>
-              </div>
-              <div class="one__account">
-                <img src="" alt="" />
-                <div class="one__account__texts">
-                  <p>John Doe</p>
-                  <p>Created on: <strong>22/12/2012 9:00PM</strong></p>
-                </div>
-                <i class="ri-more-2-fill"></i>
-              </div>
-              <div class="one__account">
-                <img src="" alt="" />
-                <div class="one__account__texts">
-                  <p>John Doe</p>
-                  <p>Created on: <strong>22/12/2012 9:00PM</strong></p>
-                </div>
-                <i class="ri-more-2-fill"></i>
-              </div>
-              <div class="one__account">
-                <img src="" alt="" />
-                <div class="one__account__texts">
-                  <p>John Doe</p>
-                  <p>Created on: <strong>22/12/2012 9:00PM</strong></p>
-                </div>
-                <i class="ri-more-2-fill"></i>
-              </div>
-              <div class="one__account">
-                <img src="" alt="" />
-                <div class="one__account__texts">
-                  <p>John Doe</p>
-                  <p>Created on: <strong>22/12/2012 9:00PM</strong></p>
-                </div>
-                <i class="ri-more-2-fill"></i>
+                <span class="account__more__div"
+                  ><i class="more__btn ri-more-2-fill"></i>
+                  <span class="account__more hide">
+                   <i class="ri-delete-bin-line"></i> Delete User 
+                  </span>
+                </span>
               </div>
             </div>
           </div>
@@ -987,7 +951,10 @@
           }
         });
       });
+      const footer = document.getElementById("footer");
+      console.log(footer.innerHTML);
     </script>
     <script src="../script.js"></script>
+    <script src="dashboard.js"></script>
   </body>
 </html>
