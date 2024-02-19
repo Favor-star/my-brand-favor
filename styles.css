@@ -929,9 +929,7 @@ textarea:hover {
 .login__btn i {
   font-size: 20px;
 }
-.hidden {
-  display: none;
-}
+
 /*Dashboard design*/
 .dashboard__main {
   display: flex;
@@ -1451,4 +1449,11 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
   gap: 1.2rem;
+}
+
+.validation__message{
+  color: red;
+  font-size: 16px;
+  margin-left: 10px;
+  transition: all .3s ease-in-out;
 }

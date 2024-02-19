@@ -52,7 +52,7 @@
           </div>
         </div>
       </div>
-      
+
       <section class="register__mainPage">
         <div class="login">
           <p style="text-align: center">
@@ -66,23 +66,26 @@
           >
           <form class="login__contents">
             <span>
-              <label for="email">Email</label>
+              <label for="login__email">Email</label>
               <input
                 class="inputs"
                 type="email"
                 placeholder="Enter your email"
+                id="login__email"
               />
+              <p id="login__v__email" class="validation__message"></p>
             </span>
 
             <span>
-              <label for="password">Password</label>
+              <label for="login__password">Password</label>
               <input
                 class="inputs"
                 type="password"
                 name="password"
-                id="password"
+                id="login__password"
                 placeholder="Enter your password"
               />
+              <p id="login__v__password" class="validation__message"></p>
             </span>
             <button type="submit" class="buttons login__btn">
               Login <i class="ri-login-box-fill" style="font-size: 20px"></i>
@@ -93,7 +96,7 @@
             </p>
           </form>
         </div>
-        <div class="register hidden">
+        <div class="register">
           <p style="text-align: center">
             PLEASE SIGN UP TO BE ABLE TO SEE AMAZING NEWS, OPPORTUNITIES AND
             MANY MORE
@@ -112,15 +115,17 @@
                 type="text"
                 placeholder="Enter your names"
               />
+              <p id="reg__v__names" class="validation__message"></p>
             </span>
             <span>
-              <label for="email">Email</label>
+              <label for="reg__email">Email</label>
               <input
-                id="email"
+                id="reg__email"
                 class="inputs"
                 type="email"
                 placeholder="Enter your email"
               />
+              <p id="reg__v__email" class="validation__message"></p>
             </span>
 
             <span>
@@ -129,9 +134,10 @@
                 class="inputs"
                 type="password"
                 name="password"
-                id="password"
+                id="reg__password"
                 placeholder="Enter your password"
-              /> </span
+              />
+              <p id="reg__v_password" class="validation__message"></p> </span
             ><span>
               <label for="confirm__password">Confirm your password</label>
               <input
@@ -142,10 +148,12 @@
                 id="confirm__password"
                 placeholder="Confirm your password"
               />
+              <p id="reg__v__confirm__p" class="validation__message"></p>
             </span>
             <button type="submit" class="buttons login__btn">
               Register <i class="ri-user-add-fill" style="font-size: 20px"></i>
             </button>
+            <p class="validation__message" id="register__error"></p>
             <p>
               Already have an account yet?
               <span class="login__here">Login Here</span>
@@ -160,16 +168,51 @@
         <p>All rights reserved</p>
       </section>
     </main>
+    <style>
+      .shown {
+        display: block;
+        transform: translateX(-180deg);
+        transition: all 0.3s ease-in-out;
+      }
+      .hidden {
+        display: none;
+        transition: all 0.3s ease-in-out;
+        transform: translateX(100%);
+      }
+    </style>
     <script>
-      document.querySelector(".to__reg").addEventListener("click", () => {
-        document.querySelector(".login").style.display = "none";
-        document.querySelector(".register").style.display = "block";
-      });
-      document.querySelector(".to__login").addEventListener("click", () => {
+      const loginDiv = document.querySelector(".login"),
+        regDiv = document.querySelector(".register"),
+        toReg = document.querySelector(".to__reg"),
+        toLogin = document.querySelector(".to__login");
+      loginDiv.classList.add("hidden");
+      toLogin.addEventListener("click", showLoginDiv);
+      toReg.addEventListener("click", showRegDiv);
 
-        document.querySelector(".register").style.display = "none";
-        document.querySelector(".login").style.display = "block";
-      });
+      function showRegDiv() {
+        loginDiv.classList.remove("shown");
+        loginDiv.style.transform = "translateX(100%)";
+        loginDiv.style.opacity = "0";
+        setTimeout(() => {
+          regDiv.classList.add("shown");
+          regDiv.classList.remove("hidden");
+          loginDiv.classList.add("hidden");
+          regDiv.style.opacity = "1";
+          regDiv.style.transform = "translateX(0)";
+        }, 300);
+      }
+      function showLoginDiv() {
+        regDiv.style.transform = "translateX(100%)";
+        regDiv.style.opacity = "0";
+        setTimeout(() => {
+          regDiv.classList.add("hidden");
+          loginDiv.classList.remove("hidden");
+          loginDiv.style.opacity = "1";
+          loginDiv.style.transform = "translateX(0)";
+        }, 300);
+      }
+      document.querySelector(".login__here").onclick = showLoginDiv;
+      document.querySelector(".register__here").onclick = showRegDiv;
     </script>
     <script src="../script.js"></script>
   </body>

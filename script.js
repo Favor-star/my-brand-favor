@@ -74,4 +74,32 @@ moreButton.forEach((elem) => {
   });
 });
 
-//HNADLE THE POSITION OF FOOTER ONCE THE ELEMENTS OF DASHBOARD ARE COLLAPSED
+//LOGIN FORM VALIDATION
+const loginValidDiv = document.getElementById("login__v__email");
+const loginEmailInput = document.getElementById("login__email");
+
+console.log(loginEmailInput);
+loginEmailInput.onblur = (e) => {
+  const inputValue = e.target.value;
+  loginValidDiv.innerHTML = !/@/g.test(inputValue)
+    ? "You should add @ in the email"
+    : "";
+};
+
+//HNADLE REGISTERING OPERATIONS
+const regForm = document.querySelector(".register__contents");
+const regPassword = document.getElementById("reg__password");
+const regConfrimPassword = document.getElementById("confirm__password");
+const regEmail = document.getElementById("reg__email");
+const regNames = document.getElementById("reg__names");
+const registerErrorDiv = document.getElementById("register__error");
+
+regForm.onsubmit = (e) => {
+  e.preventDefault();
+  
+  if (regConfrimPassword.value !== regPassword.value) {
+    registerErrorDiv.innerHTML = "Password aren't matching";
+    return;
+  }
+
+};
