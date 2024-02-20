@@ -113,7 +113,6 @@ function storeUser(user) {
     }
   }
   const usersToUpload = [...users, user];
-  console.log(usersToUpload);
   localStorage.setItem("users", JSON.stringify(usersToUpload));
   registerErrorDiv.innerHTML = "Account created successfully";
   registerErrorDiv.style.padding = "10px";

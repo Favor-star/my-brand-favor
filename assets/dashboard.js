@@ -1,20 +1,29 @@
 const activeUser = JSON.parse(localStorage.getItem("activeUser"));
-const logout = document.getElementById("logout");
-
+const logout = document.querySelectorAll(".logout__btn");
+console.log(logout);
 const userName = document.getElementById("dashboard__userName");
-const userNameDiv = document.querySelector(".username__div");
+const userNameDiv = document.querySelectorAll(".username__div");
 userName.innerText = activeUser.firstName;
-const logoutDiv = document.querySelector(".logout__div");
+const logoutDiv = document.querySelectorAll(".logout__div");
 
-userNameDiv.addEventListener("click", () => {
-  console.log("clickde");
-  logoutDiv.classList.toggle("hide");
+userNameDiv.forEach((element) => {
+  element.onclick = () => {
+    console.log("clicked");
+    logoutDiv.forEach((elem) => {
+      elem.classList.toggle("hide");
+    });
+  };
 });
-logout.onclick = () => {
-  localStorage.setItem("isUserLoggedIn", "false");
-  localStorage.removeItem("activeUser");
-  location.href = "/";
-};
+// userNameDiv.addEventListener("click", () => {
+//   logoutDiv.classList.toggle("hide");
+// });
+logout.forEach((element) => {
+  element.onclick = () => {
+    localStorage.setItem("isUserLoggedIn", "false");
+    localStorage.removeItem("activeUser");
+    location.href = "/";
+  };
+});
 
 const accountsList = document.getElementById("list__of__accounts");
 function handleRegisteredUser(users) {
@@ -38,26 +47,22 @@ function handleRegisteredUser(users) {
 </span>;`;
     accountsList.appendChild(oneAccount);
   });
+  document.getElementById("accounts__created__nmbr").innerHTML = users.length;
 }
 handleRegisteredUser(JSON.parse(localStorage.getItem("users")));
-//function to handle to delete the user
 
+//function to handle to delete the user
 const moreBtn = document.querySelectorAll(".account__more__btn");
 const accountMore = document.querySelectorAll(".account__more");
 const deleteUser = document.querySelectorAll(".account__more");
-console.log(moreBtn);
+//THIS OPENS UP THE DELETE USER BUTTON
 moreBtn.forEach((oneBtn, index) => {
   oneBtn.onclick = (e) => {
     accountMore[index].classList.toggle("hide");
   };
 });
-// accountMore.forEach((elem, index) => {
-//   const
-//   if(index)
-// })
 
-console.log(deleteUser);
-
+//THIS IS HANDLES OPERATIONS DONE AFTER THE USER DECIDE TO DELETE
 deleteUser.forEach((elem, index) => {
   elem.addEventListener("click", () => {
     const allAccounts = Array.from(document.querySelectorAll(".one__account"));
@@ -71,7 +76,88 @@ deleteUser.forEach((elem, index) => {
     );
     localStorage.setItem("users", JSON.stringify(udpatedUsers));
     accountsList.innerHTML = "";
+    document.getElementById("accounts__created__nmbr").innerText =
+      udpatedUsers.length;
     handleRegisteredUser(udpatedUsers);
     location.reload();
   });
 });
+
+//MANAGE ADDING A STORY
+const storyForm = document.getElementById("add__story"),
+  storyTitle = document.getElementById("title__story"),
+  storyImage = document.getElementById("picture__story"),
+  storyCategory = document.getElementById("category__story");
+const mainStory = document.getElementById("main__story");
+const storyErrorDiv = document.getElementById("story__errors");
+
+storyTitle.onfocus = () => {
+  storyErrorDiv.innerHTML = "";
+};
+mainStory.onfocus = () => {
+  storyErrorDiv.innerHTML = "";
+};
+storyForm.onsubmit = (e) => {
+  e.preventDefault();
+  if (storyTitle.value === "") {
+    storyErrorDiv.innerHTML = "Story Title can't be empty";
+    return;
+  }
+  if (storyImage.value === "") {
+    storyErrorDiv.innerHTML = "Please add at least one image";
+    return;
+  }
+  if (mainStory.value === "") {
+    storyErrorDiv.innerHTML = "Story itself can't be empty";
+    return;
+  }
+  console.log(storyImage.files[0]);
+
+  const file = storyImage.files[0];
+  if (!file) {
+    console.error("No file selected");
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = function (event) {
+    const base64String = event.target.result;
+    checkStory(
+      storyTitle.value,
+      base64String,
+      storyCategory.value,
+      mainStory.value
+    );
+  };
+  reader.readAsDataURL(file);
+};
+
+const confirmStoryForm = document.querySelector(".story__confirm__form"),
+  confirmTitle = document.querySelector(".confirm__title"),
+  confirmImage = document.querySelector(".confirm__img"),
+  confirmMain = document.querySelector(".story__main"),
+  revert = document.querySelector(".revert");
+function checkStory(title, image, category, story) {
+  confirmMain.innerHTML = story;
+  confirmTitle.innerHTML = title;
+  confirmImage.src = image;
+  confirmStoryForm.classList.remove("hide");
+
+  revert.onclick = () => {
+    confirmStoryForm.classList.add("hide");
+  };
+  confirmStoryForm.onsubmit = () => {
+    uploadToStorage(title, image, category, story);
+  } 
+}
+function uploadToStorage(title, image, category, story) {
+  const stories = JSON.parse(localStorage.getItem("storiesList")) || [];
+  const singleStory = {
+    title: title,
+    image: image,
+    category: category,
+    story: story,
+  };
+  const storiesToUpload = [...stories, singleStory];
+  localStorage.setItem("storiesList", JSON.stringify(storiesToUpload));
+}
+// localStorage.removeItem("storiesList");

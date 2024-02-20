@@ -38,7 +38,7 @@
             <i class="theme-switcher bx bxs-moon"></i>
             <!-- <i title="Sniper Mode" class='sniper bx bx-target-lock'></i> -->
             <div class="logout__div hide">
-              <span id="logout">
+              <span class="logout__btn">
                 <i class="ri-logout-box-r-fill"></i>
                 <a>logout</a>
               </span>
@@ -53,8 +53,18 @@
             <a class="subheader nav__sub" href="#works">Works</a>
             <a class="subheader nav__sub" href="#contact__me">Contact Me</a>
             <div class="action__btns">
-              <a class="subheader nav__sub" href="#contact__me">Hire Me</a>
+              <a class="subheader buttons username__div"
+                ><span id="dashboard__userName">User1</span>
+                <i class="ri-user-fill"></i
+              ></a>
               <i class="theme-switcher bx bxs-moon"></i>
+              <!-- <i title="Sniper Mode" class='sniper bx bx-target-lock'></i> -->
+              <div class="logout__div hide">
+                <span class="logout__btn">
+                  <i class="ri-logout-box-r-fill"></i>
+                  <a>logout</a>
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -62,16 +72,17 @@
       <!-- <div class="wrapper"> -->
       <!-- <section style="width: 100%;"> -->
       <h3 style="text-align: center; margin-bottom: 6vh">ADMIN DASHBOARD</h3>
-      <details>
+      <details open>
         <summary>
           Stories management <i class="ri-arrow-down-s-fill"></i>
         </summary>
         <div class="dashboard__main">
-          <form class="add__story">
+          <form id="add__story" class="add__story">
             <h4 style="font-size: 1.2rem">ADD A STORY HERE</h4>
             <div class="box__item">
               <label for="title">Enter the story title</label>
               <input
+                id="title__story"
                 class="inputs"
                 type="text"
                 placeholder="Enter the story title"
@@ -80,11 +91,11 @@
             <div class="name_email story__add">
               <span class="box__item">
                 <label for="image__file">Upload an image</label>
-                <input type="file" name="image__file" id="image__file" />
+                <input id="picture__story" type="file" name="image__file" accept="image/*"/>
               </span>
               <span class="box__item">
                 <label for="category">Select category</label>
-                <select name="category" id="category">
+                <select id="category__story" name="category" id="category">
                   <option value="tech">Tech</option>
                   <option value="love">Love</option>
                   <option value="politics">Politics</option>
@@ -95,7 +106,7 @@
               <label for="main__write">Enter the story here</label>
               <textarea
                 name="main__write"
-                id="main__write"
+                id="main__story"
                 cols="30"
                 rows="10"
                 style="resize: none"
@@ -104,7 +115,9 @@
             <button type="submit" class="buttons">
               Upload <i class="ri-upload-cloud-fill"></i>
             </button>
+            <p class="validation__message" id="story__errors"></p>
           </form>
+
           <div class="recent__interaction">
             <div class="recent_title">RECENT INTERACTIONS</div>
             <div class="recent__contents">
@@ -890,7 +903,7 @@
           </div>
         </div>
       </details>
-      <details open>
+      <details>
         <summary>
           Accounts Management <i class="ri-arrow-down-s-fill"></i>
         </summary>
@@ -899,7 +912,8 @@
             <span class="one__stat">
               <i class="ri-account-box-fill"></i>
               <p>
-                200<span> Total Accounts <br />created</span>
+                <strong id="accounts__created__nmbr">200</strong
+                ><span> Total Accounts <br />created</span>
               </p>
             </span>
             <p class="title">Full List of Accounts</p>
@@ -920,7 +934,6 @@
             </div>
           </div>
         </div>
-        
       </details>
       <!-- </section> -->
       <section id="footer" style="position: relative; top: 50%">
@@ -930,7 +943,45 @@
         <p>All rights reserved</p>
       </section>
       <!-- </div> -->
-    </main>
+      
+    </main><form class="story__confirm__form hide">
+        <div class="story__confirm">
+          <h3
+            style="
+              padding: 5px;
+              border-bottom: 1px solid var(--white);
+              width: fit-content;
+              margin: 0 auto 15px;
+            "
+          >
+            CONFIRM STORY
+          </h3>
+          <div class="confirm__title">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque,
+            enim!
+          </div>
+          <img src="" alt="" class="confirm__img" />
+          <p class="story__main">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est
+            veritatis molestias, omnis accusamus necessitatibus magnam eveniet
+            aspernatur modi. Fugiat, aut? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Numquam corporis dolores minima dolore pariatur
+            officia ullam adipisci, dolorum aliquam. Quisquam aperiam numquam
+            pariatur, quod dicta cum voluptates quo accusantium. Debitis! Lorem
+            ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptatum
+            molestiae debitis eum accusamus repellendus esse voluptates
+            veritatis. Non, pariatur?
+          </p>
+          <span class="form__buttons">
+            <button type="submit" class="buttons">
+              Confirm <i class="ri-check-double-fill"></i>
+            </button>
+            <button class="buttons revert">
+              Revert <i class="ri-thumb-down-fill"></i>
+            </button>
+          </span>
+        </div>
+      </form>
     <style>
       details[open] + #footer {
         top: 0 !important;
