@@ -6,4 +6,6 @@ this is the design of my [Personal Portfolio](https://favor-star.github.io/my-br
 | --- | ---------------- | ------------ |
 | 1   | HTML             | already used |
 | 2   | CSS              | already used |
-| 3   | JAVASCRIPT       | used a little|
+| 3   | JAVASCRIPT       | already used|
+
+`localStorage` is being used as a database.
