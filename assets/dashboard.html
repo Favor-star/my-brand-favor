@@ -19,7 +19,7 @@
     <main style="position: relative">
       <div class="head__wrapper">
         <header>
-          <h3>Favour Eliab</h3>
+          <h3 class="head__to__home">Favour Eliab</h3>
           <i id="menu-bar" class="bx bx-menu" style="font-size: 36px"></i>
           <nav>
             <a class="subheader" href="../index.html">Home</a>
@@ -91,7 +91,12 @@
             <div class="name_email story__add">
               <span class="box__item">
                 <label for="image__file">Upload an image</label>
-                <input id="picture__story" type="file" name="image__file" accept="image/*"/>
+                <input
+                  id="picture__story"
+                  type="file"
+                  name="image__file"
+                  accept="image/*"
+                />
               </span>
               <span class="box__item">
                 <label for="category">Select category</label>
@@ -151,7 +156,7 @@
         <div class="recently__added__list">
           <h4>RECENTLY ADDED STORY</h4>
           <div class="story__list">
-            <div class="one__story__list">
+            <!-- <div class="one__story__list">
               <span class="list__title">
                 <span class="title__number">1.</span>
                 <span class="title__number"
@@ -309,7 +314,7 @@
                 </span>
               </span>
               <i class="ri-more-2-fill"></i>
-            </div>
+            </div> -->
           </div>
         </div>
       </details>
@@ -943,45 +948,44 @@
         <p>All rights reserved</p>
       </section>
       <!-- </div> -->
-      
-    </main><form class="story__confirm__form hide">
-        <div class="story__confirm">
-          <h3
-            style="
-              padding: 5px;
-              border-bottom: 1px solid var(--white);
-              width: fit-content;
-              margin: 0 auto 15px;
-            "
-          >
-            CONFIRM STORY
-          </h3>
-          <div class="confirm__title">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque,
-            enim!
-          </div>
-          <img src="" alt="" class="confirm__img" />
-          <p class="story__main">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est
-            veritatis molestias, omnis accusamus necessitatibus magnam eveniet
-            aspernatur modi. Fugiat, aut? Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Numquam corporis dolores minima dolore pariatur
-            officia ullam adipisci, dolorum aliquam. Quisquam aperiam numquam
-            pariatur, quod dicta cum voluptates quo accusantium. Debitis! Lorem
-            ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptatum
-            molestiae debitis eum accusamus repellendus esse voluptates
-            veritatis. Non, pariatur?
-          </p>
-          <span class="form__buttons">
-            <button type="submit" class="buttons">
-              Confirm <i class="ri-check-double-fill"></i>
-            </button>
-            <button class="buttons revert">
-              Revert <i class="ri-thumb-down-fill"></i>
-            </button>
-          </span>
+    </main>
+    <form class="story__confirm__form hide">
+      <div class="story__confirm">
+        <h3
+          style="
+            padding: 5px;
+            border-bottom: 1px solid var(--white);
+            width: fit-content;
+            margin: 0 auto 15px;
+          "
+        >
+          CONFIRM STORY
+        </h3>
+        <div class="confirm__title">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, enim!
         </div>
-      </form>
+        <img src="" alt="" class="confirm__img" />
+        <p class="story__main">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est
+          veritatis molestias, omnis accusamus necessitatibus magnam eveniet
+          aspernatur modi. Fugiat, aut? Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Numquam corporis dolores minima dolore pariatur
+          officia ullam adipisci, dolorum aliquam. Quisquam aperiam numquam
+          pariatur, quod dicta cum voluptates quo accusantium. Debitis! Lorem
+          ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptatum
+          molestiae debitis eum accusamus repellendus esse voluptates veritatis.
+          Non, pariatur?
+        </p>
+        <span class="form__buttons">
+          <button type="submit" class="buttons">
+            Confirm <i class="ri-check-double-fill"></i>
+          </button>
+          <button class="buttons revert">
+            Revert <i class="ri-thumb-down-fill"></i>
+          </button>
+        </span>
+      </div>
+    </form>
     <style>
       details[open] + #footer {
         top: 0 !important;

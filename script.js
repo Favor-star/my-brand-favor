@@ -1,6 +1,5 @@
 const Themeswitcher = document.querySelectorAll(".theme-switcher"),
-  body = document.querySelector("body"),
-  moreButton = document.querySelectorAll(".more__btn");
+  body = document.querySelector("body");
 
 Themeswitcher.forEach((elem) => {
   elem.addEventListener("click", () => {
@@ -29,7 +28,39 @@ onload = () => {
       elem.classList.add("bxs-sun");
     });
   }
+  //CHECK WHETHER THE USER IS LOGGED IN AND THEN HANDLE THE REST
+  const isActive = localStorage.getItem("isuserLoggedIn");
+  const activeUser = JSON.stringify(localStorage.getItem("activeUser"));
+  if (isActive) {
+    document.getElementById("dashboard__userName").innerHTML =
+      activeUser.firstName;
+  }
 };
+// const blogReadBtn = document.querySelectorAll(".read__story__button");
+// blogReadBtn.forEach((elem, index) => {
+//   elem.onclick = (e) => {
+//     e.preventDefault();
+//     console.log("Clicked")
+//     const stories = JSON.parse(localStorage.getItem("storiesList"));
+//     location.pathname = "/assets/story.html";
+
+//     setTimeout(() => {
+    
+//       document.querySelector(".story__main").innerHTML = stories[index].story;
+//     }, 500);
+//   };
+// });
+
+//FUNCTION TO HANDLE BACK TO HOME ONCE USER CLICKS THE LOGO BUTTON
+const logoBtn = document.querySelectorAll(".head__to__home");
+logoBtn.forEach((element) => {
+  element.style.cursor = "pointer";
+  element.style.userSelect = "none";
+  element.onclick = () => {
+    location.pathname = "/";
+  };
+});
+
 //FUNCTION TO HANDLE THE THEME SWITCHING
 const mode = (value) => {
   if (value == "dark") {
@@ -61,24 +92,5 @@ document
 window.onresize = () => {
   if (window.innerWidth >= 834) {
     navigationPane.style.display = "none";
-  }
-};
-
-//HANDLE THE MORE BUTTON WITHIN THE RECENT STORIES
-moreButton.forEach((elem) => {
-  elem.addEventListener("click", (e) => {
-    document
-      .querySelector(".more__content")
-      .classList.toggle("more__content__shown");
-  });
-});
-
-
-onload = () => {
-  const isActive = localStorage.getItem("isuserLoggedIn");
-  const activeUser = JSON.stringify(localStorage.getItem("activeUser"));
-  if (isActive) {
-    document.getElementById("dashboard__userName").innerHTML =
-      activeUser.firstName;
   }
 };

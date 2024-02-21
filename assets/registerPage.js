@@ -121,7 +121,7 @@ function storeUser(user) {
   localStorage.setItem("activeUser", JSON.stringify(user));
   localStorage.setItem("isUserLoggedIn", "true");
   setTimeout(() => {
-    location.href = "/assets/dashboard.html";
+    location.pathname = "/assets/dashboard.html";
   }, 500);
 }
 //Once the user is created, naviaget to the dashboard
@@ -161,7 +161,7 @@ loginForm.onsubmit = (e) => {
 
     return;
   }
-  location.href = "/assets/dashboard.html";
+  location.pathname = "/assets/dashboard.html";
   localStorage.setItem("isUserLoggedIn", "true");
   localStorage.setItem("activeUser", JSON.stringify(matchingUser));
 };

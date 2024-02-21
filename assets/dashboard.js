@@ -1,6 +1,5 @@
 const activeUser = JSON.parse(localStorage.getItem("activeUser"));
 const logout = document.querySelectorAll(".logout__btn");
-console.log(logout);
 const userName = document.getElementById("dashboard__userName");
 const userNameDiv = document.querySelectorAll(".username__div");
 userName.innerText = activeUser.firstName;
@@ -21,7 +20,7 @@ logout.forEach((element) => {
   element.onclick = () => {
     localStorage.setItem("isUserLoggedIn", "false");
     localStorage.removeItem("activeUser");
-    location.href = "/";
+    location.pathname = "/";
   };
 });
 
@@ -136,6 +135,7 @@ const confirmStoryForm = document.querySelector(".story__confirm__form"),
   confirmImage = document.querySelector(".confirm__img"),
   confirmMain = document.querySelector(".story__main"),
   revert = document.querySelector(".revert");
+
 function checkStory(title, image, category, story) {
   confirmMain.innerHTML = story;
   confirmTitle.innerHTML = title;
@@ -147,11 +147,12 @@ function checkStory(title, image, category, story) {
   };
   confirmStoryForm.onsubmit = () => {
     uploadToStorage(title, image, category, story);
-  } 
+  };
 }
 function uploadToStorage(title, image, category, story) {
   const stories = JSON.parse(localStorage.getItem("storiesList")) || [];
   const singleStory = {
+    id: Date.now(),
     title: title,
     image: image,
     category: category,
@@ -161,3 +162,69 @@ function uploadToStorage(title, image, category, story) {
   localStorage.setItem("storiesList", JSON.stringify(storiesToUpload));
 }
 // localStorage.removeItem("storiesList");
+
+//FUNCTION TO APPEND AVAILABLE STORIES ON THEIR RESPECTIVE DIVS
+
+function appendStory() {
+  let stories = JSON.parse(localStorage.getItem("storiesList")) || [];
+  if (stories.length === 0) return;
+  stories = stories.sort((elem, elem2) => {
+    return elem.id - elem2.id; // Compare the ids of the elements
+  });
+  stories.forEach((story, index) => {
+    const oneStory = document.createElement("div");
+    oneStory.classList.add("one__story__list");
+
+    oneStory.innerHTML = `
+   <span class="list__title">
+     <span class="title__number">${index + 1}.</span>
+      <span class="title__number">
+        ${story.title}
+       </span>
+     </span>
+     <span class="list__views">
+       <i class="ri-eye-fill"></i>
+       <span>100 VIEWS</span>
+     </span>
+     <span>
+        <div class="list__views">
+            <i class="ri-heart-fill"></i>
+            <span>100 LIKES</span>
+        </div>
+          <div class="list__views">
+            <i class="ri-message-fill"></i>
+            <span>100 LIKES</span>
+          </div>
+      </span>
+      <div class="more__div">
+        <i class="more__btn ri-more-2-fill"></i>
+        <div class="more__content">
+              <span class="mores">
+                  <i class="ri-eye-off-fill"></i>
+                  Hide Story
+              </span>
+              <span class="mores">
+                <i class="ri-file-edit-line"></i>
+                Edit Story
+              </span>
+              <span class="mores">
+                <i class="ri-delete-bin-line"></i>
+                Delete Story
+              </span>
+          </div>
+      </div>`;
+    document.querySelector(".story__list").appendChild(oneStory);
+  });
+}
+appendStory();
+
+//HANDLE THE MORE BUTTON WITHIN THE RECENT STORIES
+const storyDelete = document.querySelectorAll(".more__content"),
+  moreButton = document.querySelectorAll(".more__btn");
+console.log(storyDelete);
+moreButton.forEach((elem, index) => {
+  elem.addEventListener("click", (e) => {
+    storyDelete[index].classList.toggle("shown");
+  });
+});
+

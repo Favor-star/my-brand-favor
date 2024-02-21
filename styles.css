@@ -1111,7 +1111,7 @@ textarea:hover {
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
-.more__content__shown {
+.more__content.shown {
   opacity: 1;
   transition: all 0.2s ease-in-out;
 }
