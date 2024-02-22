@@ -31,7 +31,9 @@
             ></a>
           </nav>
           <span class="actions">
-            <a class="subheader buttons" href="assets/registerPage.html"
+            <a
+              class="subheader buttons home__user"
+              href="assets/registerPage.html"
               >Join <i class="ri-user-add-fill"></i
             ></a>
             <i class="theme-switcher bx bxs-moon"></i>
@@ -45,8 +47,13 @@
             <a class="subheader nav__sub" href="#about__me">About Me</a>
             <a class="subheader nav__sub" href="#works">Works</a>
             <a class="subheader nav__sub" href="#contact__me">Contact Me</a>
+            <a href="assets/blog.html" class="subheader blog__link"
+              >Blog <i class="ri-external-link-line" style="font-size: 20px"></i
+            ></a>
             <div class="action__btns">
-              <a class="subheader nav__sub" href="#contact__me">Hire Me</a>
+              <a class="subheader nav__sub home__user" href="assets/registerPage.html"
+                >Join <i class="ri-user-add-fill"></i
+              ></a>
               <i class="theme-switcher bx bxs-moon"></i>
             </div>
           </div>
@@ -323,8 +330,22 @@
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Dignissimos, explicabo.
             </p>
-            <p><span>Email:</span><span>favoureliab@gmail.com</span></p>
-            <p><span>Phone:</span><span>+250 787 922 900</span></p>
+            <p>
+              <span>Email: &nbsp;&nbsp;</span
+              ><a
+                href="mailto:favoureliab@gmail.com"
+                style="text-decoration: none; color: var(--white)"
+                >favoureliab@gmail.com</a
+              >
+            </p>
+            <p>
+              <span>Phone: &nbsp;&nbsp;</span
+              ><a
+                href="tel:+250787922900"
+                style="text-decoration: none; color: var(--white)"
+                >+250 787 922 900</a
+              >
+            </p>
           </span>
 
           <span class="social">
@@ -335,47 +356,54 @@
               <i class="bx bxl-whatsapp-square"></i></div
           ></span>
         </span>
-        <span class="msg__box">
+        <form class="msg__box">
           <div class="name_email">
             <div class="box__item">
-              <label for="name">Name</label>
+              <label for="msg__me__name">Name</label>
               <input
                 class="inputs"
                 type="text"
                 name="name"
-                id="name"
+                id="msg__me__name"
                 placeholder="Your name, please"
               />
             </div>
             <div class="box__item">
-              <label for="email">Email</label>
+              <label for="msg__me__email">Email</label>
               <input
                 class="inputs"
                 type="email"
                 name="email"
-                id="email"
+                id="msg__me__email"
                 placeholder="Your e-mail please.."
               />
             </div>
           </div>
           <div class="box__item">
-            <label for="text">Subject</label>
+            <label for="msg__me__subject">Subject</label>
             <input
               class="inputs"
               type="text"
               name="text"
-              id="text"
+              id="msg__me__subject"
               placeholder="Subject goes here..."
             />
           </div>
           <div class="box__item">
-            <label for="text">Body</label>
-            <textarea name="body" id="body" cols="30" rows="10"></textarea>
+            <label for="msg__me__body">Body</label>
+            <textarea
+              style="resize: vertical"
+              name="body"
+              id="msg__me__body"
+              cols="30"
+              rows="10"
+            ></textarea>
           </div>
-          <button class="action buttons">
+          <p class="validation__message" id="contact__form__error"></p>
+          <button type="submit" class="action buttons">
             Send Message <i class="ri-mail-send-line"></i>
           </button>
-        </span>
+        </form>
       </div>
     </section>
     <section id="footer">
@@ -395,6 +423,15 @@
       <div class="v__line__top"></div>
       <div class="v__line__bottom"></div>
     </div>
+    <script>
+      if (localStorage.getItem("isUserLoggedIn") === "true") {
+        document.querySelectorAll(".home__user").forEach(elem =>{
+          elem.innerHTML = "Dashboard";
+          elem.href = "assets/dashboard.html";
+        })
+        
+      }
+    </script>
     <script src="script.js"></script>
   </body>
 </html>

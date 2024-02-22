@@ -49,7 +49,7 @@
             <a class="subheader selected">Blog</a>
           </nav>
           <span class="actions">
-            <a class="subheader buttons" href="dashboard.html"
+            <a class="subheader buttons gotoDashboard" href="dashboard.html"
               >Dashboard <i class="ri-user-fill"></i
             ></a>
             <i class="theme-switcher bx bxs-moon"></i>
@@ -59,12 +59,18 @@
         <div id="navigation__pane">
           <div class="pane">
             <i id="close" class="bx bx-x"></i>
-            <a class="subheader nav__sub" href="#home">Home</a>
-            <a class="subheader nav__sub" href="#about__me">About Me</a>
-            <a class="subheader nav__sub" href="#works">Works</a>
-            <a class="subheader nav__sub" href="#contact__me">Contact Me</a>
+            <a class="subheader nav__sub" href="../index.html#home">Home</a>
+            <a class="subheader nav__sub" href="../index.html#about__me"
+              >About Me</a
+            >
+            <a class="subheader nav__sub" href="../index.html#works">Works</a>
+            <a class="subheader nav__sub" href="../index.html#contact__me"
+              >Contact Me</a
+            >
             <div class="action__btns">
-              <a class="subheader nav__sub" href="#contact__me">Hire Me</a>
+              <a class="subheader nav__sub gotoDashboard" href="dashboard.html"
+                >Dashboard</a
+              >
               <i class="theme-switcher bx bxs-moon"></i>
             </div>
           </div>
@@ -158,7 +164,7 @@
             <div class="one__stories__header">Love</div>
           </div>
           <div class="blog__stories__contents">
-            <div class="one__story__card">
+            <!-- <div class="one__story__card">
               <div class="one__story__img">
                 <img src="" alt="" />
                 <div class="tag">- Tech</div>
@@ -174,8 +180,7 @@
                 </p>
                 <a href="story.html" class="buttons">Read Full Story</a>
               </div>
-            </div>
-            
+            </div> -->
           </div>
         </section>
       </div>
@@ -188,5 +193,13 @@
     </main>
     <script src="../script.js"></script>
     <script src="blog.js"></script>
+    <script>
+      if (localStorage.getItem("isUserLoggedIn") === "false") {
+        document.querySelectorAll(".gotoDashboard").forEach((elem) => {
+          elem.innerHTML = `Join Now <i class="ri-user-add-fill"></i>`;
+          elem.href = "registerPage.html";
+        });
+      }
+    </script>
   </body>
 </html>

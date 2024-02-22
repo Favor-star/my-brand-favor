@@ -1,3 +1,10 @@
+"use strict";
+//SETTING LAZY LOADING ON IMAGES
+document.querySelectorAll("img").forEach(elem => {
+  elem.setAttribute("loading", "lazy");
+})
+  
+
 const Themeswitcher = document.querySelectorAll(".theme-switcher"),
   body = document.querySelector("body");
 
@@ -18,8 +25,7 @@ Themeswitcher.forEach((elem) => {
     }
   });
 });
-//DECRALING THE SELF INVOKED FUNCTION TO HANDLE THE CONDITION OF THE MODE SWITCHER BUTTON
-() => {};
+//HANDLING THE BUTTON FOR UPDATING THE STATUS OF THE MODE SWITCHING BUTTON
 onload = () => {
   mode(localStorage.getItem("colorMode"));
   if (localStorage.getItem("colorMode") === "dark") {
@@ -28,29 +34,23 @@ onload = () => {
       elem.classList.add("bxs-sun");
     });
   }
-  //CHECK WHETHER THE USER IS LOGGED IN AND THEN HANDLE THE REST
-  const isActive = localStorage.getItem("isuserLoggedIn");
-  const activeUser = JSON.stringify(localStorage.getItem("activeUser"));
-  if (isActive) {
-    document.getElementById("dashboard__userName").innerHTML =
-      activeUser.firstName;
-  }
+  // CHECK WHETHER THE USER IS LOGGED IN AND THEN HANDLE THE REST
+  // const isActive = localStorage.getItem("isuserLoggedIn");
+  // const activeUser = JSON.stringify(localStorage.getItem("activeUser"));
+  // if (isActive) {
+  //   document.getElementById("dashboard__userName").innerHTML =
+  //     activeUser.firstName;
+  // }
 };
-// const blogReadBtn = document.querySelectorAll(".read__story__button");
-// blogReadBtn.forEach((elem, index) => {
-//   elem.onclick = (e) => {
-//     e.preventDefault();
-//     console.log("Clicked")
-//     const stories = JSON.parse(localStorage.getItem("storiesList"));
-//     location.pathname = "/assets/story.html";
-
-//     setTimeout(() => {
-    
-//       document.querySelector(".story__main").innerHTML = stories[index].story;
-//     }, 500);
-//   };
-// });
-
+//SHOW THE USERNAME ON NAVBAR FOR SMALL SCREEN
+if (
+  window.innerWidth < 430 &&
+  localStorage.getItem("isUserLoggedIn") === "true"
+) {
+  console.log(document.querySelectorAll(".username__div")[1]);
+  document.querySelectorAll(".username__div")[1].innerHTML =
+    JSON.parse(localStorage.getItem("activeUser")).firstName || "Login";
+}
 //FUNCTION TO HANDLE BACK TO HOME ONCE USER CLICKS THE LOGO BUTTON
 const logoBtn = document.querySelectorAll(".head__to__home");
 logoBtn.forEach((element) => {
@@ -93,4 +93,54 @@ window.onresize = () => {
   if (window.innerWidth >= 834) {
     navigationPane.style.display = "none";
   }
+  if (
+    window.innerWidth < 430 &&
+    localStorage.getItem("isUserLoggedIn") === "true"
+  ) {
+    console.log(document.querySelectorAll(".username__div")[1]);
+    document.querySelectorAll(".username__div")[1].innerHTML =
+      JSON.parse(localStorage.getItem("activeUser")).firstName || "Login";
+  }
 };
+
+//HANDLING THE CONTACT ME PAGE
+const messageMeForm = document.querySelector(".msg__box");
+const msgMeEmail = document.getElementById("msg__me__email"),
+  msgMeName = document.getElementById("msg__me__name"),
+  msgMeSubject = document.getElementById("msg__me__subject"),
+  msgMeBody = document.getElementById("msg__me__body"),
+  msgMeErrorDiv = document.getElementById("contact__form__error");
+
+messageMeForm &&
+  messageMeForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    if (
+      msgMeBody.value === "" ||
+      msgMeEmail.value === "" ||
+      msgMeName.value === "" ||
+      msgMeSubject.value === ""
+    ) {
+      msgMeErrorDiv.style.transition = "all .2s ease-in-out";
+      msgMeErrorDiv.innerHTML = "Please don't leave an empty input";
+      setTimeout(() => {
+        msgMeErrorDiv.style.opacity = "0";
+        setTimeout(() => {
+          msgMeErrorDiv.innerHTML = "";
+          msgMeErrorDiv.style.opacity = "1";
+        }, 500);
+      }, 1000);
+      return;
+    }
+    const storedMessage =
+      JSON.parse(localStorage.getItem("userMessages")) || [];
+    const singleMessage = {
+      message: msgMeBody.value,
+      senderName: msgMeName.value,
+      senderEmail: msgMeEmail.value,
+      subject: msgMeSubject.value,
+    };
+    const messageToUpload = [...storedMessage, singleMessage];
+    localStorage.setItem("userMessages", JSON.stringify(messageToUpload));
+    alert("Thanks for contacting us! We will reach you soon");
+  });

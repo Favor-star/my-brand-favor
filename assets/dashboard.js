@@ -1,9 +1,18 @@
+"use strict";
+
+let path = location.pathname;
+path =
+  localStorage.getItem("isUserLoggedIn") === "false"
+    ? path.replace(/assets\/dashboard.html/, "/")
+    : path;
 const activeUser = JSON.parse(localStorage.getItem("activeUser"));
 const logout = document.querySelectorAll(".logout__btn");
 const userName = document.getElementById("dashboard__userName");
 const userNameDiv = document.querySelectorAll(".username__div");
 userName.innerText = activeUser.firstName;
 const logoutDiv = document.querySelectorAll(".logout__div");
+
+//show the name of logged in person
 
 userNameDiv.forEach((element) => {
   element.onclick = () => {
@@ -13,9 +22,7 @@ userNameDiv.forEach((element) => {
     });
   };
 });
-// userNameDiv.addEventListener("click", () => {
-//   logoutDiv.classList.toggle("hide");
-// });
+
 logout.forEach((element) => {
   element.onclick = () => {
     localStorage.setItem("isUserLoggedIn", "false");
@@ -44,7 +51,7 @@ function handleRegisteredUser(users) {
   <span class="account__more hide">
     <i class="ri-delete-bin-line"></i> Delete User
   </span>
-</span>;`;
+</span>`;
     accountsList.appendChild(oneAccount);
   });
   document.getElementById("accounts__created__nmbr").innerHTML = users.length;
@@ -162,20 +169,29 @@ function uploadToStorage(title, image, category, story) {
   const storiesToUpload = [...stories, singleStory];
   localStorage.setItem("storiesList", JSON.stringify(storiesToUpload));
 }
-// localStorage.removeItem("storiesList");
 
 //FUNCTION TO APPEND AVAILABLE STORIES ON THEIR RESPECTIVE DIVS
 
-function appendStory() {
-  let stories = JSON.parse(localStorage.getItem("storiesList")) || [];
+function appendStory(retrievedStory) {
+  let stories = retrievedStory || [];
   if (stories.length === 0) return;
   stories = stories.sort((elem, elem2) => {
     return elem.id - elem2.id; // Compare the ids of the elements
   });
   stories.forEach((story, index) => {
+    //FUNCTION TO APPEND NUMBER OF HOW MANY STORY WAS VIEWED
+    let userClicks = JSON.parse(localStorage.getItem("userClicks")) || [];
+
+    const clicked = userClicks.filter((elem) => elem.index === index)[0];
+    console.log(clicked);
+    // if (!clicked) {
+    //   return;
+    // } else {
+    //   clicked.index === index ? clicked.clicks : "NO";
+    // }
     const oneStory = document.createElement("div");
     oneStory.classList.add("one__story__list");
-
+    oneStory.setAttribute("data-target", index);
     oneStory.innerHTML = `
    <span class="list__title">
      <span class="title__number">${index + 1}.</span>
@@ -185,7 +201,9 @@ function appendStory() {
      </span>
      <span class="list__views">
        <i class="ri-eye-fill"></i>
-       <span>100 VIEWS</span>
+       <span class="views__nmbr">${
+        clicked === undefined? "NO": clicked.index === index ? clicked.clicks : "NO"
+       } VIEWS</span>
      </span>
      <span>
         <div class="list__views">
@@ -200,31 +218,56 @@ function appendStory() {
       <div class="more__div">
         <i class="more__btn ri-more-2-fill"></i>
         <div class="more__content">
-              <span class="mores">
+              <span class="mores for__hiding">
                   <i class="ri-eye-off-fill"></i>
                   Hide Story
               </span>
-              <span class="mores">
+              <span class="mores for__editing">
                 <i class="ri-file-edit-line"></i>
                 Edit Story
               </span>
-              <span class="mores">
+              <span class="mores for__deleting">
                 <i class="ri-delete-bin-line"></i>
                 Delete Story
               </span>
           </div>
       </div>`;
+
+    // views[index].innerHTML = clicked.clicks;
+    // userClicks.forEach((elem) => {
+    //   views.forEach((view, index) => {
+    //     if (elem.index === index) {
+    //       view.innerHTML = `${elem.clicks} VIEWS`;
+    //     }
+    //   });
+    // });
+
     document.querySelector(".story__list").appendChild(oneStory);
   });
 }
-appendStory();
+
+appendStory(JSON.parse(localStorage.getItem("storiesList")));
 
 //HANDLE THE MORE BUTTON WITHIN THE RECENT STORIES
 const storyDelete = document.querySelectorAll(".more__content"),
   moreButton = document.querySelectorAll(".more__btn");
-console.log(storyDelete);
+
 moreButton.forEach((elem, index) => {
   elem.addEventListener("click", (e) => {
     storyDelete[index].classList.toggle("shown");
   });
+});
+//FUNCTION TO HANDLE THE DELETE STORY IN RECENTLY ADDED STORY LISTS
+const forDeleting = document.querySelectorAll(".for__deleting");
+forDeleting.forEach((elem, index) => {
+  elem.onclick = () => {
+    const newStroy = JSON.parse(localStorage.getItem("storiesList")).filter(
+      (story, storyIndex) => {
+        return storyIndex !== index;
+      }
+    );
+    localStorage.setItem("storiesList", JSON.stringify(newStroy));
+    document.querySelector(".story__list").innerHTML = "";
+    appendStory(newStroy);
+  };
 });
