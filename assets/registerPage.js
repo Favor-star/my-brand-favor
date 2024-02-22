@@ -121,13 +121,15 @@ function storeUser(user) {
   localStorage.setItem("activeUser", JSON.stringify(user));
   localStorage.setItem("isUserLoggedIn", "true");
   setTimeout(() => {
-    location.pathname = "/assets/dashboard.html";
+    location.pathname = location.pathname.replace(
+      /registerPage.html/,
+      "dashboard.html"
+    );
   }, 500);
 }
 //Once the user is created, naviaget to the dashboard
 function navigateTo(user) {
   setTimeout(() => {
-    console.log(document.getElementById("dashboard__userName"));
     navigateTo(user);
   }, 500);
 }
@@ -161,7 +163,10 @@ loginForm.onsubmit = (e) => {
 
     return;
   }
-  location.pathname = "/assets/dashboard.html";
+  location.pathname = location.pathname.replace(
+    /registerPage.html/,
+    "dashboard.html"
+  );
   localStorage.setItem("isUserLoggedIn", "true");
   localStorage.setItem("activeUser", JSON.stringify(matchingUser));
 };

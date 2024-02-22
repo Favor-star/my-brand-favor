@@ -24,14 +24,16 @@ function showStoryOnBlog() {
     blogStories.appendChild(story);
   });
   const blogReadBtn = document.querySelectorAll(".read__story__button");
-  console.log(blogReadBtn);
+
   blogReadBtn.forEach((elem, index) => {
     elem.onclick = (e) => {
-      e.preventDefault();   
-        location.pathname = "/assets/story.html";
+      e.preventDefault();
+      // location.pathname = "/assets/story.html";
+        location.pathname = location.pathname.replace(/blog.html/, "story.html");
     };
   });
 }
 showStoryOnBlog();
 
 //FUNCTION TO READ THE BLOG PAGE
+
