@@ -20,7 +20,8 @@ logout.forEach((element) => {
   element.onclick = () => {
     localStorage.setItem("isUserLoggedIn", "false");
     localStorage.removeItem("activeUser");
-    location.pathname = "/";
+
+    location.pathname = location.pathname.replace(/assets\/dashboard.html/, "");
   };
 });
 
@@ -227,4 +228,3 @@ moreButton.forEach((elem, index) => {
     storyDelete[index].classList.toggle("shown");
   });
 });
-
