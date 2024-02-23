@@ -49,9 +49,13 @@
           <div class="pane">
             <i id="close" class="bx bx-x"></i>
             <a class="subheader nav__sub" href="../index.html#home">Home</a>
-            <a class="subheader nav__sub" href="../index.html#about__me">About Me</a>
+            <a class="subheader nav__sub" href="../index.html#about__me"
+              >About Me</a
+            >
             <a class="subheader nav__sub" href="../index.html#works">Works</a>
-            <a class="subheader nav__sub" href="../index.html#contact__me">Contact Me</a>
+            <a class="subheader nav__sub" href="../index.html#contact__me"
+              >Contact Me</a
+            >
             <a href="blog.html" class="subheader blog__link"
               >Blog <i class="ri-external-link-line" style="font-size: 20px"></i
             ></a>
@@ -75,7 +79,108 @@
       <!-- <div class="wrapper"> -->
       <!-- <section style="width: 100%;"> -->
       <h3 style="text-align: center; margin-bottom: 6vh">ADMIN DASHBOARD</h3>
-      <details open>
+      <details>
+        <summary>General Settings <i class="ri-arrow-down-s-fill"></i></summary>
+        <div>
+          <h3>Welcome back, Favour Eliab</h3>
+          <div class="profile__wrapper">
+            <div class="img__section">
+              <img src="" alt="" />
+              <span>
+                <p><i class="ri-pencil-fill"></i> Upload your Image</p>
+                <button class="buttons">Save Changes</button>
+              </span>
+            </div>
+            <p>Account created on: <strong>23/09/2003 8:00PM</strong></p>
+          </div>
+          <div class="update__delete">
+            <div>
+              <h4>Edit your personal info</h4>
+              <div class="grid__wrapper">
+                <div class="box__item">
+                  <label for="names__edit">Names</label>
+                  <input
+                    name="names__edit"
+                    id="names__edit"
+                    type="text"
+                    class="inputs"
+                    placeholder="Favour Eliab"
+                    value="Favour Eliab"
+                  />
+                </div>
+                <div class="box__item">
+                  <label for="username">Username</label>
+                  <input
+                    name="username"
+                    id="username"
+                    type="text"
+                    class="inputs"
+                    placeholder="Favour Eliab"
+                    value="favoureliab"
+                  />
+                </div>
+                <div class="box__item">
+                  <label for="username">Email</label>
+                  <input
+                    name="email__edit"
+                    id="email__edit"
+                    type="email"
+                    class="inputs"
+                    placeholder="favoureliab@gmail.com"
+                    value="favoureliab@gmail.com"
+                    style="background-color: var(--gray)"
+                    disabled
+                  />
+                </div>
+                <div class="box__item">
+                  <label for="phone__nmbr__edit">Phone number</label>
+                  <input
+                    name="phone__nmbr__edit"
+                    id="phone__nmbr__edit"
+                    type="tel"
+                    class="inputs"
+                    placeholder="Enter your number"
+                    value="+250 787 922 900"
+                  />
+                </div>
+                <div class="box__item">
+                  <label for="passwrod__edit">Change your password</label>
+                  <input
+                    name="passwrod__edit"
+                    id="passwrod__edit"
+                    type="password"
+                    class="inputs"
+                    placeholder="Enter your Password"
+                    value=""
+                  />
+                </div>
+                <div class="box__item">
+                  <label for="passwrod__confirm__edit"
+                    >Confirm your password</label
+                  >
+                  <input
+                    name="passwrod__confirm__edit"
+                    id="passwrod__confirm__edit"
+                    type="password"
+                    class="inputs"
+                    placeholder="Enter your Password"
+                    value=""
+                  />
+                </div>
+                <button class="buttons">Update Info</button>
+              </div>
+            </div>
+            <div class="delete">
+              <p>Danger Zone</p>
+              <span>
+                <a href="">Delete account</a>
+                <a href="">Deactivate account</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details>
         <summary>
           Stories management <i class="ri-arrow-down-s-fill"></i>
         </summary>
@@ -321,107 +426,7 @@
           </div>
         </div>
       </details>
-      <details>
-        <summary>General Settings <i class="ri-arrow-down-s-fill"></i></summary>
-        <div>
-          <h3>Welcome back, Favour Eliab</h3>
-          <div class="profile__wrapper">
-            <div class="img__section">
-              <img src="" alt="" />
-              <span>
-                <p><i class="ri-pencil-fill"></i> Upload your Image</p>
-                <button class="buttons">Save Changes</button>
-              </span>
-            </div>
-            <p>Account created on: <strong>23/09/2003 8:00PM</strong></p>
-          </div>
-          <div class="update__delete">
-            <div>
-              <h4>Edit your personal info</h4>
-              <div class="grid__wrapper">
-                <div class="box__item">
-                  <label for="names__edit">Names</label>
-                  <input
-                    name="names__edit"
-                    id="names__edit"
-                    type="text"
-                    class="inputs"
-                    placeholder="Favour Eliab"
-                    value="Favour Eliab"
-                  />
-                </div>
-                <div class="box__item">
-                  <label for="username">Username</label>
-                  <input
-                    name="username"
-                    id="username"
-                    type="text"
-                    class="inputs"
-                    placeholder="Favour Eliab"
-                    value="favoureliab"
-                  />
-                </div>
-                <div class="box__item">
-                  <label for="username">Email</label>
-                  <input
-                    name="email__edit"
-                    id="email__edit"
-                    type="email"
-                    class="inputs"
-                    placeholder="favoureliab@gmail.com"
-                    value="favoureliab@gmail.com"
-                    style="background-color: var(--gray)"
-                    disabled
-                  />
-                </div>
-                <div class="box__item">
-                  <label for="phone__nmbr__edit">Phone number</label>
-                  <input
-                    name="phone__nmbr__edit"
-                    id="phone__nmbr__edit"
-                    type="tel"
-                    class="inputs"
-                    placeholder="Enter your number"
-                    value="+250 787 922 900"
-                  />
-                </div>
-                <div class="box__item">
-                  <label for="passwrod__edit">Change your password</label>
-                  <input
-                    name="passwrod__edit"
-                    id="passwrod__edit"
-                    type="password"
-                    class="inputs"
-                    placeholder="Enter your Password"
-                    value=""
-                  />
-                </div>
-                <div class="box__item">
-                  <label for="passwrod__confirm__edit"
-                    >Confirm your password</label
-                  >
-                  <input
-                    name="passwrod__confirm__edit"
-                    id="passwrod__confirm__edit"
-                    type="password"
-                    class="inputs"
-                    placeholder="Enter your Password"
-                    value=""
-                  />
-                </div>
-                <button class="buttons">Update Info</button>
-              </div>
-            </div>
-            <div class="delete">
-              <p>Danger Zone</p>
-              <span>
-                <a href="">Delete account</a>
-                <a href="">Deactivate account</a>
-              </span>
-            </div>
-          </div>
-        </div>
-      </details>
+
       <details>
         <summary>
           Interactions Management <i class="ri-arrow-down-s-fill"></i>
