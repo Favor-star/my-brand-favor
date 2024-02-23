@@ -202,7 +202,11 @@ function appendStory(retrievedStory) {
      <span class="list__views">
        <i class="ri-eye-fill"></i>
        <span class="views__nmbr">${
-        clicked === undefined? "NO": clicked.index === index ? clicked.clicks : "NO"
+         clicked === undefined
+           ? "NO"
+           : clicked.index === index
+           ? clicked.clicks
+           : "NO"
        } VIEWS</span>
      </span>
      <span>
@@ -271,3 +275,6 @@ forDeleting.forEach((elem, index) => {
     appendStory(newStroy);
   };
 });
+function updateStory() {
+  
+}

@@ -49,8 +49,8 @@
             <a class="subheader selected">Blog</a>
           </nav>
           <span class="actions">
-            <a class="subheader buttons gotoDashboard" href="dashboard.html"
-              >Dashboard <i class="ri-user-fill"></i
+            <a class="subheader buttons gotoDashboard" href="registerPage.html"
+              >Join Now <i class="ri-user-add-fill"></i
             ></a>
             <i class="theme-switcher bx bxs-moon"></i>
             <!-- <i title="Sniper Mode" class="sniper bx bx-target-lock"></i> -->
@@ -194,10 +194,10 @@
     <script src="../script.js"></script>
     <script src="blog.js"></script>
     <script>
-      if (localStorage.getItem("isUserLoggedIn") === "false") {
+      if (localStorage.getItem("isUserLoggedIn") === "true") {
         document.querySelectorAll(".gotoDashboard").forEach((elem) => {
-          elem.innerHTML = `Join Now <i class="ri-user-add-fill"></i>`;
-          elem.href = "registerPage.html";
+          elem.innerHTML = `Dashboard <i class="ri-user-fill"></i>`;
+          elem.href = "dashboard.html";
         });
       }
     </script>
