@@ -179,11 +179,11 @@ function appendStory(retrievedStory) {
     return elem.id - elem2.id; // Compare the ids of the elements
   });
   stories.forEach((story, index) => {
-    //FUNCTION TO APPEND NUMBER OF HOW MANY STORY WAS VIEWED
+    //FUNCTION TO APPEND NUMBER OF HOW MANY THE STORY WAS VIEWED
     let userClicks = JSON.parse(localStorage.getItem("userClicks")) || [];
 
     const clicked = userClicks.filter((elem) => elem.index === index)[0];
-    console.log(clicked);
+    
     // if (!clicked) {
     //   return;
     // } else {
