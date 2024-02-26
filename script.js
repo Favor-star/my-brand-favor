@@ -1,9 +1,17 @@
 "use strict";
 //SETTING LAZY LOADING ON IMAGES
-document.querySelectorAll("img").forEach(elem => {
+document.querySelectorAll("img").forEach((elem) => {
   elem.setAttribute("loading", "lazy");
-})
-  
+});
+
+//FUNCTION TO HANDLE THE THEME SWITCHING
+const mode = (value) => {
+  if (value == "dark") {
+    body.classList.add("dark__mode");
+  } else {
+    body.classList.remove("dark__mode");
+  }
+};
 
 const Themeswitcher = document.querySelectorAll(".theme-switcher"),
   body = document.querySelector("body");
@@ -47,7 +55,7 @@ if (
   window.innerWidth < 430 &&
   localStorage.getItem("isUserLoggedIn") === "true"
 ) {
-  console.log(document.querySelectorAll(".username__div")[1]);
+  if (document.querySelectorAll(".username__div")[1] === undefined) console.log("true");
   document.querySelectorAll(".username__div")[1].innerHTML =
     JSON.parse(localStorage.getItem("activeUser")).firstName || "Login";
 }
@@ -60,15 +68,6 @@ logoBtn.forEach((element) => {
     location.pathname = "/";
   };
 });
-
-//FUNCTION TO HANDLE THE THEME SWITCHING
-const mode = (value) => {
-  if (value == "dark") {
-    body.classList.add("dark__mode");
-  } else {
-    body.classList.remove("dark__mode");
-  }
-};
 
 //HANDLE THE NAVIGATION PANE
 const navigationPane = document.querySelector("#navigation__pane");
@@ -97,7 +96,7 @@ window.onresize = () => {
     window.innerWidth < 430 &&
     localStorage.getItem("isUserLoggedIn") === "true"
   ) {
-    console.log(document.querySelectorAll(".username__div")[1]);
+    if (!document.querySelectorAll(".username__div")[1]) return;
     document.querySelectorAll(".username__div")[1].innerHTML =
       JSON.parse(localStorage.getItem("activeUser")).firstName || "Login";
   }

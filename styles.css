@@ -564,7 +564,6 @@ textarea {
   color: var(--black);
   font-family: "Archivo Narrow", sans-serif;
   font-size: 1rem;
-
 }
 .inputs:focus,
 textarea:focus {
@@ -792,9 +791,31 @@ textarea:hover {
   width: 100%;
   justify-content: end;
 }
+.like__post {
+  margin-top: 2.5rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 10px;flex-wrap: wrap;
+}
+.like__post span {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid var(--black);
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.like__post span i {
+  font-size: 22px;
+}
 #comments {
   display: flex;
-  margin-top: 2.5rem;
+
   flex-direction: column;
   gap: 20px;
 }
@@ -1512,11 +1533,11 @@ main {
   background-color: #00000018;
   position: absolute;
   inset: 0;
-padding: 20px;
+  padding: 20px;
   display: grid;
   place-content: center;
   transform: scale(1);
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   transform-origin: center;
 }
 .story__confirm__form.hide {

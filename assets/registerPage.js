@@ -163,6 +163,7 @@ loginForm.onsubmit = (e) => {
 
     return;
   }
+ 
   location.pathname = location.pathname.replace(
     /registerPage.html/,
     "dashboard.html"

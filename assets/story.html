@@ -31,7 +31,7 @@
             ></a>
           </nav>
           <span class="actions">
-            <a class="subheader buttons" href="registerPage.html"
+            <a class="subheader buttons gotoDashboard" href="registerPage.html"
               >Join <i class="ri-user-add-fill"></i
             ></a>
             <i class="theme-switcher bx bxs-moon"></i>
@@ -41,12 +41,21 @@
         <div id="navigation__pane">
           <div class="pane">
             <i id="close" class="bx bx-x"></i>
-            <a class="subheader nav__sub" href="#home">Home</a>
-            <a class="subheader nav__sub" href="#about__me">About Me</a>
-            <a class="subheader nav__sub" href="#works">Works</a>
-            <a class="subheader nav__sub" href="#contact__me">Contact Me</a>
+            <a class="subheader nav__sub" href="../index.html#home">Home</a>
+            <a class="subheader nav__sub" href="../index.html#about__me"
+              >About Me</a
+            >
+            <a class="subheader nav__sub" href="../index.html#works">Works</a>
+            <a class="subheader nav__sub" href="../index.html#contact__me"
+              >Contact Me</a
+            >
+            <a href="blog.html" class="subheader blog__link"
+              >Blog <i class="ri-external-link-line" style="font-size: 20px"></i
+            ></a>
             <div class="action__btns">
-              <a class="subheader nav__sub" href="#contact__me">Hire Me</a>
+              <a class="subheader nav__sub goToDashboard" href="dashboard.html"
+                >Dashboard</a
+              >
               <i class="theme-switcher bx bxs-moon"></i>
             </div>
           </div>
@@ -146,61 +155,67 @@
           </p>
         </span>
       </section>
+      <div class="like__post">
+        <span><i class="ri-heart-line"></i>LIKE THIS POST</span>
+        <span><i class="ri-share-fill"></i> SHARE THIS POST</span>
+      </div>
       <section id="comments">
         <div class="comment__title">
           <p>COMMENTS</p>
         </div>
-        <div class="one__comment">
-          <span class="commenter__title">
-            <p class="commenter">Anonymous</p>
-            <p class="time__commented">2 days ago</p>
-          </span>
-          <p class="main__comment">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-            reprehenderit numquam maiores! Totam nam commodi unde sint sapiente
-            at minus cupiditate et numquam a! Dolorum laborum libero voluptate
-            perferendis maiores eos tempora hic
-          </p>
-          <div class="comments__icons">
-            <div class="icons">
-              <i class="ri-heart-3-line"></i>
-              10
-            </div>
-            <div class="icons">
-              <i class="ri-reply-line"></i>
-              100
-            </div>
-            <div class="icons">
-              <i class="ri-share-forward-2-line"></i>
-              SHARE
-            </div>
-          </div>
-        </div>
-        <div class="one__comment">
-          <span class="commenter__title">
-            <p class="commenter">Anonymous</p>
-            <p class="time__commented">2 days ago</p>
-          </span>
-          <p class="main__comment">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-            reprehenderit numquam maiores! Totam nam commodi unde sint sapiente
-            at minus cupiditate et numquam a! Dolorum laborum libero voluptate
-            perferendis maiores eos tempora hic
-          </p>
-          <div class="comments__icons">
-            <div class="icons">
-              <i class="ri-heart-3-line"></i>
-              10
-            </div>
-            <div class="icons">
-              <i class="ri-reply-line"></i>
-              100
-            </div>
-            <div class="icons">
-              <i class="ri-share-forward-2-line"></i>
-              SHARE
+        <div id="comments__wrapper">
+          <!-- <div class="one__comment">
+            <span class="commenter__title">
+              <p class="commenter">Anonymous</p>
+              <p class="time__commented">2 days ago</p>
+            </span>
+            <p class="show__comment">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
+              reprehenderit numquam maiores! Totam nam commodi unde sint sapiente
+              at minus cupiditate et numquam a! Dolorum laborum libero voluptate
+              perferendis maiores eos tempora hic
+            </p>
+            <div class="comments__icons">
+              <div class="icons">
+                <i class="ri-heart-3-line"></i>
+                10
+              </div>
+              <div class="icons">
+                <i class="ri-reply-line"></i>
+                100
+              </div>
+              <div class="icons">
+                <i class="ri-share-forward-2-line"></i>
+                SHARE
+              </div>
             </div>
           </div>
+          <div class="one__comment">
+            <span class="commenter__title">
+              <p class="commenter">Anonymous</p>
+              <p class="time__commented">2 days ago</p>
+            </span>
+            <p class="show__comment">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
+              reprehenderit numquam maiores! Totam nam commodi unde sint sapiente
+              at minus cupiditate et numquam a! Dolorum laborum libero voluptate
+              perferendis maiores eos tempora hic
+            </p>
+            <div class="comments__icons">
+              <div class="icons">
+                <i class="ri-heart-3-line"></i>
+                10
+              </div>
+              <div class="icons">
+                <i class="ri-reply-line"></i>
+                100
+              </div>
+              <div class="icons">
+                <i class="ri-share-forward-2-line"></i>
+                SHARE
+              </div>
+            </div>
+          </div> -->
         </div>
         <div class="add__comment">
           PLEASE ADD A COMMENT TO EXPRESS WHAT YOU THINK ABOUT THIS ARTICLE
@@ -234,6 +249,14 @@
         <p>All rights reserved</p>
       </section>
     </main>
+    <script>
+      if (localStorage.getItem("isUserLoggedIn") === "true") {
+        document.querySelectorAll(".gotoDashboard").forEach((elem) => {
+          elem.innerHTML = `Dashboard <i class="ri-user-fill"></i>`;
+          elem.href = "dashboard.html";
+        });
+      }
+    </script>
     <script src="../script.js"></script>
     <script src="blog.js"></script>
   </body>
