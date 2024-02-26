@@ -174,10 +174,10 @@ function handleTrendingStroy() {
   let stories = JSON.parse(localStorage.getItem("storiesList")) || [];
   const index = stories.length - 1;
   stories = stories[index];
-  const readTrending = document.querySelector(".read__more");
-  const trendingHeader = document.querySelector("[trendingHeader]");
-  const trendingtext = document.querySelector("[trendingtext]");
-  const trendingImage = document.querySelector("[trendingImage]");
+  const readTrending = document.querySelector(".read__more") || [];
+  const trendingHeader = document.querySelector("[trendingHeader]") || [];
+  const trendingtext = document.querySelector("[trendingtext]") || {};
+  const trendingImage = document.querySelector("[trendingImage]") || [];
   trendingHeader.innerHTML = stories.title;
   trendingImage.src = stories.image;
   trendingtext.innerHTML = `${stories.story.slice(0, 143)}...`;
@@ -192,3 +192,81 @@ function handleTrendingStroy() {
   };
 }
 handleTrendingStroy();
+
+function likeStory() {
+  const likeBtn = document.querySelector("[likeStory]") || [];
+  let isLiked = false;
+  let storyIndex = JSON.parse(localStorage.getItem("storyToRead"))[0];
+  let likesObj = {
+    storyIndex: storyIndex,
+  };
+  likeBtn.onclick = () => {
+    const { firstName, lastName } =
+      JSON.parse(localStorage.getItem("activeUser")) || [];
+    const likedStories = JSON.parse(localStorage.getItem("likedStory")) || [];
+    if (!isLiked) {
+      const thisStory = likedStories.find(
+        (elem) => elem.storyIndex === storyIndex
+      );
+      const otherStories = likedStories.filter(
+        (elem) => elem.storyIndex !== storyIndex
+      );
+      console.log(thisStory);
+      if (thisStory) {
+        thisStory.likes = 1;
+        localStorage.setItem(
+          "likedStory",
+          JSON.stringify([...otherStories, thisStory])
+        );
+      } else {
+        likesObj.likes = 1;
+        likedStories.push(likesObj);
+        localStorage.setItem("likedStory", JSON.stringify(likedStories));
+      }
+      likeBtn.innerHTML = `<i class="ri-heart-fill"></i> LIKED`;
+    } else {
+      likeBtn.innerHTML = `<i class="ri-heart-line"></i> LIKE THIS POST`;
+      const thisStory = likedStories.find(
+        (elem) => elem.storyIndex === storyIndex
+      );
+      const otherStories = likedStories.filter(
+        (elem) => elem.storyIndex !== storyIndex
+      );
+      thisStory.likes = 0;
+      localStorage.setItem(
+        "likedStory",
+        JSON.stringify([...otherStories, thisStory])
+      );
+    }
+    isLiked = !isLiked;
+  };
+  onload = () => {
+    const isStoryLIked =
+      JSON.parse(localStorage.getItem("likedStory")).find(
+        (elem) => elem.storyIndex === storyIndex
+      ).likes !== 0;
+    if (isStoryLIked) {
+      likeBtn.innerHTML = `<i class="ri-heart-fill"></i> LIKED`;
+      isLiked = true;
+    } else {
+      likeBtn.innerHTML = `<i class="ri-heart-line"></i> LIKE THIS POST`;
+      isLiked = false;
+    }
+  };
+}
+likeStory();
+const shareStory = () => {
+  const shareBtn = document.querySelector("[shareStory]") || [];
+  shareBtn.onclick = () => {
+    console.log("CLICKED");
+    navigator.clipboard
+      .writeText(location.href)
+      .then(() => {
+        alert("SUCCESS!! 😊 STORY LINK COPPIED TO CLIPBOARD");
+      })
+      .catch((error) => {
+        alert("There was an error:", error);
+      });
+  };
+};
+shareStory();

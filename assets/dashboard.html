@@ -434,37 +434,37 @@
         <div>
           <div class="statistics">
             <div class="quick__statistics">
-              <p>Quick statistics within last:</p>
-              <span>
+              <p>Quick statistics</p>
+              <!-- <span>
                 <a href="">24 hours</a>
                 <a class="selected" href="">7 day</a>
                 <a href="">1 month</a>
                 <a href="">12 months</a>
-              </span>
+              </span> -->
             </div>
             <div class="actual__stats">
               <div class="one__stat">
                 <i class="ri-heart-fill"></i>
-                <span><span>20k</span> Total Likes</span>
+                <span><span totalLikes></span> Total Likes</span>
               </div>
               <div class="one__stat">
                 <i class="ri-chat-4-fill"></i>
-                <span><span>20k</span> Total Comments</span>
+                <span><span totalComments></span> Total Comments</span>
               </div>
               <div class="one__stat">
                 <i class="ri-cursor-fill"></i>
-                <span><span>20k</span> Total Clicks</span>
+                <span><span totalClicks></span> Total Clicks</span>
               </div>
               <div class="one__stat">
                 <i class="ri-share-forward-2-fill"></i>
-                <span><span>20k</span> Total Views</span>
+                <span><span totalShares>0</span> Total Shares</span>
               </div>
             </div>
           </div>
           <div class="manage__comments">
             <p>Selecet a story title to view interactions</p>
-            <div>
-              <details class="single__story">
+            <div allComments>
+              <!-- <details class="single__story">
                 <summary class="story__summary">
                   1. Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                   Mollitia asperiores sequi modi quae fuga ullam minus maiores,
@@ -472,51 +472,6 @@
                 </summary>
                 <div class="comments__likes">
                   <div class="comments">
-                    <div class="one__comment">
-                      <span class="name__date">
-                        <span>John Doe</span>
-                        <span>2 hours ago</span>
-                      </span>
-                      <div class="actual__comment">
-                        <span
-                          >Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Exercitationem debitis molestias porro enim
-                          voluptatum mollitia possimus cumque a fugit
-                          ratione!</span
-                        >
-                        <i class="ri-more-2-line"></i>
-                      </div>
-                    </div>
-                    <div class="one__comment">
-                      <span class="name__date">
-                        <span>John Doe</span>
-                        <span>2 hours ago</span>
-                      </span>
-                      <div class="actual__comment">
-                        <span
-                          >Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Exercitationem debitis molestias porro enim
-                          voluptatum mollitia possimus cumque a fugit
-                          ratione!</span
-                        >
-                        <i class="ri-more-2-line"></i>
-                      </div>
-                    </div>
-                    <div class="one__comment">
-                      <span class="name__date">
-                        <span>John Doe</span>
-                        <span>2 hours ago</span>
-                      </span>
-                      <div class="actual__comment">
-                        <span
-                          >Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Exercitationem debitis molestias porro enim
-                          voluptatum mollitia possimus cumque a fugit
-                          ratione!</span
-                        >
-                        <i class="ri-more-2-line"></i>
-                      </div>
-                    </div>
                     <div class="one__comment">
                       <span class="name__date">
                         <span>John Doe</span>
@@ -575,343 +530,7 @@
                   </div>
                 </div>
                 <div></div>
-              </details>
-              <details class="single__story">
-                <summary class="story__summary">
-                  1. Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Mollitia asperiores sequi modi quae fuga ullam minus maiores,
-                  enim quidem aperiam.
-                </summary>
-                <div class="comments__likes">
-                  <div class="comments">
-                    <div class="one__comment">
-                      <span class="name__date">
-                        <span>John Doe</span>
-                        <span>2 hours ago</span>
-                      </span>
-                      <div class="actual__comment">
-                        <span
-                          >Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Exercitationem debitis molestias porro enim
-                          voluptatum mollitia possimus cumque a fugit
-                          ratione!</span
-                        >
-                        <i class="ri-more-2-line"></i>
-                      </div>
-                    </div>
-                    <div class="one__comment">
-                      <span class="name__date">
-                        <span>John Doe</span>
-                        <span>2 hours ago</span>
-                      </span>
-                      <div class="actual__comment">
-                        <span
-                          >Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Exercitationem debitis molestias porro enim
-                          voluptatum mollitia possimus cumque a fugit
-                          ratione!</span
-                        >
-                        <i class="ri-more-2-line"></i>
-                      </div>
-                    </div>
-                    <div class="one__comment">
-                      <span class="name__date">
-                        <span>John Doe</span>
-                        <span>2 hours ago</span>
-                      </span>
-                      <div class="actual__comment">
-                        <span
-                          >Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Exercitationem debitis molestias porro enim
-                          voluptatum mollitia possimus cumque a fugit
-                          ratione!</span
-                        >
-                        <i class="ri-more-2-line"></i>
-                      </div>
-                    </div>
-                    <div class="one__comment">
-                      <span class="name__date">
-                        <span>John Doe</span>
-                        <span>2 hours ago</span>
-                      </span>
-                      <div class="actual__comment">
-                        <span
-                          >Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Exercitationem debitis molestias porro enim
-                          voluptatum mollitia possimus cumque a fugit
-                          ratione!</span
-                        >
-                        <i class="ri-more-2-line"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="likes">
-                    <h3>Liked by:</h3>
-                    <div class="actual__likes">
-                      <div class="one__like">
-                        <span class="liker__info">
-                          <span>John Doe</span>
-                          <span>a minute ago</span>
-                        </span>
-                        <i class="ri-arrow-right-up-fill"></i>
-                      </div>
-                      <div class="one__like">
-                        <span class="liker__info">
-                          <span>John Doe</span>
-                          <span>a minute ago</span>
-                        </span>
-                        <i class="ri-arrow-right-up-fill"></i>
-                      </div>
-                      <div class="one__like">
-                        <span class="liker__info">
-                          <span>John Doe</span>
-                          <span>a minute ago</span>
-                        </span>
-                        <i class="ri-arrow-right-up-fill"></i>
-                      </div>
-                      <div class="one__like">
-                        <span class="liker__info">
-                          <span>John Doe</span>
-                          <span>a minute ago</span>
-                        </span>
-                        <i class="ri-arrow-right-up-fill"></i>
-                      </div>
-                      <div class="one__like">
-                        <span class="liker__info">
-                          <span>John Doe</span>
-                          <span>a minute ago</span>
-                        </span>
-                        <i class="ri-arrow-right-up-fill"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div></div>
-              </details>
-              <details class="single__story">
-                <summary class="story__summary">
-                  1. Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Mollitia asperiores sequi modi quae fuga ullam minus maiores,
-                  enim quidem aperiam.
-                </summary>
-                <div class="comments__likes">
-                  <div class="comments">
-                    <div class="one__comment">
-                      <span class="name__date">
-                        <span>John Doe</span>
-                        <span>2 hours ago</span>
-                      </span>
-                      <div class="actual__comment">
-                        <span
-                          >Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Exercitationem debitis molestias porro enim
-                          voluptatum mollitia possimus cumque a fugit
-                          ratione!</span
-                        >
-                        <i class="ri-more-2-line"></i>
-                      </div>
-                    </div>
-                    <div class="one__comment">
-                      <span class="name__date">
-                        <span>John Doe</span>
-                        <span>2 hours ago</span>
-                      </span>
-                      <div class="actual__comment">
-                        <span
-                          >Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Exercitationem debitis molestias porro enim
-                          voluptatum mollitia possimus cumque a fugit
-                          ratione!</span
-                        >
-                        <i class="ri-more-2-line"></i>
-                      </div>
-                    </div>
-                    <div class="one__comment">
-                      <span class="name__date">
-                        <span>John Doe</span>
-                        <span>2 hours ago</span>
-                      </span>
-                      <div class="actual__comment">
-                        <span
-                          >Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Exercitationem debitis molestias porro enim
-                          voluptatum mollitia possimus cumque a fugit
-                          ratione!</span
-                        >
-                        <i class="ri-more-2-line"></i>
-                      </div>
-                    </div>
-                    <div class="one__comment">
-                      <span class="name__date">
-                        <span>John Doe</span>
-                        <span>2 hours ago</span>
-                      </span>
-                      <div class="actual__comment">
-                        <span
-                          >Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Exercitationem debitis molestias porro enim
-                          voluptatum mollitia possimus cumque a fugit
-                          ratione!</span
-                        >
-                        <i class="ri-more-2-line"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="likes">
-                    <h3>Liked by:</h3>
-                    <div class="actual__likes">
-                      <div class="one__like">
-                        <span class="liker__info">
-                          <span>John Doe</span>
-                          <span>a minute ago</span>
-                        </span>
-                        <i class="ri-arrow-right-up-fill"></i>
-                      </div>
-                      <div class="one__like">
-                        <span class="liker__info">
-                          <span>John Doe</span>
-                          <span>a minute ago</span>
-                        </span>
-                        <i class="ri-arrow-right-up-fill"></i>
-                      </div>
-                      <div class="one__like">
-                        <span class="liker__info">
-                          <span>John Doe</span>
-                          <span>a minute ago</span>
-                        </span>
-                        <i class="ri-arrow-right-up-fill"></i>
-                      </div>
-                      <div class="one__like">
-                        <span class="liker__info">
-                          <span>John Doe</span>
-                          <span>a minute ago</span>
-                        </span>
-                        <i class="ri-arrow-right-up-fill"></i>
-                      </div>
-                      <div class="one__like">
-                        <span class="liker__info">
-                          <span>John Doe</span>
-                          <span>a minute ago</span>
-                        </span>
-                        <i class="ri-arrow-right-up-fill"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div></div>
-              </details>
-              <details class="single__story">
-                <summary class="story__summary">
-                  1. Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Mollitia asperiores sequi modi quae fuga ullam minus maiores,
-                  enim quidem aperiam.
-                </summary>
-                <div class="comments__likes">
-                  <div class="comments">
-                    <div class="one__comment">
-                      <span class="name__date">
-                        <span>John Doe</span>
-                        <span>2 hours ago</span>
-                      </span>
-                      <div class="actual__comment">
-                        <span
-                          >Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Exercitationem debitis molestias porro enim
-                          voluptatum mollitia possimus cumque a fugit
-                          ratione!</span
-                        >
-                        <i class="ri-more-2-line"></i>
-                      </div>
-                    </div>
-                    <div class="one__comment">
-                      <span class="name__date">
-                        <span>John Doe</span>
-                        <span>2 hours ago</span>
-                      </span>
-                      <div class="actual__comment">
-                        <span
-                          >Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Exercitationem debitis molestias porro enim
-                          voluptatum mollitia possimus cumque a fugit
-                          ratione!</span
-                        >
-                        <i class="ri-more-2-line"></i>
-                      </div>
-                    </div>
-                    <div class="one__comment">
-                      <span class="name__date">
-                        <span>John Doe</span>
-                        <span>2 hours ago</span>
-                      </span>
-                      <div class="actual__comment">
-                        <span
-                          >Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Exercitationem debitis molestias porro enim
-                          voluptatum mollitia possimus cumque a fugit
-                          ratione!</span
-                        >
-                        <i class="ri-more-2-line"></i>
-                      </div>
-                    </div>
-                    <div class="one__comment">
-                      <span class="name__date">
-                        <span>John Doe</span>
-                        <span>2 hours ago</span>
-                      </span>
-                      <div class="actual__comment">
-                        <span
-                          >Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Exercitationem debitis molestias porro enim
-                          voluptatum mollitia possimus cumque a fugit
-                          ratione!</span
-                        >
-                        <i class="ri-more-2-line"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="likes">
-                    <h3>Liked by:</h3>
-                    <div class="actual__likes">
-                      <div class="one__like">
-                        <span class="liker__info">
-                          <span>John Doe</span>
-                          <span>a minute ago</span>
-                        </span>
-                        <i class="ri-arrow-right-up-fill"></i>
-                      </div>
-                      <div class="one__like">
-                        <span class="liker__info">
-                          <span>John Doe</span>
-                          <span>a minute ago</span>
-                        </span>
-                        <i class="ri-arrow-right-up-fill"></i>
-                      </div>
-                      <div class="one__like">
-                        <span class="liker__info">
-                          <span>John Doe</span>
-                          <span>a minute ago</span>
-                        </span>
-                        <i class="ri-arrow-right-up-fill"></i>
-                      </div>
-                      <div class="one__like">
-                        <span class="liker__info">
-                          <span>John Doe</span>
-                          <span>a minute ago</span>
-                        </span>
-                        <i class="ri-arrow-right-up-fill"></i>
-                      </div>
-                      <div class="one__like">
-                        <span class="liker__info">
-                          <span>John Doe</span>
-                          <span>a minute ago</span>
-                        </span>
-                        <i class="ri-arrow-right-up-fill"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div></div>
-              </details>
+              </details> -->
             </div>
           </div>
         </div>

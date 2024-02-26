@@ -798,7 +798,8 @@ textarea:hover {
   width: 100%;
   justify-content: center;
   gap: 20px;
-  margin-bottom: 10px;flex-wrap: wrap;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 .like__post span {
   display: flex;
@@ -809,6 +810,8 @@ textarea:hover {
   padding: 8px 10px;
   border-radius: var(--radius);
   cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease-in-out;
 }
 .like__post span i {
   font-size: 22px;
