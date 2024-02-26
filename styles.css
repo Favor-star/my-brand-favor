@@ -1137,6 +1137,7 @@ textarea:hover {
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 .more__content.shown {
+  z-index: 2;
   opacity: 1;
   transition: all 0.2s ease-in-out;
 }

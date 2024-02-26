@@ -265,6 +265,7 @@ const storyDelete = document.querySelectorAll(".more__content"),
 
 moreButton.forEach((elem, index) => {
   elem.addEventListener("click", (e) => {
+   
     storyDelete[index].classList.toggle("shown");
   });
 });
@@ -272,6 +273,7 @@ moreButton.forEach((elem, index) => {
 const forDeleting = document.querySelectorAll(".for__deleting");
 forDeleting.forEach((elem, index) => {
   elem.onclick = () => {
+    console.log("Clicked");
     const newStroy = JSON.parse(localStorage.getItem("storiesList")).filter(
       (story, storyIndex) => {
         return storyIndex !== index;
@@ -285,3 +287,77 @@ forDeleting.forEach((elem, index) => {
 function updateStory() {
   
 }
+
+//FUNCTION TO APPEND LIKES AND COMMENT TO THEIR RESPECTIVE INTERACTION MANAGEMENT
+function appendLikesAndComments() {
+  const commentsList = JSON.parse(localStorage.getItem("comments")) || [];
+
+  const likes = JSON.parse(localStorage.getItem("likedStory")) || [];
+  const titles = JSON.parse(localStorage.getItem("storiesList")).map(
+    (elem) => elem.title
+  );
+
+  const storyComments = document.querySelector("[allComments]");
+  const commentLikes = document.querySelector(".comments__likes");
+
+  titles.forEach((title, index) => {
+    const relatedComments = commentsList.filter(
+      (elem) => elem.storyIndex === index
+    );
+    const singleStory = document.createElement("details");
+    singleStory.classList.add("single__story");
+    singleStory.innerHTML = `
+    
+                <summary class="story__summary">
+                 ${index + 1}. ${title}
+                </summary>
+                <div class="comments__likes">
+                  <div class="comments">
+                  </div>
+                  <div class="likes">
+                    <h3>Liked by:</h3>
+                    <div class="actual__likes">
+                      <div class="one__like">
+                        <span class="liker__info">
+                          <span>John Doe</span>
+                          <span>a minute ago</span>
+                        </span>
+                        <i class="ri-arrow-right-up-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div></div>`;
+    const comments = singleStory.querySelector(".comments");
+    relatedComments.forEach((comment) => {
+      const oneComment = document.createElement("div");
+      oneComment.classList.add("one__comment");
+      oneComment.innerHTML = `
+                <span class="name__date">
+                  <span>${comment.commenter[0]} ${comment.commenter[1]}</span>
+                    <span><!--2 hours ago--></span>
+                </span>
+                <div class="actual__comment">
+                  <span>${comment.comments}</span>
+                  <i class="ri-more-2-line"></i>
+                </div>`;
+      comments.appendChild(oneComment);
+    });
+    storyComments.appendChild(singleStory);
+  });
+}
+appendLikesAndComments();
+//FUNCTION TO SHOW QUICK STATISTICS ON THEIR RESPECTIVE LOCATIONS
+function quickStatistics() {
+  const likes = (JSON.parse(localStorage.getItem("likedStory")) || []).length;
+  const comments = (JSON.parse(localStorage.getItem("comments")) || []).length;
+  const clicks = JSON.parse(localStorage.getItem("userClicks"));
+  if (clicks) {
+    const sumOfClicks = clicks.reduce((total, elem) => total + elem.clicks, 0);
+    document.querySelector("[totalClicks]").innerText = sumOfClicks;
+  }
+  document.querySelector("[totalLikes]").innerText = likes;
+  document.querySelector("[totalShares]");
+  document.querySelector("[totalComments]").innerText = comments;
+}
+quickStatistics();
