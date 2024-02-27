@@ -322,7 +322,7 @@ function appendLikesAndComments() {
   const comments = JSON.parse(localStorage.getItem("comments")) || [];
 
   const likes = JSON.parse(localStorage.getItem("likedStory")) || [];
-  const titles = JSON.parse(localStorage.getItem("storiesList")).map(
+  const titles = JSON.parse(localStorage.getItem("storiesList"))||[].map(
     (elem) => elem.title
   );
 
