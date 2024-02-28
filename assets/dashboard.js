@@ -265,7 +265,6 @@ const storyDelete = document.querySelectorAll(".more__content"),
 
 moreButton.forEach((elem, index) => {
   elem.addEventListener("click", (e) => {
-   
     storyDelete[index].classList.toggle("shown");
   });
 });
@@ -284,16 +283,14 @@ forDeleting.forEach((elem, index) => {
     appendStory(newStroy);
   };
 });
-function updateStory() {
-  
-}
+function updateStory() {}
 
 //FUNCTION TO APPEND LIKES AND COMMENT TO THEIR RESPECTIVE INTERACTION MANAGEMENT
 function appendLikesAndComments() {
   const commentsList = JSON.parse(localStorage.getItem("comments")) || [];
 
   const likes = JSON.parse(localStorage.getItem("likedStory")) || [];
-  const titles = JSON.parse(localStorage.getItem("storiesList"))||[].map(
+  const titles = (JSON.parse(localStorage.getItem("storiesList")) || []).map(
     (elem) => elem.title
   );
 

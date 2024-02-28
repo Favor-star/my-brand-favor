@@ -6,7 +6,7 @@ function showStoryOnBlog() {
     const story = document.createElement("div");
     console.log();
     story.classList.add("one__story__card");
-    story.innerHTML = `<div class="one__story__card">
+    story.innerHTML = `
               <div class="one__story__img">
                 <img src="${element.image}" alt="${element.id}" />
                 <div class="tag">- Tech</div>
@@ -19,8 +19,7 @@ function showStoryOnBlog() {
                 ${element.story.slice(0, 100)}...
                 </p>
                 <a  class="buttons read__story__button">Read Full Story</a>
-              </div>
-            </div>`;
+              </div>`;
     blogStories && blogStories.appendChild(story);
   });
 

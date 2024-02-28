@@ -728,6 +728,8 @@ textarea:hover {
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
+  /* display: grid; */
+  /* grid-template-columns: repeat(auto-fit,minmax(352px,1fr)); */
 }
 .one__story__card {
   display: flex;
@@ -745,8 +747,10 @@ textarea:hover {
   object-fit: cover;
 }
 .one__story__texts {
+  height: 140px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 .one__story__texts h4 {
   font-size: 1.3rem;
