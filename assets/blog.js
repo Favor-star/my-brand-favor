@@ -1,22 +1,36 @@
+async function fetchStories() {
+  const response = await fetch(
+    "https://backend-my-brand-favor.onrender.com/blogs"
+  );
+  const result = await response.json();
+  console.log(result);
+  return result;
+}
 const blogStories = document.querySelector(".blog__stories__contents");
 
-function showStoryOnBlog() {
+async function showStoryOnBlog() {
+  const response = await fetch(
+    "https://backend-my-brand-favor.onrender.com/blogs"
+  );
+  const result = await response.json();
   let stories = JSON.parse(localStorage.getItem("storiesList")) || [];
+  stories = result;
+  console.log(stories);
   stories.forEach((element) => {
     const story = document.createElement("div");
     console.log();
     story.classList.add("one__story__card");
     story.innerHTML = `
               <div class="one__story__img">
-                <img src="${element.image}" alt="${element.id}" />
+                <img src="${element.storyImageURL}" alt="${element._id}" />
                 <div class="tag">- Tech</div>
               </div>
               <div class="one__story__texts">
                 <h4>
-                 ${element.title}
+                 ${element.storyTitle}
                 </h4>
                 <p>
-                ${element.story.slice(0, 100)}...
+                ${element.storyContent.slice(0, 100)}...
                 </p>
                 <a  class="buttons read__story__button">Read Full Story</a>
               </div>`;

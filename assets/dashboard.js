@@ -153,21 +153,39 @@ function checkStory(title, image, category, story) {
   revert.onclick = () => {
     confirmStoryForm.classList.add("hide");
   };
-  confirmStoryForm.onsubmit = () => {
+  confirmStoryForm.onsubmit = (e) => {
+    e.preventDefault();
     uploadToStorage(title, image, category, story);
   };
 }
-function uploadToStorage(title, image, category, story) {
+async function uploadToStorage(title, image, category, story) {
   const stories = JSON.parse(localStorage.getItem("storiesList")) || [];
-  const singleStory = {
-    id: Date.now(),
-    title: title,
-    image: image,
-    category: category,
-    story: story,
-  };
-  const storiesToUpload = [...stories, singleStory];
-  localStorage.setItem("storiesList", JSON.stringify(storiesToUpload));
+
+  // const singleStory = {
+  //   id: Date.now(),
+  //   title: title,
+  //   image: image,
+  //   category: category,
+  //   story: story,
+  // };
+  // const storiesToUpload = [...stories, singleStory];
+  // localStorage.setItem("storiesList", JSON.stringify(storiesToUpload));
+  const result = await fetch(
+    "https://backend-my-brand-favor.onrender.com/blogs",
+    {
+      method: "post",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+      body: JSON.stringify({
+        storyTitle: title,
+        storyContent: story,
+        storyCategory: category,
+        storyImageURL: image,
+      }),
+    }
+  );
+  console.log(await result.json());
 }
 
 //FUNCTION TO APPEND AVAILABLE STORIES ON THEIR RESPECTIVE DIVS
