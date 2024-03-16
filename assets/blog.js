@@ -1,5 +1,6 @@
 "use strict";
-const host = "http://localhost:8080";
+// const host = "http://localhost:8080";
+const host = "https://backend-my-brand-favor.onrender.com";
 async function fetchBlogStories() {
   const result = await fetch(`${host}/blogs`);
  
