@@ -55,9 +55,9 @@ if (
   window.innerWidth < 430 &&
   localStorage.getItem("isUserLoggedIn") === "true"
 ) {
-  if (document.querySelectorAll(".username__div")[1] === undefined) console.log("true");
-  document.querySelectorAll(".username__div")[1].innerHTML =
-    JSON.parse(localStorage.getItem("activeUser")).firstName || "Login";
+  if (document.querySelectorAll(".username__div")[1] === undefined);
+  // document.querySelectorAll(".username__div")[1].innerHTML =
+  //   JSON.parse(localStorage.getItem("activeUser")).firstName || "Login";
 }
 //FUNCTION TO HANDLE BACK TO HOME ONCE USER CLICKS THE LOGO BUTTON
 const logoBtn = document.querySelectorAll(".head__to__home");

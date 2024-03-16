@@ -5,7 +5,7 @@ const regConfrimPassword = document.getElementById("confirm__password");
 const regEmail = document.getElementById("reg__email");
 const regNames = document.getElementById("reg__names");
 const registerErrorDiv = document.getElementById("register__error");
-
+const host = "http://localhost:8080";
 //Handle the input of the names
 regNames.onfocus = () => {
   document.getElementById("reg__v__names").innerHTML =
@@ -32,6 +32,9 @@ regEmail.onblur = (e) => {
       : !/@/g.test(inputValue)
       ? " @ symbol should be included in your email"
       : " ";
+};
+regEmail.onfocus = () => {
+  registerErrorDiv.innerHTML = "";
 };
 //HANDLING PASSWORD VALIDATION
 regPassword.onfocus = (e) => {
@@ -81,7 +84,7 @@ regForm.onsubmit = (e) => {
     return;
   }
 
-  //HANDLE THE SUBMISSION UPON CHECNKING OF RECENT CONDITIONS
+  //HANDLE THE SUBMISSION UPON CHECKING OF RECENT CONDITIONS
   const [firstName, lastName] = regNames.value.split(" ");
   const email = regEmail.value.trim();
   const password = regPassword.value;
@@ -95,30 +98,49 @@ regForm.onsubmit = (e) => {
 
   const dateCreated = ` ${day}/${month}/${year}, ${hours}:${minutes}:${seconds} `;
   storeUser({
-    dateCreated: dateCreated,
+    createdAt: dateCreated,
     firstName: firstName,
     lastName: lastName,
     email: email,
     password: password,
   });
 };
-function storeUser(user) {
+async function storeUser(user) {
   const users = JSON.parse(localStorage.getItem("users")) || [];
-  console.log(users);
-  console.log(users);
+
   for (const singleUser of users) {
     if (user.email === singleUser.email) {
       registerErrorDiv.innerHTML = "User already exist";
       return;
     }
   }
-  const usersToUpload = [...users, user];
-  localStorage.setItem("users", JSON.stringify(usersToUpload));
+
+  const registerUser = await fetch(`${host}/users`, {
+    method: "post",
+    headers: {
+      "Content-Type": "Application/json",
+    },
+    body: JSON.stringify(user),
+  });
+  const res = await registerUser.json();
+
+  if (!res.OK) {
+    registerErrorDiv.innerHTML = res.message;
+    return;
+  }
+
+  const { lastName, firstName, email } = res.user;
+  // const usersToUpload = [...users, user];
+  // localStorage.setItem("users", JSON.stringify(usersToUpload));
   registerErrorDiv.innerHTML = "Account created successfully";
   registerErrorDiv.style.padding = "10px";
   registerErrorDiv.style.backgroundColor = "green";
   registerErrorDiv.style.color = "white";
-  localStorage.setItem("activeUser", JSON.stringify(user));
+  localStorage.setItem(
+    "activeUser",
+    JSON.stringify({ lastName, firstName, email })
+  );
+  localStorage.setItem("accessToken", res.accessToken);
   localStorage.setItem("isUserLoggedIn", "true");
   setTimeout(() => {
     location.pathname = location.pathname.replace(
@@ -140,15 +162,23 @@ const loginErrorDiv = document.getElementById("login__error");
 const loginEmail = document.getElementById("login__email");
 const loginPassword = document.getElementById("login__password");
 
-loginForm.onsubmit = (e) => {
+loginForm.onsubmit = async (e) => {
+  const user = {
+    email: loginEmail.value.trim(),
+    password: loginPassword.value.trim(),
+  };
   e.preventDefault();
-  const users = JSON.parse(localStorage.getItem("users"));
+  const logUser = await fetch(`${host}/users/login`, {
+    method: "post",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(user),
+  });
+  const response = await logUser.json();
 
-  const matchingUser = users.filter((user) => {
-    return user.email === loginEmail.value;
-  })[0];
-  if (matchingUser.length === 0) {
-    loginErrorDiv.innerHTML = "Account was not found";
+  if (!response.OK) {
+    loginErrorDiv.innerHTML = response.message;
     setTimeout(() => {
       loginErrorDiv.style.opacity = "0";
       setTimeout(() => {
@@ -158,16 +188,17 @@ loginForm.onsubmit = (e) => {
     }, 1000);
     return;
   }
-  if (matchingUser.password !== loginPassword.value) {
-    loginErrorDiv.innerHTML = "Password is incorrect";
+  const { firstName, lastName, email } = response.user;
+  console.log(response);
+  localStorage.setItem("isUserLoggedIn", "true");
+  localStorage.setItem("accessToken", response.accessToken);
+  localStorage.setItem(
+    "activeUser",
+    JSON.stringify({ firstName, lastName, email })
+  );
 
-    return;
-  }
- 
   location.pathname = location.pathname.replace(
     /registerPage.html/,
     "dashboard.html"
   );
-  localStorage.setItem("isUserLoggedIn", "true");
-  localStorage.setItem("activeUser", JSON.stringify(matchingUser));
 };

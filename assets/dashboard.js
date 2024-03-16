@@ -1,5 +1,32 @@
 "use strict";
 
+const host = "http://localhost:8080";
+
+const fetchStories = async () => {
+  const result = await fetch(`${host}/blogs`);
+  if (result.ok) {
+    const loader = document.querySelector(".loader_wrapper");
+    loader.style.transition = "all .2s ease-in-out";
+    loader.style.opacity = "0";
+    setTimeout(() => {
+      loader.style.display = "none";
+    }, 500);
+  }
+  const response = await result.json();
+  console.log(response);
+  return response;
+};
+const fetchComments = async () => {
+  const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+  const result = await fetch(`${host}/comments`, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+  const response = await result.json();
+  console.log(response);
+  return response;
+};
 let path = location.pathname;
 path =
   localStorage.getItem("isUserLoggedIn") === "false"
@@ -23,6 +50,7 @@ userNameDiv.forEach((element) => {
   };
 });
 
+//HANDLE LOGOUT OPERATION
 logout.forEach((element) => {
   element.onclick = () => {
     localStorage.setItem("isUserLoggedIn", "false");
@@ -33,6 +61,7 @@ logout.forEach((element) => {
 });
 
 const accountsList = document.getElementById("list__of__accounts");
+//FUNCTION TO HANDLE REGISTER USER
 function handleRegisteredUser(users) {
   users.forEach((element, index) => {
     const oneAccount = document.createElement("div");
@@ -161,6 +190,19 @@ function checkStory(title, image, category, story) {
 async function uploadToStorage(title, image, category, story) {
   const stories = JSON.parse(localStorage.getItem("storiesList")) || [];
 
+  const result = await fetch(`${host}/blogs`, {
+    method: "post",
+    headers: {
+      "Content-Type": "Application/json",
+    },
+    body: JSON.stringify({
+      storyTitle: title,
+      storyContent: story,
+      storyCategory: category,
+      storyImageURL: image,
+    }),
+  });
+
   // const singleStory = {
   //   id: Date.now(),
   //   title: title,
@@ -170,78 +212,61 @@ async function uploadToStorage(title, image, category, story) {
   // };
   // const storiesToUpload = [...stories, singleStory];
   // localStorage.setItem("storiesList", JSON.stringify(storiesToUpload));
-  const result = await fetch(
-    "https://backend-my-brand-favor.onrender.com/blogs",
-    {
-      method: "post",
-      headers: {
-        "Content-Type": "Application/json",
-      },
-      body: JSON.stringify({
-        storyTitle: title,
-        storyContent: story,
-        storyCategory: category,
-        storyImageURL: image,
-      }),
-    }
-  );
-  console.log(await result.json());
 }
 
 //FUNCTION TO APPEND AVAILABLE STORIES ON THEIR RESPECTIVE DIVS
 
-function appendStory(retrievedStory) {
-  let stories = retrievedStory || [];
-  if (stories.length === 0) return;
-  stories = stories.sort((elem, elem2) => {
-    return elem.id - elem2.id; // Compare the ids of the elements
-  });
-  stories.forEach((story, index) => {
+async function appendStory() {
+  const retrievedStories = await fetchStories();
+
+  retrievedStories.forEach((story, index) => {
     //FUNCTION TO APPEND NUMBER OF HOW MANY THE STORY WAS VIEWED
-    let userClicks = JSON.parse(localStorage.getItem("userClicks")) || [];
+    // let userClicks = JSON.parse(localStorage.getItem("userClicks")) || [];
 
-    const clicked = userClicks.filter((elem) => elem.index === index)[0];
+    // const clicked = userClicks.filter((elem) => elem.index === index)[0];
 
-    const relatedComments = (
-      JSON.parse(localStorage.getItem("comments")) || []
-    ).filter((comment) => comment.storyIndex === index).length;
-    const relatedLikes = JSON.parse(
-      localStorage.getItem("likedStory") || []
-    ).filter((like) => like.storyIndex === index)[0];
-    let like;
-    if (!relatedLikes) like = 0;
-    else like = relatedLikes.likes;
+    // const relatedComments = (
+    //   JSON.parse(localStorage.getItem("comments")) || []
+    // ).filter((comment) => comment.storyIndex === index).length;
+    // const relatedLikes = JSON.parse(
+    //   localStorage.getItem("likedStory") || []
+    // ).filter((like) => like.storyIndex === index)[0];
+    // let like;
+    // if (!relatedLikes) like = 0;
+    // else like = relatedLikes.likes;
 
     const oneStory = document.createElement("div");
     oneStory.classList.add("one__story__list");
-    oneStory.setAttribute("data-target", index);
+    oneStory.setAttribute("data-target", story._id);
     oneStory.innerHTML = `
    <span class="list__title">
      <span class="title__number">${index + 1}.</span>
       <span class="title__number">
-        ${story.title}
+        ${story.storyTitle}
        </span>
      </span>
      <span class="list__views">
        <i class="ri-eye-fill"></i>
        <span class="views__nmbr">${
-         clicked === undefined
-           ? "NO"
-           : clicked.index === index
-           ? clicked.clicks
-           : "NO"
+         //  clicked === undefined
+         //    ? "NO"
+         //    : clicked.index === index
+         //    ? clicked.clicks
+         //    : "NO"
+         !story.storyVisits ? 0 : story.storyVisits
        } VIEWS</span>
      </span>
      <span>
         <!--<div class="list__views">
             <i class="ri-heart-fill"></i>
-            <span>${like} ${like <= 1 ? "LIKE" : "LIKES"} </span>
+            <span>${/*like} ${like <= 1 ? "LIKE" : */ "LIKES"} </span>
         </div>-->
           <div class="list__views">
             <i class="ri-message-fill"></i>
-            <span>${relatedComments} ${
-      relatedComments <= 1 ? "COMMENT" : "COMMENTS"
-    }</span>
+            <span>${
+              /*relatedComments} ${
+      relatedComments <= 1 ? "COMMENT" : */ "COMMENTS"
+            }</span>
           </div>
       </span>
       <div class="more__div">
@@ -275,7 +300,8 @@ function appendStory(retrievedStory) {
   });
 }
 
-appendStory(JSON.parse(localStorage.getItem("storiesList")));
+// appendStory(JSON.parse(localStorage.getItem("storiesList")));
+appendStory();
 
 //HANDLE THE MORE BUTTON WITHIN THE RECENT STORIES
 const storyDelete = document.querySelectorAll(".more__content"),

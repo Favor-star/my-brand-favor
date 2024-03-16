@@ -1,22 +1,29 @@
-async function fetchStories() {
-  const response = await fetch(
-    "https://backend-my-brand-favor.onrender.com/blogs"
-  );
-  const result = await response.json();
-  console.log(result);
-  return result;
+"use strict";
+const host = "http://localhost:8080";
+async function fetchBlogStories() {
+  const result = await fetch(`${host}/blogs`);
+ 
+  if (result.ok) {
+   
+    const loader = document.querySelector(".loader_wrapper");
+    loader.style.transition = "all .2s ease-in-out";
+    loader.style.opacity = "0";
+    setTimeout(() => {
+      loader.style.display = "none";
+    }, 500);
+  }
+
+  const response = await result.json();
+  return response;
 }
 const blogStories = document.querySelector(".blog__stories__contents");
 
 async function showStoryOnBlog() {
-  const response = await fetch(
-    "https://backend-my-brand-favor.onrender.com/blogs"
-  );
-  const result = await response.json();
-  let stories = JSON.parse(localStorage.getItem("storiesList")) || [];
-  stories = result;
-  console.log(stories);
-  stories.forEach((element) => {
+  // const response = await fetch("http://localhost:8080/blogs");
+  const result = await fetchBlogStories();
+  // let stories = JSON.parse(localStorage.getItem("storiesList")) || [];
+
+  result.forEach((element) => {
     const story = document.createElement("div");
     console.log();
     story.classList.add("one__story__card");
@@ -32,7 +39,9 @@ async function showStoryOnBlog() {
                 <p>
                 ${element.storyContent.slice(0, 100)}...
                 </p>
-                <a  class="buttons read__story__button">Read Full Story</a>
+                <a id="${
+                  element._id
+                }" class="buttons read__story__button">Read Full Story</a>
               </div>`;
     blogStories && blogStories.appendChild(story);
   });
@@ -41,18 +50,14 @@ async function showStoryOnBlog() {
   blogReadBtn.forEach((elem, index) => {
     elem.onclick = (e) => {
       e.preventDefault();
-      //handle the amount the user clicked the story
-      trackUserClick(index);
-      localStorage.removeItem("storyToread");
-      localStorage.setItem(
-        "storyToRead",
-        JSON.stringify([
-          index,
-          stories[index].title,
-          stories[index].image,
-          stories[index].story,
-        ])
+      const oneStory = result.find(
+        (elem) => elem._id === e.target.getAttribute("id")
       );
+
+      //handle the amount the user clicked the story
+      trackUserClick(elem._id);
+      localStorage.removeItem("storyToread");
+      localStorage.setItem("storyToRead", JSON.stringify(oneStory));
       location.pathname = location.pathname.replace(/blog.html/, "story.html");
     };
   });
@@ -72,9 +77,9 @@ function readStory() {
     return;
   }
   if (!storyMain) return;
-  storyMain.innerHTML = story[3];
-  storyImage.src = story[2];
-  storyTitle.innerHTML = story[1];
+  storyMain.innerHTML = story.storyContent;
+  storyImage.src = story.storyImageURL;
+  storyTitle.innerHTML = story.storyTitle;
 }
 readStory();
 
@@ -101,8 +106,8 @@ function trackUserLikes(index, clickedAgain) {
       return;
     }
     storiesLikes.push(likedStory);
+    likedStory.likes++;
   }
-  likedStory.likes++;
   localStorage.setItem("storiesLikes", JSON.stringify(likedStory));
 }
 
@@ -181,7 +186,7 @@ function trackUsercomment() {
     com && com.appendChild(oneComment);
   });
 }
-trackUsercomment();
+// trackUsercomment();
 
 function handleTrendingStroy() {
   let stories = JSON.parse(localStorage.getItem("storiesList")) || [];
@@ -204,7 +209,7 @@ function handleTrendingStroy() {
     location.pathname = location.pathname.replace(/blog.html/, "story.html");
   };
 }
-handleTrendingStroy();
+// handleTrendingStroy();
 
 function likeStory() {
   const likeBtn = document.querySelector("[likeStory]") || [];
@@ -267,7 +272,7 @@ function likeStory() {
     }
   };
 }
-likeStory();
+// likeStory();
 const shareStory = () => {
   const shareBtn = document.querySelector("[shareStory]") || [];
   shareBtn.onclick = () => {
