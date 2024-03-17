@@ -1,11 +1,10 @@
 "use strict";
-// const host = "http://localhost:8080";
-const host = "https://backend-my-brand-favor.onrender.com";
+const host = "http://localhost:8080";
+// const host = "https://backend-my-brand-favor.onrender.com";
 async function fetchBlogStories() {
+  console.log("Function called already");
   const result = await fetch(`${host}/blogs`);
- 
   if (result.ok) {
-   
     const loader = document.querySelector(".loader_wrapper");
     loader.style.transition = "all .2s ease-in-out";
     loader.style.opacity = "0";
@@ -72,6 +71,7 @@ function readStory() {
 
   const story = JSON.parse(localStorage.getItem("storyToRead")) || [];
   if (story.length === 0) {
+    if (!storyMain) return;
     storyMain.innerHTML = "Ooops";
     storyMain.style.fontSize = "10rem";
     storyTitle.textContent = "NO STORY FOUND, PLEASE RETURN";

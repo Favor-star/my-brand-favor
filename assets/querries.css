@@ -348,3 +348,35 @@
     background-size: 35px 15px, 15px 15px, 15px 35px, 35px 35px;
   }
 }
+
+/*CKECKBOX CONFIRM STYLES*/
+.checkbox-slider {
+  display: none;
+}
+.switch {
+  display: inline-block;
+}
+.slider {
+  width: 40px;
+  height: 14px;
+  border: 1px solid var(--white);
+  display: inline-block;
+  position: relative;
+}
+.slider::before {
+  content: "";
+  display: block;
+  position: relative;
+  background-color: var(--white);
+  height: 21px;
+  width: 20px;
+  top: 0;
+  left: -3px;
+  transition: 0.4s all ease-in-out;
+}
+.checkbox-slider:checked + .slider {
+  background-color: var(--gray);
+}
+.checkbox-slider:checked + .slider::before {
+  transform: translateX(27px);
+}

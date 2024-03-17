@@ -1,7 +1,7 @@
 "use strict";
 
 const host = "http://localhost:8080";
-
+const accessToken = localStorage.getItem("accessToken");
 const fetchStories = async () => {
   const result = await fetch(`${host}/blogs`);
   if (result.ok) {
@@ -13,18 +13,24 @@ const fetchStories = async () => {
     }, 500);
   }
   const response = await result.json();
-  console.log(response);
   return response;
 };
 const fetchComments = async () => {
-  const accessToken = JSON.parse(localStorage.getItem("accessToken"));
   const result = await fetch(`${host}/comments`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
   });
   const response = await result.json();
-  console.log(response);
+  return response;
+};
+const fetchUsers = async () => {
+  const result = await fetch(`${host}/users`, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+  const response = await result.json();
   return response;
 };
 let path = location.pathname;
@@ -61,17 +67,19 @@ logout.forEach((element) => {
 });
 
 const accountsList = document.getElementById("list__of__accounts");
+
 //FUNCTION TO HANDLE REGISTER USER
-function handleRegisteredUser(users) {
-  users.forEach((element, index) => {
+async function handleRegisteredUser() {
+  const users = await fetchUsers();
+  accountsList.innerHTML = "";
+  users.forEach((element) => {
     const oneAccount = document.createElement("div");
     oneAccount.classList.add("one__account");
-    oneAccount.setAttribute("data-target", index);
-
+    oneAccount.setAttribute("data-target", element._id);
     oneAccount.innerHTML = `<img src="" alt="" />
                               <div class="one__account__texts">
                               <p>${element.firstName}</p>
-                              <p>Created on: <strong>${element.dateCreated}</strong></p>
+                              <p>Created on: <strong>${element.createdAt}</strong></p>
                               </div>
                               <span class="account__more__div">
   <span class="account__more__btn" style="padding: 0 3px">
@@ -84,40 +92,47 @@ function handleRegisteredUser(users) {
     accountsList.appendChild(oneAccount);
   });
   document.getElementById("accounts__created__nmbr").innerHTML = users.length;
+  deleteTheUser();
 }
-handleRegisteredUser(JSON.parse(localStorage.getItem("users")));
+handleRegisteredUser();
 
-//function to handle to delete the user
-const moreBtn = document.querySelectorAll(".account__more__btn");
-const accountMore = document.querySelectorAll(".account__more");
-const deleteUser = document.querySelectorAll(".account__more");
-//THIS OPENS UP THE DELETE USER BUTTON
-moreBtn.forEach((oneBtn, index) => {
-  oneBtn.onclick = (e) => {
-    accountMore[index].classList.toggle("hide");
-  };
-});
+function deleteTheUser() {
+  //function to handle to delete the user
+  const moreBtn = document.querySelectorAll(".account__more__btn");
+  const accountMore = document.querySelectorAll(".account__more");
+  const deleteUserElem = document.querySelectorAll(".account__more");
 
-//THIS IS HANDLES OPERATIONS DONE AFTER THE USER DECIDE TO DELETE
-deleteUser.forEach((elem, index) => {
-  elem.addEventListener("click", () => {
-    const allAccounts = Array.from(document.querySelectorAll(".one__account"));
-    const indexToDelete = allAccounts.findIndex(
-      (elem) => Number(elem.getAttribute("data-target")) === index
-    );
-    const udpatedUsers = JSON.parse(localStorage.getItem("users")).filter(
-      (user, index) => {
-        return index !== indexToDelete;
-      }
-    );
-    localStorage.setItem("users", JSON.stringify(udpatedUsers));
-    accountsList.innerHTML = "";
-    document.getElementById("accounts__created__nmbr").innerText =
-      udpatedUsers.length;
-    handleRegisteredUser(udpatedUsers);
-    location.reload();
+  //THIS OPENS UP THE DELETE USER BUTTON
+  moreBtn.forEach((oneBtn, index) => {
+    oneBtn.onclick = (e) => {
+      deleteUserElem[index].classList.toggle("hide");
+    };
   });
-});
+  //THIS IS HANDLES OPERATIONS DONE AFTER THE USER DECIDE TO DELETE
+  deleteUserElem.forEach((elem, index) => {
+    elem.addEventListener("click", async () => {
+      const deleteID =
+        elem.parentElement.parentElement.getAttribute("data-target");
+      console.log(deleteID);
+
+      //DELETE THE USER FROM DATABASE AND RETURN RESPONSE
+      const deleteUser = await fetch(`${host}/users/${deleteID}`, {
+        method: "delete",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      const deleteResponse = await deleteUser.json();
+      console.log(deleteResponse);
+      if (!deleteResponse.OK) {
+        alert("User cannot be deleted successfully.Please try again");
+        return;
+      }
+      //CALL THE FUNCTION WHICH IS RESPONSIBLE FOR RE-APPENDING THE USERS, SO THAT CHANGES TAKES EFFECTS TO THE USER
+      handleRegisteredUser();
+    });
+  });
+}
 
 //MANAGE ADDING A STORY
 const storyForm = document.getElementById("add__story"),
@@ -215,26 +230,16 @@ async function uploadToStorage(title, image, category, story) {
 }
 
 //FUNCTION TO APPEND AVAILABLE STORIES ON THEIR RESPECTIVE DIVS
-
 async function appendStory() {
   const retrievedStories = await fetchStories();
-
+  const comments = await fetchComments();
+  document.querySelector(".story__list").innerHTML = "";
   retrievedStories.forEach((story, index) => {
+    const matchingComments = comments.filter(
+      (comment) => comment.storyID === story._id
+    )[0];
+
     //FUNCTION TO APPEND NUMBER OF HOW MANY THE STORY WAS VIEWED
-    // let userClicks = JSON.parse(localStorage.getItem("userClicks")) || [];
-
-    // const clicked = userClicks.filter((elem) => elem.index === index)[0];
-
-    // const relatedComments = (
-    //   JSON.parse(localStorage.getItem("comments")) || []
-    // ).filter((comment) => comment.storyIndex === index).length;
-    // const relatedLikes = JSON.parse(
-    //   localStorage.getItem("likedStory") || []
-    // ).filter((like) => like.storyIndex === index)[0];
-    // let like;
-    // if (!relatedLikes) like = 0;
-    // else like = relatedLikes.likes;
-
     const oneStory = document.createElement("div");
     oneStory.classList.add("one__story__list");
     oneStory.setAttribute("data-target", story._id);
@@ -259,19 +264,22 @@ async function appendStory() {
      <span>
         <!--<div class="list__views">
             <i class="ri-heart-fill"></i>
-            <span>${/*like} ${like <= 1 ? "LIKE" : */ "LIKES"} </span>
+            <span>${0} "LIKES"</span>
         </div>-->
           <div class="list__views">
             <i class="ri-message-fill"></i>
             <span>${
-              /*relatedComments} ${
-      relatedComments <= 1 ? "COMMENT" : */ "COMMENTS"
-            }</span>
+              !matchingComments ? 0 : matchingComments.comments.length
+            } COMMENTS</span>
           </div>
       </span>
       <div class="more__div">
         <i class="more__btn ri-more-2-fill"></i>
         <div class="more__content">
+              <label  class="switch">
+                <input type="checkbox" name="check" class="checkbox-slider">
+                <span class="slider"></span>
+              </label>
               <span class="mores for__hiding">
                   <i class="ri-eye-off-fill"></i>
                   Hide Story
@@ -298,35 +306,78 @@ async function appendStory() {
 
     document.querySelector(".story__list").appendChild(oneStory);
   });
+
+  deleteStoryInList();
+  confirmStoryDeletion();
+}
+//HANDLE CONFIRMATION OF DELETING THE STORIES
+function confirmStoryDeletion() {
+  const mores = document.querySelectorAll(".for__deleting");
+  const checkbox = document.querySelectorAll(".checkbox-slider");
+  mores.forEach((more) => {
+    more.style.cursor = "not-allowed";
+    more.style.pointerEvents = "none";
+  });
+  checkbox.forEach((button) => {
+    button.onclick = () => {
+      mores.forEach((more) => {
+        if (!button.checked) {
+          more.style.cursor = "not-allowed";
+          more.style.pointerEvents = "none";
+          return;
+        }
+        more.style.pointerEvents = "all";
+        more.style.cursor = "pointer";
+      });
+    };
+  });
 }
 
 // appendStory(JSON.parse(localStorage.getItem("storiesList")));
 appendStory();
-
-//HANDLE THE MORE BUTTON WITHIN THE RECENT STORIES
-const storyDelete = document.querySelectorAll(".more__content"),
-  moreButton = document.querySelectorAll(".more__btn");
-
-moreButton.forEach((elem, index) => {
-  elem.addEventListener("click", (e) => {
-    storyDelete[index].classList.toggle("shown");
+async function deleteStoryInList() {
+  //HANDLE THE MORE BUTTON WITHIN THE RECENT STORIES
+  const storyDelete = document.querySelectorAll(".more__content"),
+    moreButton = document.querySelectorAll(".more__btn");
+  moreButton.forEach((elem, index) => {
+    elem.addEventListener("click", (e) => {
+      storyDelete[index].classList.toggle("shown");
+    });
   });
-});
-//FUNCTION TO HANDLE THE DELETE STORY IN RECENTLY ADDED STORY LISTS
-const forDeleting = document.querySelectorAll(".for__deleting");
-forDeleting.forEach((elem, index) => {
-  elem.onclick = () => {
-    console.log("Clicked");
-    const newStroy = JSON.parse(localStorage.getItem("storiesList")).filter(
-      (story, storyIndex) => {
-        return storyIndex !== index;
+  //FUNCTION TO HANDLE THE DELETE STORY IN RECENTLY ADDED STORY LISTS
+  const forDeleting = document.querySelectorAll(".for__deleting");
+  forDeleting.forEach((elem, index) => {
+    elem.onclick = async () => {
+      const deleteID =
+        elem.parentElement.parentElement.parentElement.getAttribute(
+          "data-target"
+        );
+      const deleteStory = await fetch(`${host}/blogs/${deleteID}`, {
+        method: "delete",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      const deleteRes = await deleteStory.json();
+      if (!deleteRes.OK) {
+        console.log("User could not be deleted");
+        return;
       }
-    );
-    localStorage.setItem("storiesList", JSON.stringify(newStroy));
-    document.querySelector(".story__list").innerHTML = "";
-    appendStory(newStroy);
-  };
-});
+      console.log(deleteRes);
+      appendStory();
+
+      // const newStroy = JSON.parse(localStorage.getItem("storiesList")).filter(
+      //   (story, storyIndex) => {
+      //     return storyIndex !== index;
+      //   }
+      // );
+      // localStorage.setItem("storiesList", JSON.stringify(newStroy));
+      // document.querySelector(".story__list").innerHTML = "";
+      // appendStory(newStroy);
+    };
+  });
+}
+
 function updateStory() {}
 
 //FUNCTION TO APPEND LIKES AND COMMENT TO THEIR RESPECTIVE INTERACTION MANAGEMENT
