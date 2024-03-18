@@ -61,7 +61,7 @@ logout.forEach((element) => {
   element.onclick = () => {
     localStorage.setItem("isUserLoggedIn", "false");
     localStorage.removeItem("activeUser");
-
+    localStorage.removeItem("accessToken");
     location.pathname = location.pathname.replace(/assets\/dashboard.html/, "");
   };
 });
@@ -280,15 +280,15 @@ async function appendStory() {
                 <input type="checkbox" name="check" class="checkbox-slider">
                 <span class="slider"></span>
               </label>
-              <span class="mores for__hiding">
+              <span class="mores for__hiding not__allowed">
                   <i class="ri-eye-off-fill"></i>
                   Hide Story
               </span>
-              <span class="mores for__editing">
+              <span class="mores for__editing not__allowed">
                 <i class="ri-file-edit-line"></i>
                 Edit Story
               </span>
-              <span class="mores for__deleting">
+              <span class="mores for__deleting not__allowed">
                 <i class="ri-delete-bin-line"></i>
                 Delete Story
               </span>
@@ -308,28 +308,26 @@ async function appendStory() {
   });
 
   deleteStoryInList();
-  confirmStoryDeletion();
 }
 //HANDLE CONFIRMATION OF DELETING THE STORIES
 function confirmStoryDeletion() {
-  const mores = document.querySelectorAll(".for__deleting");
-  const checkbox = document.querySelectorAll(".checkbox-slider");
-  mores.forEach((more) => {
-    more.style.cursor = "not-allowed";
-    more.style.pointerEvents = "none";
-  });
-  checkbox.forEach((button) => {
-    button.onclick = () => {
-      mores.forEach((more) => {
-        if (!button.checked) {
-          more.style.cursor = "not-allowed";
-          more.style.pointerEvents = "none";
-          return;
-        }
-        more.style.pointerEvents = "all";
-        more.style.cursor = "pointer";
-      });
-    };
+  const checkboxes = document.querySelectorAll(".checkbox-slider");
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", (e) => {
+      const parent = e.target.closest(".more__content");
+      if (parent) {
+        const mores = parent.querySelectorAll(".mores");
+        mores.forEach((more) => {
+          console.log(checkbox.checked ? "Favour" : "Nooooo");
+          console.log(more);
+          //  more.style.display = checkbox.checked ? "inline-block" : "none";
+          more.style.cursor = checkbox.checked ? "pointer" : "not-allowed";
+          if (checkbox.checked) more.classList.remove("not__allowed");
+          else more.classList.add("not__allowed");
+          // more.style.pointerEvents = checkbox.checked ? "auto" : "none";
+        });
+      }
+    });
   });
 }
 
@@ -348,6 +346,7 @@ async function deleteStoryInList() {
   const forDeleting = document.querySelectorAll(".for__deleting");
   forDeleting.forEach((elem, index) => {
     elem.onclick = async () => {
+      console.log("Clicked");
       const deleteID =
         elem.parentElement.parentElement.parentElement.getAttribute(
           "data-target"
@@ -376,6 +375,7 @@ async function deleteStoryInList() {
       // appendStory(newStroy);
     };
   });
+  confirmStoryDeletion();
 }
 
 function updateStory() {}

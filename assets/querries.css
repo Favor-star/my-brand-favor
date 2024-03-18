@@ -380,3 +380,8 @@
 .checkbox-slider:checked + .slider::before {
   transform: translateX(27px);
 }
+.not__allowed {
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  color: gray;
+}

@@ -1,11 +1,13 @@
 "use strict";
 const host = "http://localhost:8080";
+const accessToken = localStorage.getItem("accessToken");
 // const host = "https://backend-my-brand-favor.onrender.com";
 async function fetchBlogStories() {
   console.log("Function called already");
   const result = await fetch(`${host}/blogs`);
   if (result.ok) {
     const loader = document.querySelector(".loader_wrapper");
+    if (!loader) return;
     loader.style.transition = "all .2s ease-in-out";
     loader.style.opacity = "0";
     setTimeout(() => {
@@ -23,11 +25,12 @@ async function showStoryOnBlog() {
   const result = await fetchBlogStories();
   // let stories = JSON.parse(localStorage.getItem("storiesList")) || [];
 
-  result.forEach((element) => {
-    const story = document.createElement("div");
-    console.log();
-    story.classList.add("one__story__card");
-    story.innerHTML = `
+  result &&
+    result.forEach((element) => {
+      const story = document.createElement("div");
+
+      story.classList.add("one__story__card");
+      story.innerHTML = `
               <div class="one__story__img">
                 <img src="${element.storyImageURL}" alt="${element._id}" />
                 <div class="tag">- Tech</div>
@@ -43,8 +46,8 @@ async function showStoryOnBlog() {
                   element._id
                 }" class="buttons read__story__button">Read Full Story</a>
               </div>`;
-    blogStories && blogStories.appendChild(story);
-  });
+      blogStories && blogStories.appendChild(story);
+    });
 
   const blogReadBtn = document.querySelectorAll(".read__story__button");
   blogReadBtn.forEach((elem, index) => {
@@ -115,6 +118,7 @@ function trackUserLikes(index, clickedAgain) {
 //FUNCTION TO HANDLE COMMENT SUBMISSION AS WELL AS COMMENT APPEND TO THE DIVISION
 function trackUsercomment() {
   const commentDiv = document.querySelector(".add__comment") || [];
+
   if (localStorage.getItem("isUserLoggedIn") === "true") {
     commentDiv.innerHTML = `
     PLEASE ADD A COMMENT TO EXPRESS WHAT YOU THINK ABOUT THIS ARTICLE
@@ -134,60 +138,86 @@ function trackUsercomment() {
             >LOGIN TO ADD COMMENT</a
           >`;
   }
-  const comment = document.querySelector("#comment__input") || [],
-    commentInput = document.querySelector("#main__comment");
-  const comments = JSON.parse(localStorage.getItem("comments")) || [];
-  const index = JSON.parse(localStorage.getItem("storyToRead"))[0];
+  const comment = document.querySelector("#comment__input");
+  console.log(comment);
+  const commentInput = document.querySelector("#main__comment");
+  // const comments = JSON.parse(localStorage.getItem("comments")) || [];
+  // const index = JSON.parse(localStorage.getItem("storyToRead"))[0];
 
-  comment.onsubmit = (e) => {
-    const { firstName, lastName } = JSON.parse(
-      localStorage.getItem("activeUser")
-    );
-    e.preventDefault();
-    const newComment = {
-      storyIndex: index,
-      comments: commentInput.value,
-      commenter: [firstName, lastName],
-    };
+  comment &&
+    comment.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const storyID = JSON.parse(localStorage.getItem("storyToRead"))._id;
+      const { firstName, lastName } = JSON.parse(
+        localStorage.getItem("activeUser")
+      );
+    //   const createComment = await fetch(`${host}/comments`, {
+    //     method: "post",
+    //     headers: {
+    //       Authorization: `Bearer ${accessToken}`,
+    //     },
+    //     body: JSON.stringify({
+    //       storyID,
+    //       comments: [
+    //         {
+    //           commentor: [firstName, lastName],
+    //           commentBody: commentInput.value,
+    //         },
+    //       ],
+    //     }),
+    //   });
+    //   const commentResponse = await createComment.json();
+    //   console.log(commentResponse);
+    // });
+  // comment.onsubmit = (e) => {
+  //   const { firstName, lastName } = JSON.parse(
+  //     localStorage.getItem("activeUser")
+  //   );
+  //   e.preventDefault();
+  //   const newComment = {
+  //     storyIndex: index,
+  //     comments: commentInput.value,
+  //     commenter: [firstName, lastName],
+  //   };
 
-    comments.push(newComment);
-    localStorage.setItem("comments", JSON.stringify(comments));
-    commentInput.value = "";
-  };
-  const relatedComments = JSON.parse(localStorage.getItem("comments")).filter(
-    (comment) => comment.storyIndex === index
-  );
+  //   comments.push(newComment);
+  //   localStorage.setItem("comments", JSON.stringify(comments));
+  //   commentInput.value = "";
+  // };
+  // const relatedComments = JSON.parse(localStorage.getItem("comments")).filter(
+  //   (comment) => comment.storyIndex === index
+  // );
 
-  relatedComments.forEach((elem) => {
-    const oneComment = document.createElement("div");
-    oneComment.style.marginBottom = "10px";
-    oneComment.classList.add("one__comment");
-    oneComment.innerHTML = `<span class="commenter__title">
-            <p class="commenter">${elem.commenter[0]} ${elem.commenter[1]} </p>
-            <!--<p class="time__commented">2 days ago</p>-->
-          </span>
-          <p class="show__comment">
-            ${elem.comments}
-          </p>
-          <!--<div class="comments__icons">
-            <div class="icons">
-              <i class="ri-heart-3-line"></i>
-              10
-            </div>
-            <div class="icons">
-              <i class="ri-reply-line"></i>
-              100
-            </div>
-            <div class="icons">
-              <i class="ri-share-forward-2-line"></i>
-              SHARE
-            </div>
-          </div>-->`;
-    const com = document.getElementById("comments__wrapper");
-    com && com.appendChild(oneComment);
-  });
+  // relatedComments.forEach((elem) => {
+  //   const oneComment = document.createElement("div");
+  //   oneComment.style.marginBottom = "10px";
+  //   oneComment.classList.add("one__comment");
+  //   oneComment.innerHTML = `<span class="commenter__title">
+  //           <p class="commenter">${elem.commenter[0]} ${elem.commenter[1]} </p>
+  //           <!--<p class="time__commented">2 days ago</p>-->
+  //         </span>
+  //         <p class="show__comment">
+  //           ${elem.comments}
+  //         </p>
+  //         <!--<div class="comments__icons">
+  //           <div class="icons">
+  //             <i class="ri-heart-3-line"></i>
+  //             10
+  //           </div>
+  //           <div class="icons">
+  //             <i class="ri-reply-line"></i>
+  //             100
+  //           </div>
+  //           <div class="icons">
+  //             <i class="ri-share-forward-2-line"></i>
+  //             SHARE
+  //           </div>
+  //         </div>-->`;
+  //   const com = document.getElementById("comments__wrapper");
+  //   com && com.appendChild(oneComment);
+  // });
 }
-// trackUsercomment();
+trackUsercomment();
 
 function handleTrendingStroy() {
   let stories = JSON.parse(localStorage.getItem("storiesList")) || [];
