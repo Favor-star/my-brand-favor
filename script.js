@@ -111,7 +111,7 @@ const msgMeEmail = document.getElementById("msg__me__email"),
   msgMeErrorDiv = document.getElementById("contact__form__error");
 
 messageMeForm &&
-  messageMeForm.addEventListener("submit", (e) => {
+  messageMeForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     if (
@@ -131,15 +131,42 @@ messageMeForm &&
       }, 1000);
       return;
     }
-    const storedMessage =
-      JSON.parse(localStorage.getItem("userMessages")) || [];
     const singleMessage = {
-      message: msgMeBody.value,
-      senderName: msgMeName.value,
-      senderEmail: msgMeEmail.value,
+      messageBody: msgMeBody.value,
+      names: msgMeName.value,
+      email: msgMeEmail.value,
       subject: msgMeSubject.value,
     };
-    const messageToUpload = [...storedMessage, singleMessage];
-    localStorage.setItem("userMessages", JSON.stringify(messageToUpload));
-    alert("Thanks for contacting us! We will reach you soon");
+    msgMeErrorDiv.innerHTML = `<i style="color: var(--black)" class='bx bx-loader-alt bx-spin'></i>`;
+    const message = await fetch(
+      `https://backend-my-brand-favor.onrender.com/contact-me`,
+      {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          messageBody: msgMeBody.value,
+          names: msgMeName.value,
+          email: msgMeEmail.value,
+          subject: msgMeSubject.value,
+        }),
+      }
+    );
+    const messageResult = await message.json();
+    if (messageResult.OK) {
+      // alert(messageResult.message);
+      msgMeErrorDiv.innerHTML = messageResult.message;
+      msgMeErrorDiv.style.padding = "10px";
+      msgMeErrorDiv.style.backgroundColor = "green";
+      msgMeErrorDiv.style.color = "white";
+      setTimeout(() => {
+        msgMeErrorDiv.innerHTML = "";
+        msgMeErrorDiv.style.padding = "0";
+        msgMeErrorDiv.style.backgroundColor = "inherit";
+        msgMeErrorDiv.style.color = "red";
+      }, 3500);
+      return;
+    }
+    msgMeErrorDiv.innerHTML = messageResult.message;
   });
