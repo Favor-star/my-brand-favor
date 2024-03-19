@@ -3,7 +3,6 @@
 // const host = "http://localhost:8080";
 const accessToken = localStorage.getItem("accessToken");
 const storyID = JSON.parse(localStorage.getItem("storyToRead"))._id;
-const activeUser = JSON.parse(localStorage.getItem("activeUser"));
 const host = "https://backend-my-brand-favor.onrender.com";
 async function fetchBlogStories() {
   const response = await fetch(`${host}/blogs`);
@@ -293,6 +292,7 @@ const trackLikeOnLoad = async () => {
   const result = await response.json();
   if (result.length === 0) return;
   const likes = result[0].likedBy;
+  const activeUser = JSON.parse(localStorage.getItem("activeUser"));
   if (likes.includes(`${activeUser.firstName} ${activeUser.lastName}`)) {
     likeBtn.innerHTML = `<i class="ri-heart-fill"></i> LIKED`;
   } else {
