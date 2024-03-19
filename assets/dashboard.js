@@ -318,8 +318,6 @@ function confirmStoryDeletion() {
       if (parent) {
         const mores = parent.querySelectorAll(".mores");
         mores.forEach((more) => {
-          console.log(checkbox.checked ? "Favour" : "Nooooo");
-          console.log(more);
           //  more.style.display = checkbox.checked ? "inline-block" : "none";
           more.style.cursor = checkbox.checked ? "pointer" : "not-allowed";
           if (checkbox.checked) more.classList.remove("not__allowed");
