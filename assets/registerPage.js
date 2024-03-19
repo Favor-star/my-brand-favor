@@ -6,7 +6,7 @@ const regEmail = document.getElementById("reg__email");
 const regNames = document.getElementById("reg__names");
 const registerErrorDiv = document.getElementById("register__error");
 // const host = "http://localhost:8080";
-const host = "`https://backend-my-brand-favor.onrender.com";
+const host = "https://backend-my-brand-favor.onrender.com";
 //Handle the input of the names
 regNames.onfocus = () => {
   document.getElementById("reg__v__names").innerHTML =
@@ -164,16 +164,16 @@ const loginEmail = document.getElementById("login__email");
 const loginPassword = document.getElementById("login__password");
 
 loginForm.onsubmit = async (e) => {
+  e.preventDefault();
+  loginErrorDiv.innerHTML = `<i style="color: var(--black)" class='bx bx-loader-alt bx-spin'></i>`;
   const user = {
     email: loginEmail.value.trim(),
     password: loginPassword.value.trim(),
   };
-  e.preventDefault();
-  loginErrorDiv.innerHTML = `<i style="color: var(--black)" class='bx bx-loader-alt bx-spin'></i>`;
   const logUser = await fetch(`${host}/users/login`, {
-    method: "post",
+    method: "POST",
     headers: {
-      "Content-type": "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(user),
   });
