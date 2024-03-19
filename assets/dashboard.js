@@ -1,6 +1,6 @@
 "use strict";
-
-const host = "http://localhost:8080";
+const host = `https://backend-my-brand-favor.onrender.com`;
+// const host = "http://localhost:8080";
 const accessToken = localStorage.getItem("accessToken");
 const fetchStories = async () => {
   const result = await fetch(`${host}/blogs`);
@@ -68,7 +68,7 @@ logout.forEach((element) => {
 
 const accountsList = document.getElementById("list__of__accounts");
 
-//FUNCTION TO HANDLE REGISTER USER
+//FUNCTION TO HANDLE APPENDING OF REGISTER USER
 async function handleRegisteredUser() {
   const users = await fetchUsers();
   accountsList.innerHTML = "";
@@ -192,20 +192,21 @@ function checkStory(title, image, category, story) {
   confirmMain.innerHTML = story;
   confirmTitle.innerHTML = title;
   confirmImage.src = image;
-  confirmStoryForm.classList.remove("hide");
+  // confirmStoryForm.classList.remove("hide");
 
   revert.onclick = () => {
     confirmStoryForm.classList.add("hide");
   };
-  confirmStoryForm.onsubmit = (e) => {
-    e.preventDefault();
-    uploadToStorage(title, image, category, story);
-  };
+  storyErrorDiv.innerHTML = `<i style="color: var(--black)" class='bx bx-loader-alt bx-spin'></i>`;
+  uploadToStorage(title, image, category, story);
+  // confirmStoryForm.onsubmit = (e) => {
+  //   e.preventDefault();
+  // };
 }
 async function uploadToStorage(title, image, category, story) {
   const stories = JSON.parse(localStorage.getItem("storiesList")) || [];
 
-  const result = await fetch(`${host}/blogs`, {
+  const response = await fetch(`${host}/blogs`, {
     method: "post",
     headers: {
       "Content-Type": "Application/json",
@@ -217,6 +218,25 @@ async function uploadToStorage(title, image, category, story) {
       storyImageURL: image,
     }),
   });
+
+  const result = await response.json();
+  if (result.OK) {
+    storyErrorDiv.innerHTML = result.message;
+    storyErrorDiv.style.color = "white";
+    storyErrorDiv.style.padding = "10px";
+    storyErrorDiv.style.backgroundColor = "green";
+
+    setTimeout(() => {
+      storyErrorDiv.innerHTML = "";
+      storyErrorDiv.style.color = "red";
+      storyErrorDiv.style.padding = "0";
+      storyErrorDiv.style.backgroundColor = "red";
+      storyImage.value = "";
+      storyTitle.value = "";
+      mainStory.value = "";
+      appendStory();
+    }, 3500);
+  } else storyErrorDiv.innerHTML = result.message;
 
   // const singleStory = {
   //   id: Date.now(),

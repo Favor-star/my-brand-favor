@@ -5,7 +5,8 @@ const regConfrimPassword = document.getElementById("confirm__password");
 const regEmail = document.getElementById("reg__email");
 const regNames = document.getElementById("reg__names");
 const registerErrorDiv = document.getElementById("register__error");
-const host = "http://localhost:8080";
+// const host = "http://localhost:8080";
+const host = "`https://backend-my-brand-favor.onrender.com";
 //Handle the input of the names
 regNames.onfocus = () => {
   document.getElementById("reg__v__names").innerHTML =
@@ -114,7 +115,7 @@ async function storeUser(user) {
       return;
     }
   }
-
+  registerErrorDiv.innerHTML = `<i style="color: var(--black)" class='bx bx-loader-alt bx-spin'></i>`;
   const registerUser = await fetch(`${host}/users`, {
     method: "post",
     headers: {
@@ -168,6 +169,7 @@ loginForm.onsubmit = async (e) => {
     password: loginPassword.value.trim(),
   };
   e.preventDefault();
+  loginErrorDiv.innerHTML = `<i style="color: var(--black)" class='bx bx-loader-alt bx-spin'></i>`;
   const logUser = await fetch(`${host}/users/login`, {
     method: "post",
     headers: {

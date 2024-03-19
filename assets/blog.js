@@ -1,10 +1,10 @@
 "use strict";
 
-const host = "http://localhost:8080";
+// const host = "http://localhost:8080";
 const accessToken = localStorage.getItem("accessToken");
 const storyID = JSON.parse(localStorage.getItem("storyToRead"))._id;
 const activeUser = JSON.parse(localStorage.getItem("activeUser"));
-// const host = "https://backend-my-brand-favor.onrender.com";
+const host = "https://backend-my-brand-favor.onrender.com";
 async function fetchBlogStories() {
   const response = await fetch(`${host}/blogs`);
   if (response.ok) {
