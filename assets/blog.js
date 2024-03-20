@@ -2,7 +2,6 @@
 
 // const host = "http://localhost:8080";
 const accessToken = localStorage.getItem("accessToken");
-const storyID = JSON.parse(localStorage.getItem("storyToRead"))._id;
 const host = "https://backend-my-brand-favor.onrender.com";
 async function fetchBlogStories() {
   const response = await fetch(`${host}/blogs`);
@@ -20,6 +19,7 @@ async function fetchBlogStories() {
   return result;
 }
 async function fetchRelatedComments() {
+const storyID = JSON.parse(localStorage.getItem("storyToRead"))._id;
   const response = await fetch(`${host}/comments/${storyID}`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
@@ -155,6 +155,7 @@ comment &&
     addUserComment();
   });
 async function addUserComment() {
+const storyID = JSON.parse(localStorage.getItem("storyToRead"))._id;
   const commentInput = document.querySelector("#main__comment");
   const { firstName, lastName } = JSON.parse(
     localStorage.getItem("activeUser")
@@ -247,6 +248,7 @@ async function handleTrendingStroy() {
 handleTrendingStroy();
 //FUNCTION TO STORE LIKES IN THE DATABASE
 async function trackUserLikes() {
+const storyID = JSON.parse(localStorage.getItem("storyToRead"))._id;
   let storiesLikes = JSON.parse(localStorage.getItem("likedStories")) || [];
   const { firstName, lastName } = JSON.parse(
     localStorage.getItem("activeUser")
@@ -284,6 +286,7 @@ async function likeStory() {
 likeStory();
 
 const trackLikeOnLoad = async () => {
+const storyID = JSON.parse(localStorage.getItem("storyToRead"))._id;
   const response = await fetch(`${host}/comments/${storyID}`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
