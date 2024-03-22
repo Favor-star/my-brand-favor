@@ -13,6 +13,7 @@ const fetchStories = async () => {
     }, 500);
   }
   const response = await result.json();
+
   return response;
 };
 const fetchComments = async () => {
@@ -471,3 +472,147 @@ function quickStatistics() {
   document.querySelector("[totalComments]").innerText = comments;
 }
 quickStatistics();
+
+function adminViewing() {
+  const forAdmin = document.querySelectorAll(".for__admin");
+  const generalSettings = document.querySelector(".standard");
+  const dashboardHeader = document.querySelector("[dashboard__header]");
+
+  const user = JSON.parse(localStorage.getItem("activeUser"));
+  if (user.email !== "favoureliab@gmail.com") {
+    forAdmin.forEach((element) => {
+      element.style.display = "none";
+    });
+    generalSettings.setAttribute("open", "true");
+    dashboardHeader.textContent = "USER DASHBOARD";
+  }
+}
+adminViewing();
+async function updateUserInfo() {
+  const activeUser = JSON.parse(localStorage.getItem("activeUser"));
+  const matchingUserRes = await fetch(`${host}/users`, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+  const matchingUser = (await matchingUserRes.json()).filter(
+    (user) => user.email === activeUser.email
+  )[0];
+  const firstNameEdit = document.getElementById("firstname__edit"),
+    usernameEdit = document.getElementById("username__edit"),
+    lastNameEdit = document.getElementById("lastname__edit"),
+    phoneEdit = document.getElementById("phone__nmbr__edit"),
+    passwordEdit = document.getElementById("password__edit"),
+    updateErrorDiv = document.querySelector(".updateErrorDiv");
+  const updateInfoForm = document.querySelector("[update__info]");
+  firstNameEdit.value = `${matchingUser.firstName}`;
+  lastNameEdit.value = `${matchingUser.lastName}`;
+  usernameEdit.value = `${matchingUser.firstName.toLowerCase()}${matchingUser.lastName.toLowerCase()}`;
+  checkPassword();
+  updateInfoForm.onsubmit = async (e) => {
+    e.preventDefault();
+    updateErrorDiv.innerHTML = `<i style="color: var(--black)" class='bx bx-loader-alt bx-spin'></i>`;
+    const infoToUpdate = checkPassword()
+      ? {
+          firstName: firstNameEdit.value,
+          lastName: lastNameEdit.value,
+          password: passwordEdit.value.trim(),
+        }
+      : {
+          firstName: firstNameEdit.value,
+          lastName: lastNameEdit.value,
+        };
+    try {
+      const matchingUserID = matchingUser._id;
+      const updateUserRes = await fetch(`${host}/users/${matchingUserID}`, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(infoToUpdate),
+      });
+      const updateUser = await updateUserRes.json();
+      if (updateUser.OK) {
+        updateErrorDiv.innerHTML = updateUser.message;
+        updateErrorDiv.classList.add("success");
+        setTimeout(() => {
+          updateErrorDiv.innerHTML = "";
+          updateErrorDiv.classList.remove("success");
+        }, 3500);
+        console.log(updateUser.userToUpdate.firstName);
+        localStorage.removeItem("activeUser");
+        localStorage.setItem(
+          "activeUser",
+          JSON.stringify({
+            email: updateUser.userToUpdate.email,
+            lastName: updateUser.userToUpdate.lastName,
+            firstName: updateUser.userToUpdate.firstName,
+          })
+        );
+        console.log(JSON.parse(localStorage.getItem("activeUser")));
+        setTimeout(() => {
+          location.reload();
+        }, 3000);
+        return;
+      }
+      throw new Error("User could not be updated successfully");
+    } catch (error) {
+      updateErrorDiv.style.color = "red";
+      updateErrorDiv.innerHTML =
+        "Informationn could not be updated. Please  try again!";
+      setTimeout(() => {
+        updateErrorDiv.innerHTML = "";
+      }, 3500);
+      return;
+    }
+  };
+}
+updateUserInfo();
+
+function checkPassword() {
+  const passwordEdit = document.getElementById("password__edit");
+  const updateErrorDiv = document.querySelector(".updateErrorDiv");
+  const confrimPasswordEdit = document.querySelector(
+    "#password__confirm__edit"
+  );
+  updateErrorDiv.style.color = "red";
+  //HANDLING PASSWORD VALIDATION
+  passwordEdit.onfocus = (e) => {
+    updateErrorDiv.innerHTML =
+      "Your password should contain at least: 1 uppercase, 1 lowercase,1 symbol, one number and be more than 5 characters";
+  };
+  passwordEdit.oninput = (e) => {
+    const inputValue = e.target.value.trim();
+    const result = /(?=.*\d)(?=.*\W)(?=.*[A-Z])(?=.*[a-z]).{6,}/.test(
+      inputValue
+    );
+    if (result) updateErrorDiv.innerHTML = "";
+  };
+  passwordEdit.onblur = (e) => {
+    const inputValue = e.target.value.trim(); //[!@#$%^&*()-_=+{};:',<.>?]
+    const result = /(?=.*\d)(?=.*\W)(?=.*[A-Z])(?=.*[a-z]).{6,}/.test(
+      inputValue
+    );
+    updateErrorDiv.innerHTML = result
+      ? ""
+      : inputValue === ""
+      ? ""
+      : "Not valid Password";
+  };
+  if (
+    passwordEdit.value.trim() !== "" &&
+    passwordEdit.value.trim() === confrimPasswordEdit.value.trim()
+  ) {
+    return true;
+  }
+  return false;
+}
+// async function deleteUser() {
+//   const activeUser = JSON.parse(localStorage.getItem("activeUser"));
+//   const user = await fetchUsers().filter(user => user.email === activeUser.email)
+// console.log(user)
+//   console.log(activeUser);
+//   const matchingUserID = (await fetchUsers()).filter((user) => user);
+// }
+// deleteUser();

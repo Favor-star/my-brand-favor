@@ -1598,3 +1598,31 @@ main {
 .story__confirm button i {
   font-size: 20px;
 }
+
+.confirm__user__deletion {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 200px;
+  background-color: var(--black);
+  color: var(--white);
+  padding: 10px;
+  transition: all 0.4s ease-in-out;
+}
+.buttons__div {
+  color: var(--white);
+}
+.confirm__btn,
+.reject__btn {
+  color: var(--white);
+  border: 1px solid var(--white);
+  padding: 8px 20px;
+  margin: 8px;
+}
+.hidden {
+  opacity: 0;
+  scale: 0;
+}

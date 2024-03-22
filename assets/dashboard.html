@@ -78,8 +78,8 @@
       </div>
       <!-- <div class="wrapper"> -->
       <!-- <section style="width: 100%;"> -->
-      <h3 style="text-align: center; margin-bottom: 6vh">ADMIN DASHBOARD</h3>
-      <details>
+      <h3  style="text-align: center; margin-bottom: 6vh" dashboard__header>ADMIN DASHBOARD</h3>
+      <details class ="standard">
         <summary>General Settings <i class="ri-arrow-down-s-fill"></i></summary>
         <div>
           <h3>Welcome back, Favour Eliab</h3>
@@ -96,12 +96,12 @@
           <div class="update__delete">
             <div>
               <h4>Edit your personal info</h4>
-              <div class="grid__wrapper">
+              <form class="grid__wrapper" update__info>
                 <div class="box__item">
-                  <label for="names__edit">Names</label>
+                  <label for="firstname__edit">First Name</label>
                   <input
-                    name="names__edit"
-                    id="names__edit"
+                    name="firstname__edit"
+                    id="firstname__edit"
                     type="text"
                     class="inputs"
                     placeholder="Favour Eliab"
@@ -109,10 +109,10 @@
                   />
                 </div>
                 <div class="box__item">
-                  <label for="username">Username</label>
+                  <label for="lastname__edit">Last Name</label>
                   <input
-                    name="username"
-                    id="username"
+                    name="lastname"
+                    id="lastname__edit"
                     type="text"
                     class="inputs"
                     placeholder="Favour Eliab"
@@ -133,10 +133,10 @@
                   />
                 </div>
                 <div class="box__item">
-                  <label for="phone__nmbr__edit">Phone number</label>
+                  <label for="username__edit">Username</label>
                   <input
-                    name="phone__nmbr__edit"
-                    id="phone__nmbr__edit"
+                    name="username__edit"
+                    id="username__edit"
                     type="tel"
                     class="inputs"
                     placeholder="Enter your number"
@@ -144,10 +144,10 @@
                   />
                 </div>
                 <div class="box__item">
-                  <label for="passwrod__edit">Change your password</label>
+                  <label for="password__edit">Change your password</label>
                   <input
-                    name="passwrod__edit"
-                    id="passwrod__edit"
+                    name="password__edit"
+                    id="password__edit"
                     type="password"
                     class="inputs"
                     placeholder="Enter your Password"
@@ -159,28 +159,29 @@
                     >Confirm your password</label
                   >
                   <input
-                    name="passwrod__confirm__edit"
-                    id="passwrod__confirm__edit"
+                    name="password__confirm__edit"
+                    id="password__confirm__edit"
                     type="password"
                     class="inputs"
                     placeholder="Enter your Password"
                     value=""
                   />
                 </div>
-                <button class="buttons">Update Info</button>
-              </div>
+                <button type="submit" class="buttons">Update Info</button>
+                <p class="updateErrorDiv"></p>
+              </form>
             </div>
             <div class="delete">
               <p>Danger Zone</p>
               <span>
-                <a href="">Delete account</a>
-                <a href="">Deactivate account</a>
+                <a delete_account>Delete account</a>
+                <!-- <a href="">Deactivate account</a> -->
               </span>
             </div>
           </div>
         </div>
       </details>
-      <details open>
+      <details open class="for__admin">
         <summary>
           Stories management <i class="ri-arrow-down-s-fill"></i>
         </summary>
@@ -430,7 +431,7 @@
         </div>
       </details>
 
-      <details >
+      <details  class="for__admin">
         <summary>
           Interactions Management <i class="ri-arrow-down-s-fill"></i>
         </summary>
@@ -538,7 +539,7 @@
           </div>
         </div>
       </details>
-      <details>
+      <details  class="for__admin" >
         <summary>
           Accounts Management <i class="ri-arrow-down-s-fill"></i>
         </summary>
@@ -579,6 +580,13 @@
       </section>
       <!-- </div> -->
     </main>
+    <div class="confirm__user__deletion hidden">
+      <p>Are you sure you want to delete the user</p>
+      <div class="buttons__div">
+        <button class="buttons confirm__btn ">Yes</button>
+        <button class="buttons reject__btn">NO</button>
+      </div>
+    </div>
     <form class="story__confirm__form hide">
       <div class="story__confirm">
         <h3

@@ -385,3 +385,10 @@
   pointer-events: none !important;
   color: gray;
 }
+
+.success {
+  color: white !important;
+  background-color: green;
+  padding: 10px;
+  transition: all 0.5s ease-in-out;
+}
